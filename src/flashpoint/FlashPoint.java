@@ -1,9 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package flashpoint; 
-
 import java.io.*;
 import java.awt.*;
 import java.awt.geom.*;
@@ -23,14 +18,12 @@ public class FlashPoint extends JFrame implements Runnable {
     int ColumnDir;
     int timecount;
     int score;
-    int highScore;
-    int badBoxNum = 10; 
-    int PowerupRow;
-    int PowerupColumn;
+    int badBoxNum = 5; 
+    int PoiRow;
+    int PoiColumn;
     boolean gameover;
-    boolean PowerupOn;
+    boolean PoiOn;
     double frameRate = 10.0;
-    double SpeedUp;
     
     static FlashPoint frame1;
     public static void main(String[] args) {
@@ -39,9 +32,7 @@ public class FlashPoint extends JFrame implements Runnable {
         frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame1.setVisible(true);
     }
-
     public FlashPoint() {
-
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 if (e.BUTTON1 == e.getButton()) {
@@ -54,25 +45,24 @@ public class FlashPoint extends JFrame implements Runnable {
                 repaint();
             }
         });
-
     addMouseMotionListener(new MouseMotionAdapter() {
       public void mouseDragged(MouseEvent e) {
         repaint();
       }
     });
-
     addMouseMotionListener(new MouseMotionAdapter() {
       public void mouseMoved(MouseEvent e) {
         repaint();
       }
     });
-
         addKeyListener(new KeyAdapter() {
-
             public void keyPressed(KeyEvent e) {
                 if (e.VK_RIGHT == e.getKeyCode())
                 {
                     Movement.MoveRight(currentColumn);
+                    nextColumn = currentColumn + 1;
+                    ColumnDir = 1;
+                    RowDir = 0;
                 }
                 if (e.VK_LEFT == e.getKeyCode())
                 {
@@ -114,10 +104,6 @@ public class FlashPoint extends JFrame implements Runnable {
         init();
         start();
     }
-
-
-
-
     Thread relaxer;
 ////////////////////////////////////////////////////////////////////////////
     public void init() {
@@ -134,14 +120,11 @@ public class FlashPoint extends JFrame implements Runnable {
             image = createImage(Window.xsize, Window.ysize);
             g = (Graphics2D) image.getGraphics();
             g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                    RenderingHints.VALUE_ANTIALIAS_ON);
+                   RenderingHints.VALUE_ANTIALIAS_ON);
         }
-
 //fill background
         g.setColor(Color.black);
-
         g.fillRect(0, 0, Window.xsize, Window.ysize);
-
         int x[] = {Window.getX(0), Window.getX(Window.getWidth2()), Window.getX(Window.getWidth2()), Window.getX(0), Window.getX(0)};
         int y[] = {Window.getY(0), Window.getY(0), Window.getY(Window.getHeight2()), Window.getY(Window.getHeight2()), Window.getY(0)};
 //fill border
@@ -150,12 +133,10 @@ public class FlashPoint extends JFrame implements Runnable {
 // draw border
         g.setColor(Color.black);
         g.drawPolyline(x, y, 5);
-
         if (animateFirstTime) {
             gOld.drawImage(image, 0, 0, null);
             return;
         }
-
         g.setColor(Color.gray);
 //horizontal lines
         for (int zi=1;zi<Board.numRows;zi++)
@@ -183,28 +164,27 @@ public class FlashPoint extends JFrame implements Runnable {
                     Window.getWidth2()/Board.numColumns,
                     Window.getHeight2()/Board.numRows);
                 }     
-                if (Board.board[zrow][zcolumn] == Board.BAD_BOX)
-                {
-                    g.setColor(Color.red);
-                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
-                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
-                    Window.getWidth2()/Board.numColumns,
-                    Window.getHeight2()/Board.numRows);
-                } 
+//                if (Board.board[zrow][zcolumn] == Board.BAD_BOX)
+//                {
+//                    g.setColor(Color.red);
+//                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
+//                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+//                    Window.getWidth2()/Board.numColumns,
+//                    Window.getHeight2()/Board.numRows);
+//                } 
             }
         }
         
         g.setColor(Color.cyan);
-        g.fillRect(Window.getX(0)+PowerupColumn*Window.getWidth2()/Board.numColumns,
-        Window.getY(0)+PowerupRow*Window.getHeight2()/Board.numRows,
+        g.fillRect(Window.getX(0)+PoiColumn*Window.getWidth2()/Board.numColumns,
+        Window.getY(0)+PoiRow*Window.getHeight2()/Board.numRows,
         Window.getWidth2()/Board.numColumns,
         Window.getHeight2()/Board.numRows);
         
         
         g.setColor(Color.white);
         g.drawString("Score: " + score, 50, 45);
-        g.drawString("High Score: " + highScore, 250, 45);
-        if (gameover == true)
+       if (gameover == true)
         {
             g.setColor(Color.black);
             g.drawString("Game Over", 250, 250);
@@ -212,18 +192,15 @@ public class FlashPoint extends JFrame implements Runnable {
             ColumnDir = 0;
             
         }
-
         gOld.drawImage(image, 0, 0, null);
     }
-
-
 ////////////////////////////////////////////////////////////////////////////
 // needed for     implement runnable
     public void run() {
         while (true) {
             animate();
             repaint();
-            double seconds = 1/frameRate;    //time that 1 frame takes.
+           double seconds = 1/frameRate;    //time that 1 frame takes.
             int miliseconds = (int) (1000.0 * seconds);
             try {
                 Thread.sleep(miliseconds);
@@ -254,7 +231,7 @@ public class FlashPoint extends JFrame implements Runnable {
         column = (int)(Math.random()*Board.numColumns);
         if (Board.board[row][column] == Board.EMPTY)
         {
-        Board.board[row][column] = Board.BAD_BOX;
+//        Board.board[row][column] = Board.BAD_BOX;
         KeepLoop = false;
         }
         }
@@ -263,11 +240,11 @@ public class FlashPoint extends JFrame implements Runnable {
            boolean KeepLoop2 = true;
        while (KeepLoop2)
        {
-        PowerupRow = (int)(Math.random()*Board.numRows);
-        PowerupColumn = (int)(Math.random()*Board.numColumns);
-        if (Board.board[PowerupRow][PowerupColumn] == Board.EMPTY)
+        PoiRow = (int)(Math.random()*Board.numRows);
+        PoiColumn = (int)(Math.random()*Board.numColumns);
+        if (Board.board[PoiRow][PoiColumn] == Board.EMPTY)
         {
-        Board.board[PowerupRow][PowerupColumn] = Board.BAD_BOX;
+//        Board.board[PowerupRow][PowerupColumn] = Board.BAD_BOX;
         KeepLoop2 = false;
         }
         }
@@ -281,7 +258,6 @@ public class FlashPoint extends JFrame implements Runnable {
        ColumnDir = 1;
        RowDir = 0;
        score = 0;
-       SpeedUp = 5;
     }
 /////////////////////////////////////////////////////////////////////////
     public void animate() {
@@ -292,28 +268,26 @@ public class FlashPoint extends JFrame implements Runnable {
                 Window.xsize = getSize().width;
                 Window.ysize = getSize().height;
             }
-
             reset();
         }
-        if (currentRow == PowerupRow && currentColumn == PowerupColumn)
+        if (currentRow == PoiRow && currentColumn == PoiColumn)
         {
-            PowerupOn = true;
+            PoiOn = true;
                     
             boolean KeepLoop2 = true;
        while (KeepLoop2)
        {
-        PowerupRow = (int)(Math.random()*Board.numRows);
-        PowerupColumn = (int)(Math.random()*Board.numColumns);
-        if (Board.board[PowerupRow][PowerupColumn] == Board.EMPTY)
+        PoiRow = (int)(Math.random()*Board.numRows);
+        PoiColumn = (int)(Math.random()*Board.numColumns);
+        if (Board.board[PoiRow][PoiColumn] == Board.EMPTY)
         {
-        Board.board[PowerupRow][PowerupColumn] = Board.BAD_BOX;
+//        Board.board[PowerupRow][PowerupColumn] = Board.BAD_BOX;
         KeepLoop2 = false;
         }
         }        
         }
         if(gameover)
         {
-
         }
         else
         {
@@ -323,10 +297,10 @@ public class FlashPoint extends JFrame implements Runnable {
         {
             for (int zcolumn = 0;zcolumn < Board.numColumns;zcolumn++)
             {
-                if (Board.board[zrow][zcolumn] == Board.BAD_BOX)
-                {
-                    Board.board[zrow][zcolumn] = Board.EMPTY;
-                }
+//                if (Board.board[zrow][zcolumn] == Board.BAD_BOX)
+//                {
+//                    Board.board[zrow][zcolumn] = Board.EMPTY;
+//                }
             }
         }
        for (int c = 0  ; c<badBoxNum; c++ )
@@ -340,53 +314,19 @@ public class FlashPoint extends JFrame implements Runnable {
         column = (int)(Math.random()*Board.numColumns);
         if (Board.board[row][column] == Board.EMPTY)
         {
-        Board.board[row][column] = Board.BAD_BOX;
+//        Board.board[row][column] = Board.BAD_BOX;
         KeepLoop = false;
         }
         }
        }
        }
         }
-       
-       SpeedUp -= .1;
-       if (SpeedUp < 1)
-           SpeedUp = 1;
-       
-       if (timecount % (int)(SpeedUp) == (int)(SpeedUp) -1)
-               {
-       currentColumn += ColumnDir;
-       currentRow += RowDir;
-       if (currentRow >= Board.numRows )
-       {
-           currentRow = 0;
-       }
-       if (currentRow < 0 )
-       {
-           currentRow = Board.numRows - 1;
-       }
-       if ( currentColumn >= Board.numColumns)
-       {
-           currentColumn = 0;
-       }
-       if (currentColumn < 0)
-       {
-           currentColumn = Board.numColumns;
-       }
-       else if (Board.board[currentRow][currentColumn] == Board.SNAKE || Board.board[currentRow][currentColumn] == Board.BAD_BOX)
-       {
-           gameover = true;
-       }
-       else{
-           Board.board[currentRow][currentColumn] = Board.SNAKE;
-       }
-       }
+      
        if (gameover == false){
-           score += 1;
+          score += 1;
            timecount++;
-           if (score > highScore)
-            highScore = score;}
+                            }
     }
-
 ////////////////////////////////////////////////////////////////////////////
     public void start() {
         if (relaxer == null) {
@@ -402,5 +342,4 @@ public class FlashPoint extends JFrame implements Runnable {
         relaxer = null;
     }
 /////////////////////////////////////////////////////////////////////////
-    
 }
