@@ -4,26 +4,33 @@ import java.awt.*;
 import java.awt.geom.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class FlashPoint extends JFrame implements Runnable {
     boolean animateFirstTime = true;
     Image image;
     Graphics2D g;
    
-    int currentRow;
-    int currentColumn;
-    int nextRow;
-    int nextColumn;
-    int RowDir;
-    int ColumnDir;
-    int timecount;
-    int score;
-    int badBoxNum = 5; 
+    
+    int smokeNum = 5; 
+    int fireNum = 5;
+    int wallNum = 10;
+    int playersNum = 4;
+    int doorNum = 4;
     int PoiRow;
     int PoiColumn;
+    int timecount;
     boolean gameover;
     boolean PoiOn;
     double frameRate = 10.0;
+    
+    ArrayList<Wall> numWalls = new ArrayList<Wall>();
+    
+    Player PlayerRed = new Player(Color.red);
+    Player PlayerBlue = new Player(Color.blue);
+    Player PlayerYellow = new Player(Color.yellow);
+    Player PlayerGreen = new Player(Color.green);
+    Wall wall = new Wall();
     
     static FlashPoint frame1;
     public static void main(String[] args) {
@@ -57,48 +64,261 @@ public class FlashPoint extends JFrame implements Runnable {
     });
         addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
-                if (e.VK_RIGHT == e.getKeyCode())
-                {
-                    Movement.MoveRight(currentColumn);
-                    nextColumn = currentColumn + 1;
-                    ColumnDir = 1;
-                    RowDir = 0;
-                }
-                if (e.VK_LEFT == e.getKeyCode())
-                {
-                    nextColumn = currentColumn - 1;
-                    ColumnDir = -1;
-                    RowDir = 0;
-                }
-                if (e.VK_UP == e.getKeyCode())
-                {
-                    nextRow = currentRow - 1;
-                    RowDir = -1;
-                    ColumnDir = 0;
-                }
-                if (e.VK_DOWN == e.getKeyCode())
-                {
-                    nextRow = currentRow + 1;
-                    RowDir = 1;
-                    ColumnDir = 0;
-                }
-                 if (e.VK_SPACE == e.getKeyCode())
-                {
-                    if(gameover)
-                    {
-                        
+                if (e.VK_RIGHT == e.getKeyCode()) {
+                    if (PlayerRed.getActionPoints() != 0 && PlayerRed.getisTurn() == true) {
+                        if (PlayerRed.getCurrentColumn() != Board.numColumns - 1 && Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn() + 1] == Board.EMPTY) {
+                            Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn()] = Board.EMPTY;
+                            PlayerRed.setCurrentColumn(Movement.MoveRight(PlayerRed.getCurrentColumn()));
+                            Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn()] = Board.PLAYERRED;
+                            PlayerRed.playerLoseActionPoint();
+                            if (PlayerRed.getActionPoints() == 0)
+                            {
+                                PlayerRed.setisTurn(false);
+                                PlayerRed.setActionPoints();
+                                PlayerBlue.setisTurn(true); 
+                                return;
+                            }
+                        }
                     }
-                    else
-                    {
-                    currentRow = (int)(Math.random()*Board.numRows);
-                    currentColumn = (int)(Math.random()*Board.numColumns);
-                    if (Board.board[currentRow][currentColumn] == Board.EMPTY)
-                    {
-                    Board.board[currentRow][currentColumn] = Board.SNAKE;
+                    if (PlayerBlue.getActionPoints() != 0 && PlayerBlue.getisTurn() == true) {
+                        if (PlayerBlue.getCurrentColumn() != Board.numColumns - 1 && Board.board[PlayerBlue.currentRow][PlayerBlue.getCurrentColumn() + 1] == Board.EMPTY) {
+                            Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn()] = Board.EMPTY;
+                            PlayerBlue.setCurrentColumn(Movement.MoveRight(PlayerBlue.getCurrentColumn()));
+                            Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn()] = Board.PLAYERBLUE;
+                            PlayerBlue.playerLoseActionPoint();
+                            if (PlayerBlue.getActionPoints() == 0)
+                            {
+                            PlayerBlue.setisTurn(false);
+                            PlayerBlue.setActionPoints();
+                            PlayerGreen.setisTurn(true);
+                            return;
+                            }
+                        }
                     }
+                    if (PlayerGreen.getActionPoints() != 0 && PlayerGreen.getisTurn() == true) {
+                        if (PlayerGreen.getCurrentColumn() != Board.numColumns - 1 && Board.board[PlayerGreen.currentRow][PlayerGreen.getCurrentColumn() + 1] == Board.EMPTY) {
+                            Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn()] = Board.EMPTY;
+                            PlayerGreen.setCurrentColumn(Movement.MoveRight(PlayerGreen.getCurrentColumn()));
+                            Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn()] = Board.PLAYERGREEN;
+                            PlayerGreen.playerLoseActionPoint();
+                            if (PlayerGreen.getActionPoints() == 0)
+                            {
+                                PlayerGreen.setisTurn(false);
+                            PlayerGreen.setActionPoints();
+                                PlayerYellow.setisTurn(true); 
+                                return;
+                            }
+                        }
+                    }
+                    if (PlayerYellow.getActionPoints() != 0 && PlayerYellow.getisTurn() == true) {
+                        if (PlayerYellow.getCurrentColumn() != Board.numColumns - 1 && Board.board[PlayerYellow.currentRow][PlayerYellow.getCurrentColumn() + 1] == Board.EMPTY) {
+                            Board.board[PlayerYellow.getCurrentRow()][PlayerYellow.getCurrentColumn()] = Board.EMPTY;
+                            PlayerYellow.setCurrentColumn(Movement.MoveRight(PlayerYellow.getCurrentColumn()));
+                            Board.board[PlayerYellow.getCurrentRow()][PlayerYellow.getCurrentColumn()] = Board.PLAYERYELLOW;
+                            PlayerYellow.playerLoseActionPoint();
+                            if (PlayerYellow.getActionPoints() == 0)
+                            {
+                                PlayerYellow.setisTurn(false);
+                            PlayerYellow.setActionPoints();
+                                PlayerRed.setisTurn(true); 
+                                return;
+                            }
+                        }
                     }
                 }
-                repaint();
+                
+                
+                if (e.VK_LEFT == e.getKeyCode()) {
+                    if (PlayerRed.getActionPoints() != 0 && PlayerRed.getisTurn() == true) {
+                        if (PlayerRed.getCurrentColumn() != 0 && Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn() - 1] == Board.EMPTY) {
+                            Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn()] = Board.EMPTY;
+                            PlayerRed.setCurrentColumn(Movement.MoveLeft(PlayerRed.getCurrentColumn()));
+                            Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn()] = Board.PLAYERRED;
+                            PlayerRed.playerLoseActionPoint();
+                            if (PlayerRed.getActionPoints() == 0)
+                            {
+                                PlayerRed.setisTurn(false);
+                                PlayerRed.setActionPoints();
+                                PlayerBlue.setisTurn(true); 
+                                return;
+                            }
+                        }
+                    }
+                    if (PlayerBlue.getActionPoints() != 0 && PlayerBlue.getisTurn() == true) {
+                        if (PlayerBlue.getCurrentColumn() != 0 && Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn() - 1] == Board.EMPTY) {
+                            Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn()] = Board.EMPTY;
+                            PlayerBlue.setCurrentColumn(Movement.MoveLeft(PlayerBlue.getCurrentColumn()));
+                            Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn()] = Board.PLAYERBLUE;
+                            PlayerBlue.playerLoseActionPoint();
+                            if (PlayerBlue.getActionPoints() == 0)
+                            {
+                                PlayerBlue.setisTurn(false);
+                            PlayerBlue.setActionPoints();
+                                PlayerGreen.setisTurn(true); 
+                                return;
+                            }
+                        }
+                    }
+                    if (PlayerGreen.getActionPoints() != 0 && PlayerGreen.getisTurn() == true) {
+                            if (PlayerGreen.getCurrentColumn() != 0 && Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn() - 1] == Board.EMPTY) {
+                            Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn()] = Board.EMPTY;
+                                PlayerGreen.setCurrentColumn(Movement.MoveLeft(PlayerGreen.getCurrentColumn()));
+                            Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn()] = Board.PLAYERGREEN;
+                                PlayerGreen.playerLoseActionPoint();
+                                if (PlayerGreen.getActionPoints() == 0)
+                                {
+                                    PlayerGreen.setisTurn(false);
+                            PlayerGreen.setActionPoints();
+                                    PlayerYellow.setisTurn(true); 
+                                    return;
+                                }
+                            }
+                        }
+                    if (PlayerYellow.getActionPoints() != 0 && PlayerYellow.getisTurn() == true) {
+                            if (PlayerYellow.getCurrentColumn() != 0 && Board.board[PlayerYellow.getCurrentRow()][PlayerYellow.getCurrentColumn() - 1] == Board.EMPTY) {
+                            Board.board[PlayerYellow.getCurrentRow()][PlayerYellow.getCurrentColumn()] = Board.EMPTY;
+                                PlayerYellow.setCurrentColumn(Movement.MoveLeft(PlayerYellow.getCurrentColumn()));
+                            Board.board[PlayerYellow.getCurrentRow()][PlayerYellow.getCurrentColumn()] = Board.PLAYERYELLOW;
+                                PlayerYellow.playerLoseActionPoint();
+                                if (PlayerYellow.getActionPoints() == 0)
+                                {
+                                    PlayerYellow.setisTurn(false);
+                            PlayerYellow.setActionPoints();
+                                    PlayerRed.setisTurn(true); 
+                                    return;
+                                }
+                            }
+                        }
+                }
+                
+                
+                if (e.VK_UP == e.getKeyCode()) {
+                    if (PlayerRed.getActionPoints() != 0 && PlayerRed.getisTurn() == true) {
+                        if (PlayerRed.getCurrentRow() != 0 && Board.board[PlayerRed.getCurrentRow() - 1][PlayerRed.getCurrentColumn()] == Board.EMPTY) {
+                            Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn()] = Board.EMPTY;
+                            PlayerRed.setCurrentRow(Movement.MoveUp(PlayerRed.getCurrentRow()));
+                            Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn()] = Board.PLAYERRED;
+                            PlayerRed.playerLoseActionPoint();
+                            if (PlayerRed.getActionPoints() == 0)
+                            {
+                                PlayerRed.setisTurn(false);
+                                PlayerRed.setActionPoints();
+                                PlayerBlue.setisTurn(true); 
+                                return;
+                            }
+                        }
+                    }
+                    if (PlayerBlue.getActionPoints() != 0 && PlayerBlue.getisTurn() == true) {
+                        if (PlayerBlue.getCurrentRow() != 0 && Board.board[PlayerBlue.getCurrentRow() - 1][PlayerBlue.getCurrentColumn()] == Board.EMPTY) {
+                            Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn()] = Board.EMPTY;
+                            PlayerBlue.setCurrentRow(Movement.MoveUp(PlayerBlue.getCurrentRow()));
+                            Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn()] = Board.PLAYERBLUE;
+                            PlayerBlue.playerLoseActionPoint();
+                            if (PlayerBlue.getActionPoints() == 0)
+                            {
+                                PlayerBlue.setisTurn(false);
+                            PlayerBlue.setActionPoints();
+                                PlayerGreen.setisTurn(true); 
+                                return;
+                            }
+                        }
+                    }
+                    if (PlayerGreen.getActionPoints() != 0 && PlayerGreen.getisTurn() == true) {
+                        if (PlayerGreen.getCurrentRow() != 0 && Board.board[PlayerGreen.getCurrentRow() - 1][PlayerGreen.getCurrentColumn()] == Board.EMPTY) {
+                            Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn()] = Board.EMPTY;
+                            PlayerGreen.setCurrentRow(Movement.MoveUp(PlayerGreen.getCurrentRow()));
+                            Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn()] = Board.PLAYERGREEN;
+                            PlayerGreen.playerLoseActionPoint();
+                            if (PlayerGreen.getActionPoints() == 0)
+                            {
+                                PlayerGreen.setisTurn(false);
+                            PlayerGreen.setActionPoints();
+                                PlayerYellow.setisTurn(true); 
+                                return;
+                            }
+                        }
+                    }
+                    if (PlayerYellow.getActionPoints() != 0 && PlayerYellow.getisTurn() == true) {
+                        if (PlayerYellow.getCurrentRow() != 0 && Board.board[PlayerYellow.getCurrentRow() - 1][PlayerYellow.getCurrentColumn()] == Board.EMPTY) {
+                            Board.board[PlayerYellow.getCurrentRow()][PlayerYellow.getCurrentColumn()] = Board.EMPTY;
+                            PlayerYellow.setCurrentRow(Movement.MoveUp(PlayerYellow.getCurrentRow()));
+                            Board.board[PlayerYellow.getCurrentRow()][PlayerYellow.getCurrentColumn()] = Board.PLAYERYELLOW;
+                            PlayerYellow.playerLoseActionPoint();
+                            if (PlayerYellow.getActionPoints() == 0)
+                            {
+                                PlayerYellow.setisTurn(false);
+                            PlayerYellow.setActionPoints();
+                                PlayerRed.setisTurn(true); 
+                                return;
+                            }
+                        }
+                    }
+                }
+                
+                
+                if (e.VK_DOWN == e.getKeyCode()) {
+                    if (PlayerRed.getActionPoints() != 0 && PlayerRed.getisTurn() == true) {
+                        if (PlayerRed.getCurrentRow() != Board.numRows - 1 && Board.board[PlayerRed.getCurrentRow() + 1][PlayerRed.getCurrentColumn()] == Board.EMPTY) {
+                            Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn()] = Board.EMPTY;
+                            PlayerRed.setCurrentRow(Movement.MoveDown(PlayerRed.getCurrentRow()));
+                            Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn()] = Board.PLAYERRED;
+                            PlayerRed.playerLoseActionPoint();
+                            if (PlayerRed.getActionPoints() == 0)
+                            {
+                                PlayerRed.setisTurn(false);
+                                PlayerRed.setActionPoints();
+                                PlayerBlue.setisTurn(true); 
+                                return;
+                            }
+                        }
+                    }
+                    if (PlayerBlue.getActionPoints() != 0 && PlayerBlue.getisTurn() == true) {
+                        if (PlayerBlue.getCurrentRow() != Board.numRows - 1 && Board.board[PlayerBlue.getCurrentRow() + 1][PlayerBlue.getCurrentColumn()] == Board.EMPTY) {
+                            Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn()] = Board.EMPTY;
+                            PlayerBlue.setCurrentRow(Movement.MoveDown(PlayerBlue.getCurrentRow()));
+                            Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn()] = Board.PLAYERBLUE;
+                            PlayerBlue.playerLoseActionPoint();
+                            if (PlayerBlue.getActionPoints() == 0)
+                            {
+                                PlayerBlue.setisTurn(false);
+                            PlayerBlue.setActionPoints();
+                                PlayerGreen.setisTurn(true); 
+                                return;
+                            }
+                        }
+                    }
+                    if (PlayerGreen.getActionPoints() != 0 && PlayerGreen.getisTurn() == true) {
+                        if (PlayerGreen.getCurrentRow() != Board.numRows - 1 && Board.board[PlayerGreen.getCurrentRow() + 1][PlayerGreen.getCurrentColumn()] == Board.EMPTY) {
+                            Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn()] = Board.EMPTY;
+                            PlayerGreen.setCurrentRow(Movement.MoveDown(PlayerGreen.getCurrentRow()));
+                            Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn()] = Board.PLAYERGREEN;
+                            PlayerGreen.playerLoseActionPoint();
+                            if (PlayerGreen.getActionPoints() == 0)
+                            {
+                                PlayerGreen.setisTurn(false);
+                            PlayerGreen.setActionPoints();
+                                PlayerYellow.setisTurn(true); 
+                                return;
+                            }
+                        }
+                    }
+                    if (PlayerYellow.getActionPoints() != 0 && PlayerYellow.getisTurn() == true) {
+                        if (PlayerYellow.getCurrentRow() != Board.numRows - 1 && Board.board[PlayerYellow.getCurrentRow() + 1][PlayerYellow.getCurrentColumn()] == Board.EMPTY) {
+                            Board.board[PlayerYellow.getCurrentRow()][PlayerYellow.getCurrentColumn()] = Board.EMPTY;
+                            PlayerYellow.setCurrentRow(Movement.MoveDown(PlayerYellow.getCurrentRow()));
+                            Board.board[PlayerYellow.getCurrentRow()][PlayerYellow.getCurrentColumn()] = Board.PLAYERYELLOW;
+                            PlayerYellow.playerLoseActionPoint();
+                            if (PlayerYellow.getActionPoints() == 0)
+                            {
+                                PlayerYellow.setisTurn(false);
+                            PlayerYellow.setActionPoints();
+                                PlayerRed.setisTurn(true); 
+                                return;
+                            }
+                        }
+                    }
+                    repaint();
+                }
             }
         });
         init();
@@ -156,40 +376,61 @@ public class FlashPoint extends JFrame implements Runnable {
         {
             for (int zcolumn=0;zcolumn<Board.numColumns;zcolumn++)
             {
-                if (Board.board[zrow][zcolumn] == Board.SNAKE)
+                if (Board.board[zrow][zcolumn] == Board.DOOR)
                 {
-                    g.setColor(Color.green);
-                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
-                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
-                    Window.getWidth2()/Board.numColumns,
-                    Window.getHeight2()/Board.numRows);
-                }     
-//                if (Board.board[zrow][zcolumn] == Board.BAD_BOX)
-//                {
-//                    g.setColor(Color.red);
-//                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
-//                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
-//                    Window.getWidth2()/Board.numColumns,
-//                    Window.getHeight2()/Board.numRows);
-//                } 
+                    
+                }
+                else if (Board.board[zrow][zcolumn] == Board.WALL)
+                {
+                    for (int i=0; i>wallNum;i++)
+                    {
+                        g.setColor(Color.BLACK);
+                        g.fillRect(Window.getX(0)+numWalls.get(i).currentColumn*Window.getWidth2()/Board.numColumns,
+                        Window.getY(0)+numWalls.get(i).currentRow*Window.getHeight2()/Board.numRows,
+                        Window.getWidth2()/Board.numColumns,
+                        Window.getHeight2()/Board.numRows);
+                        System.out.println(numWalls.get(i).currentColumn);
+                    }
+                }
+                else if (Board.board[zrow][zcolumn] == Board.SMOKE)
+                {
+                    
+                }
+                else if (Board.board[zrow][zcolumn] == Board.FIRE)
+                {
+                    
+                }
             }
         }
+        g.setColor(PlayerRed.getColor());
+        g.fillRect(Window.getX(0)+PlayerRed.currentColumn*Window.getWidth2()/Board.numColumns,
+        Window.getY(0)+PlayerRed.currentRow*Window.getHeight2()/Board.numRows,
+        Window.getWidth2()/Board.numColumns,
+        Window.getHeight2()/Board.numRows);
         
-        g.setColor(Color.cyan);
-        g.fillRect(Window.getX(0)+PoiColumn*Window.getWidth2()/Board.numColumns,
-        Window.getY(0)+PoiRow*Window.getHeight2()/Board.numRows,
+        g.setColor(PlayerBlue.getColor());
+        g.fillRect(Window.getX(0)+PlayerBlue.currentColumn*Window.getWidth2()/Board.numColumns,
+        Window.getY(0)+PlayerBlue.currentRow*Window.getHeight2()/Board.numRows,
+        Window.getWidth2()/Board.numColumns,
+        Window.getHeight2()/Board.numRows);
+        
+        g.setColor(PlayerGreen.getColor());
+        g.fillRect(Window.getX(0)+PlayerGreen.currentColumn*Window.getWidth2()/Board.numColumns,
+        Window.getY(0)+PlayerGreen.currentRow*Window.getHeight2()/Board.numRows,
+        Window.getWidth2()/Board.numColumns,
+        Window.getHeight2()/Board.numRows);
+        
+        g.setColor(PlayerYellow.getColor());
+        g.fillRect(Window.getX(0)+PlayerYellow.currentColumn*Window.getWidth2()/Board.numColumns,
+        Window.getY(0)+PlayerYellow.currentRow*Window.getHeight2()/Board.numRows,
         Window.getWidth2()/Board.numColumns,
         Window.getHeight2()/Board.numRows);
         
         
-        g.setColor(Color.white);
-        g.drawString("Score: " + score, 50, 45);
        if (gameover == true)
         {
             g.setColor(Color.black);
             g.drawString("Game Over", 250, 250);
-            RowDir = 0;
-            ColumnDir = 0;
             
         }
         gOld.drawImage(image, 0, 0, null);
@@ -219,45 +460,44 @@ public class FlashPoint extends JFrame implements Runnable {
             {
                 Board.board[zrow][zcolumn] = Board.EMPTY;
             }
-        }
-            for (int c = 1  ; c<badBoxNum; c++ )
-           {
-       int row = 0;
-       int column = 0;
-       boolean KeepLoop = true;
-       while (KeepLoop)
-       {
-        row = (int)(Math.random()*Board.numRows);
-        column = (int)(Math.random()*Board.numColumns);
-        if (Board.board[row][column] == Board.EMPTY)
+        } 
+        for (int i=0; i<wallNum;i++)
         {
-//        Board.board[row][column] = Board.BAD_BOX;
-        KeepLoop = false;
+            numWalls.add(i, wall);
+            Board.board[numWalls.get(i).currentRow][numWalls.get(i).currentColumn] = Board.WALL;
         }
+        for (int c = 1; c < fireNum; c++) {
+            int row = 0;
+            int column = 0;
+            boolean KeepLoop = true;
+            while (KeepLoop) {
+                row = (int) (Math.random() * Board.numRows);
+                column = (int) (Math.random() * Board.numColumns);
+                if (Board.board[row][column] == Board.EMPTY) {
+//        Board.board[row][column] = Board.SMOKE;
+                    KeepLoop = false;
+                }
+            }
+
+            {
+                boolean KeepLoop2 = true;
+                while (KeepLoop2) {
+                    PoiRow = (int) (Math.random() * Board.numRows);
+                    PoiColumn = (int) (Math.random() * Board.numColumns);
+                    if (Board.board[PoiRow][PoiColumn] == Board.EMPTY) {
+//        Board.board[PoiRow][PoiColumn] = Board.FIRE;
+                        KeepLoop2 = false;
+                    }
+                }
+
+            }
         }
-       
-       {
-           boolean KeepLoop2 = true;
-       while (KeepLoop2)
-       {
-        PoiRow = (int)(Math.random()*Board.numRows);
-        PoiColumn = (int)(Math.random()*Board.numColumns);
-        if (Board.board[PoiRow][PoiColumn] == Board.EMPTY)
-        {
-//        Board.board[PowerupRow][PowerupColumn] = Board.BAD_BOX;
-        KeepLoop2 = false;
-        }
-        }
-       
-       }
-       }
+            PlayerRed.setActionPoints();
+            PlayerBlue.setActionPoints();
+            PlayerGreen.setActionPoints();
+            PlayerYellow.setActionPoints();
+            PlayerRed.setisTurn(true);
        gameover = false;
-       currentRow = Board.numRows/2;
-       currentColumn = Board.numColumns/2;
-       Board.board[currentRow][currentColumn] = Board.SNAKE;
-       ColumnDir = 1;
-       RowDir = 0;
-       score = 0;
     }
 /////////////////////////////////////////////////////////////////////////
     public void animate() {
@@ -270,60 +510,46 @@ public class FlashPoint extends JFrame implements Runnable {
             }
             reset();
         }
-        if (currentRow == PoiRow && currentColumn == PoiColumn)
-        {
+        
+        if (PlayerRed.currentRow == PoiRow && PlayerRed.currentColumn == PoiColumn) {
             PoiOn = true;
-                    
+
             boolean KeepLoop2 = true;
-       while (KeepLoop2)
-       {
-        PoiRow = (int)(Math.random()*Board.numRows);
-        PoiColumn = (int)(Math.random()*Board.numColumns);
-        if (Board.board[PoiRow][PoiColumn] == Board.EMPTY)
-        {
-//        Board.board[PowerupRow][PowerupColumn] = Board.BAD_BOX;
-        KeepLoop2 = false;
+            while (KeepLoop2) {
+                PoiRow = (int) (Math.random() * Board.numRows);
+                PoiColumn = (int) (Math.random() * Board.numColumns);
+                if (Board.board[PoiRow][PoiColumn] == Board.EMPTY) {
+                    Board.board[PoiRow][PoiColumn] = Board.FIRE;
+                    KeepLoop2 = false;
+                }
+            }
         }
-        }        
-        }
-        if(gameover)
-        {
-        }
-        else
-        {
-       if (timecount % (int)(frameRate) == (int)(frameRate) -1)
-       {
-           for (int zrow = 0;zrow < Board.numRows;zrow++)
-        {
-            for (int zcolumn = 0;zcolumn < Board.numColumns;zcolumn++)
-            {
+        if (gameover) {
+        } else if (timecount % (int) (frameRate) == (int) (frameRate) - 1) {
+            for (int zrow = 0; zrow < Board.numRows; zrow++) {
+                for (int zcolumn = 0; zcolumn < Board.numColumns; zcolumn++) {
 //                if (Board.board[zrow][zcolumn] == Board.BAD_BOX)
 //                {
 //                    Board.board[zrow][zcolumn] = Board.EMPTY;
 //                }
+                }
             }
-        }
-       for (int c = 0  ; c<badBoxNum; c++ )
-       {
-       int row = 0;
-       int column = 0;
-       boolean KeepLoop = true;
-       while (KeepLoop)
-       {
-        row = (int)(Math.random()*Board.numRows);
-        column = (int)(Math.random()*Board.numColumns);
-        if (Board.board[row][column] == Board.EMPTY)
-        {
+            for (int c = 0; c < fireNum; c++) {
+                int row = 0;
+                int column = 0;
+                boolean KeepLoop = true;
+                while (KeepLoop) {
+                    row = (int) (Math.random() * Board.numRows);
+                    column = (int) (Math.random() * Board.numColumns);
+                    if (Board.board[row][column] == Board.EMPTY) {
 //        Board.board[row][column] = Board.BAD_BOX;
-        KeepLoop = false;
-        }
-        }
-       }
-       }
+                        KeepLoop = false;
+                    }
+                }
+            }
         }
       
        if (gameover == false){
-          score += 1;
            timecount++;
                             }
     }
