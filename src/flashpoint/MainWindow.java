@@ -6,7 +6,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class FlashPoint extends JFrame implements Runnable {
+public class MainWindow extends JFrame implements Runnable {
     boolean animateFirstTime = true;
     Image image;
     Graphics2D g;
@@ -32,14 +32,16 @@ public class FlashPoint extends JFrame implements Runnable {
     Player PlayerGreen = new Player(Color.green);
     Wall wall = new Wall();
     
-    static FlashPoint frame1;
+    static MainWindow frame1;
+    static SideWindow frame2;
     public static void main(String[] args) {
-        frame1 = new FlashPoint();
-        frame1.setSize(Window.WINDOW_WIDTH, Window.WINDOW_HEIGHT);
+        frame1 = new MainWindow();
+        frame2 = new SideWindow();
+        frame1.setSize(WindowMain.WINDOW_WIDTH, WindowMain.WINDOW_HEIGHT);
         frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame1.setVisible(true);
     }
-    public FlashPoint() {
+    public MainWindow() {
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 if (e.BUTTON1 == e.getButton()) {
@@ -74,7 +76,7 @@ public class FlashPoint extends JFrame implements Runnable {
                             if (PlayerRed.getActionPoints() == 0)
                             {
                                 PlayerRed.setisTurn(false);
-                                PlayerRed.setActionPoints();
+//                                PlayerRed.setActionPoints();
                                 PlayerBlue.setisTurn(true); 
                                 return;
                             }
@@ -89,7 +91,7 @@ public class FlashPoint extends JFrame implements Runnable {
                             if (PlayerBlue.getActionPoints() == 0)
                             {
                             PlayerBlue.setisTurn(false);
-                            PlayerBlue.setActionPoints();
+//                            PlayerBlue.setActionPoints();
                             PlayerGreen.setisTurn(true);
                             return;
                             }
@@ -104,7 +106,7 @@ public class FlashPoint extends JFrame implements Runnable {
                             if (PlayerGreen.getActionPoints() == 0)
                             {
                                 PlayerGreen.setisTurn(false);
-                            PlayerGreen.setActionPoints();
+//                            PlayerGreen.setActionPoints();
                                 PlayerYellow.setisTurn(true); 
                                 return;
                             }
@@ -119,12 +121,18 @@ public class FlashPoint extends JFrame implements Runnable {
                             if (PlayerYellow.getActionPoints() == 0)
                             {
                                 PlayerYellow.setisTurn(false);
-                            PlayerYellow.setActionPoints();
+//                            PlayerYellow.setActionPoints();
                                 PlayerRed.setisTurn(true); 
                                 return;
                             }
                         }
                     }
+                    
+//                    while (true)
+//                    {
+//                    SideWindow.GetPlayerInput(PlayerRed, PlayerBlue, PlayerGreen, PlayerYellow);
+//                    }
+                    
                 }
                 
                 
@@ -138,7 +146,7 @@ public class FlashPoint extends JFrame implements Runnable {
                             if (PlayerRed.getActionPoints() == 0)
                             {
                                 PlayerRed.setisTurn(false);
-                                PlayerRed.setActionPoints();
+//                                PlayerRed.setActionPoints();
                                 PlayerBlue.setisTurn(true); 
                                 return;
                             }
@@ -153,7 +161,7 @@ public class FlashPoint extends JFrame implements Runnable {
                             if (PlayerBlue.getActionPoints() == 0)
                             {
                                 PlayerBlue.setisTurn(false);
-                            PlayerBlue.setActionPoints();
+//                            PlayerBlue.setActionPoints();
                                 PlayerGreen.setisTurn(true); 
                                 return;
                             }
@@ -168,7 +176,7 @@ public class FlashPoint extends JFrame implements Runnable {
                                 if (PlayerGreen.getActionPoints() == 0)
                                 {
                                     PlayerGreen.setisTurn(false);
-                            PlayerGreen.setActionPoints();
+//                            PlayerGreen.setActionPoints();
                                     PlayerYellow.setisTurn(true); 
                                     return;
                                 }
@@ -183,7 +191,7 @@ public class FlashPoint extends JFrame implements Runnable {
                                 if (PlayerYellow.getActionPoints() == 0)
                                 {
                                     PlayerYellow.setisTurn(false);
-                            PlayerYellow.setActionPoints();
+//                            PlayerYellow.setActionPoints();
                                     PlayerRed.setisTurn(true); 
                                     return;
                                 }
@@ -202,7 +210,7 @@ public class FlashPoint extends JFrame implements Runnable {
                             if (PlayerRed.getActionPoints() == 0)
                             {
                                 PlayerRed.setisTurn(false);
-                                PlayerRed.setActionPoints();
+//                                PlayerRed.setActionPoints();
                                 PlayerBlue.setisTurn(true); 
                                 return;
                             }
@@ -217,7 +225,7 @@ public class FlashPoint extends JFrame implements Runnable {
                             if (PlayerBlue.getActionPoints() == 0)
                             {
                                 PlayerBlue.setisTurn(false);
-                            PlayerBlue.setActionPoints();
+//                            PlayerBlue.setActionPoints();
                                 PlayerGreen.setisTurn(true); 
                                 return;
                             }
@@ -232,7 +240,7 @@ public class FlashPoint extends JFrame implements Runnable {
                             if (PlayerGreen.getActionPoints() == 0)
                             {
                                 PlayerGreen.setisTurn(false);
-                            PlayerGreen.setActionPoints();
+//                            PlayerGreen.setActionPoints();
                                 PlayerYellow.setisTurn(true); 
                                 return;
                             }
@@ -247,7 +255,7 @@ public class FlashPoint extends JFrame implements Runnable {
                             if (PlayerYellow.getActionPoints() == 0)
                             {
                                 PlayerYellow.setisTurn(false);
-                            PlayerYellow.setActionPoints();
+//                            PlayerYellow.setActionPoints();
                                 PlayerRed.setisTurn(true); 
                                 return;
                             }
@@ -266,7 +274,7 @@ public class FlashPoint extends JFrame implements Runnable {
                             if (PlayerRed.getActionPoints() == 0)
                             {
                                 PlayerRed.setisTurn(false);
-                                PlayerRed.setActionPoints();
+//                                PlayerRed.setActionPoints();
                                 PlayerBlue.setisTurn(true); 
                                 return;
                             }
@@ -281,7 +289,7 @@ public class FlashPoint extends JFrame implements Runnable {
                             if (PlayerBlue.getActionPoints() == 0)
                             {
                                 PlayerBlue.setisTurn(false);
-                            PlayerBlue.setActionPoints();
+//                            PlayerBlue.setActionPoints();
                                 PlayerGreen.setisTurn(true); 
                                 return;
                             }
@@ -296,7 +304,7 @@ public class FlashPoint extends JFrame implements Runnable {
                             if (PlayerGreen.getActionPoints() == 0)
                             {
                                 PlayerGreen.setisTurn(false);
-                            PlayerGreen.setActionPoints();
+//                            PlayerGreen.setActionPoints();
                                 PlayerYellow.setisTurn(true); 
                                 return;
                             }
@@ -311,7 +319,7 @@ public class FlashPoint extends JFrame implements Runnable {
                             if (PlayerYellow.getActionPoints() == 0)
                             {
                                 PlayerYellow.setisTurn(false);
-                            PlayerYellow.setActionPoints();
+//                            PlayerYellow.setActionPoints();
                                 PlayerRed.setisTurn(true); 
                                 return;
                             }
@@ -334,19 +342,19 @@ public class FlashPoint extends JFrame implements Runnable {
     }
 ////////////////////////////////////////////////////////////////////////////
     public void paint(Graphics gOld) {
-        if (image == null || Window.xsize != getSize().width || Window.ysize != getSize().height) {
-            Window.xsize = getSize().width;
-            Window.ysize = getSize().height;
-            image = createImage(Window.xsize, Window.ysize);
+        if (image == null || WindowMain.xsize != getSize().width || WindowMain.ysize != getSize().height) {
+            WindowMain.xsize = getSize().width;
+            WindowMain.ysize = getSize().height;
+            image = createImage(WindowMain.xsize, WindowMain.ysize);
             g = (Graphics2D) image.getGraphics();
             g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                    RenderingHints.VALUE_ANTIALIAS_ON);
         }
 //fill background
         g.setColor(Color.black);
-        g.fillRect(0, 0, Window.xsize, Window.ysize);
-        int x[] = {Window.getX(0), Window.getX(Window.getWidth2()), Window.getX(Window.getWidth2()), Window.getX(0), Window.getX(0)};
-        int y[] = {Window.getY(0), Window.getY(0), Window.getY(Window.getHeight2()), Window.getY(Window.getHeight2()), Window.getY(0)};
+        g.fillRect(0, 0, WindowMain.xsize, WindowMain.ysize);
+        int x[] = {WindowMain.getX(0), WindowMain.getX(WindowMain.getWidth2()), WindowMain.getX(WindowMain.getWidth2()), WindowMain.getX(0), WindowMain.getX(0)};
+        int y[] = {WindowMain.getY(0), WindowMain.getY(0), WindowMain.getY(WindowMain.getHeight2()), WindowMain.getY(WindowMain.getHeight2()), WindowMain.getY(0)};
 //fill border
         g.setColor(Color.white);
         g.fillPolygon(x, y, 4);
@@ -361,14 +369,14 @@ public class FlashPoint extends JFrame implements Runnable {
 //horizontal lines
         for (int zi=1;zi<Board.numRows;zi++)
         {
-            g.drawLine(Window.getX(0) ,Window.getY(0)+zi*Window.getHeight2()/Board.numRows ,
-            Window.getX(Window.getWidth2()) ,Window.getY(0)+zi*Window.getHeight2()/Board.numRows );
+            g.drawLine(WindowMain.getX(0) ,WindowMain.getY(0)+zi*WindowMain.getHeight2()/Board.numRows ,
+            WindowMain.getX(WindowMain.getWidth2()) ,WindowMain.getY(0)+zi*WindowMain.getHeight2()/Board.numRows );
         }
 //vertical lines
         for (int zi=1;zi<Board.numColumns;zi++)
         {
-            g.drawLine(Window.getX(0)+zi*Window.getWidth2()/Board.numColumns ,Window.getY(0) ,
-            Window.getX(0)+zi*Window.getWidth2()/Board.numColumns,Window.getY(Window.getHeight2())  );
+            g.drawLine(WindowMain.getX(0)+zi*WindowMain.getWidth2()/Board.numColumns ,WindowMain.getY(0) ,
+            WindowMain.getX(0)+zi*WindowMain.getWidth2()/Board.numColumns,WindowMain.getY(WindowMain.getHeight2())  );
         }
 
 //Display the objects of the board
@@ -385,10 +393,10 @@ public class FlashPoint extends JFrame implements Runnable {
                     for (int i=0; i>wallNum;i++)
                     {
                         g.setColor(Color.BLACK);
-                        g.fillRect(Window.getX(0)+numWalls.get(i).currentColumn*Window.getWidth2()/Board.numColumns,
-                        Window.getY(0)+numWalls.get(i).currentRow*Window.getHeight2()/Board.numRows,
-                        Window.getWidth2()/Board.numColumns,
-                        Window.getHeight2()/Board.numRows);
+                        g.fillRect(WindowMain.getX(0)+numWalls.get(i).currentColumn*WindowMain.getWidth2()/Board.numColumns,
+                        WindowMain.getY(0)+numWalls.get(i).currentRow*WindowMain.getHeight2()/Board.numRows,
+                        WindowMain.getWidth2()/Board.numColumns,
+                        WindowMain.getHeight2()/Board.numRows);
                         System.out.println(numWalls.get(i).currentColumn);
                     }
                 }
@@ -403,28 +411,30 @@ public class FlashPoint extends JFrame implements Runnable {
             }
         }
         g.setColor(PlayerRed.getColor());
-        g.fillRect(Window.getX(0)+PlayerRed.currentColumn*Window.getWidth2()/Board.numColumns,
-        Window.getY(0)+PlayerRed.currentRow*Window.getHeight2()/Board.numRows,
-        Window.getWidth2()/Board.numColumns,
-        Window.getHeight2()/Board.numRows);
+        g.fillRect(WindowMain.getX(0)+PlayerRed.currentColumn*WindowMain.getWidth2()/Board.numColumns,
+        WindowMain.getY(0)+PlayerRed.currentRow*WindowMain.getHeight2()/Board.numRows,
+        WindowMain.getWidth2()/Board.numColumns,
+        WindowMain.getHeight2()/Board.numRows);
         
         g.setColor(PlayerBlue.getColor());
-        g.fillRect(Window.getX(0)+PlayerBlue.currentColumn*Window.getWidth2()/Board.numColumns,
-        Window.getY(0)+PlayerBlue.currentRow*Window.getHeight2()/Board.numRows,
-        Window.getWidth2()/Board.numColumns,
-        Window.getHeight2()/Board.numRows);
+        g.fillRect(WindowMain.getX(0)+PlayerBlue.currentColumn*WindowMain.getWidth2()/Board.numColumns,
+        WindowMain.getY(0)+PlayerBlue.currentRow*WindowMain.getHeight2()/Board.numRows,
+        WindowMain.getWidth2()/Board.numColumns,
+        WindowMain.getHeight2()/Board.numRows);
         
         g.setColor(PlayerGreen.getColor());
-        g.fillRect(Window.getX(0)+PlayerGreen.currentColumn*Window.getWidth2()/Board.numColumns,
-        Window.getY(0)+PlayerGreen.currentRow*Window.getHeight2()/Board.numRows,
-        Window.getWidth2()/Board.numColumns,
-        Window.getHeight2()/Board.numRows);
+        g.fillRect(WindowMain.getX(0)+PlayerGreen.currentColumn*WindowMain.getWidth2()/Board.numColumns,
+        WindowMain.getY(0)+PlayerGreen.currentRow*WindowMain.getHeight2()/Board.numRows,
+        WindowMain.getWidth2()/Board.numColumns,
+        WindowMain.getHeight2()/Board.numRows);
         
         g.setColor(PlayerYellow.getColor());
-        g.fillRect(Window.getX(0)+PlayerYellow.currentColumn*Window.getWidth2()/Board.numColumns,
-        Window.getY(0)+PlayerYellow.currentRow*Window.getHeight2()/Board.numRows,
-        Window.getWidth2()/Board.numColumns,
-        Window.getHeight2()/Board.numRows);
+        g.fillRect(WindowMain.getX(0)+PlayerYellow.currentColumn*WindowMain.getWidth2()/Board.numColumns,
+        WindowMain.getY(0)+PlayerYellow.currentRow*WindowMain.getHeight2()/Board.numRows,
+        WindowMain.getWidth2()/Board.numColumns,
+        WindowMain.getHeight2()/Board.numRows);
+        
+        
         
         
        if (gameover == true)
@@ -504,9 +514,9 @@ public class FlashPoint extends JFrame implements Runnable {
 
         if (animateFirstTime) {
             animateFirstTime = false;
-            if (Window.xsize != getSize().width || Window.ysize != getSize().height) {
-                Window.xsize = getSize().width;
-                Window.ysize = getSize().height;
+            if (WindowMain.xsize != getSize().width || WindowMain.ysize != getSize().height) {
+                WindowMain.xsize = getSize().width;
+                WindowMain.ysize = getSize().height;
             }
             reset();
         }

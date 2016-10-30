@@ -9,15 +9,15 @@ package flashpoint;
  *
  * @author 384000346
  */
-public class Window {
+public class WindowMain {
     static final int XBORDER = 20;
     static final int YBORDER = 20;
     static final int YTITLE = 30;
     static final int WINDOW_BORDER = 8;
     static final int WINDOW_WIDTH = 2*(WINDOW_BORDER + XBORDER) + 750;
     static final int WINDOW_HEIGHT = YTITLE + WINDOW_BORDER + 2 * YBORDER + 600;
-    static int xsize = -1;
-    static int ysize = -1;
+    static int xsize = 20;
+    static int ysize = 20;
     
     public static int getX(int x) {
         return (x + XBORDER + WINDOW_BORDER);

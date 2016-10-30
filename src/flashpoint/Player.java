@@ -2,6 +2,13 @@ package flashpoint;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.lang.Math;
+import java.net.Socket;
+import java.net.ServerSocket;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+
 
 public class Player {
 //    public enum Players{
@@ -12,7 +19,12 @@ public class Player {
     int currentColumn;
     private Color color;
     private boolean isTurn;
+    Socket socket;
+    BufferedReader input;
+    PrintWriter output;
+
     Player(Color _color){
+
         actionPoints = 0;
         color = _color;
         currentColumn = (int)(Math.random()*Board.numColumns);
