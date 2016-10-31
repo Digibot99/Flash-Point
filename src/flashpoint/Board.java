@@ -12,7 +12,7 @@ package flashpoint;
 public class Board {
 //    final static int numRows = 6;
 //    final static int numColumns = 8;
-    final static int numRows = 10;
+    final static int numRows = 8;
     final static int numColumns = 10;
     final static int EMPTY = 0;
     final static int PLAYERRED = 1;

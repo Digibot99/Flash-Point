@@ -25,6 +25,8 @@ public class FlashPoint extends JFrame implements Runnable {
     double frameRate = 10.0;
     
     ArrayList<Wall> numWalls = new ArrayList<Wall>();
+    ArrayList<Wall> numSmoke = new ArrayList<Wall>();
+    ArrayList<Wall> numFires = new ArrayList<Wall>();
     
     Player PlayerRed = new Player(Color.red);
     Player PlayerBlue = new Player(Color.blue);
@@ -380,26 +382,140 @@ public class FlashPoint extends JFrame implements Runnable {
                 {
                     
                 }
-                else if (Board.board[zrow][zcolumn] == Board.WALL)
+//                else if (Board.board[zrow][zcolumn] == Board.WALL)
+//                {
+//                    g.setColor(Color.BLACK);
+//                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
+//                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+//                    Window.getWidth2()/Board.numColumns,
+//                    Window.getHeight2()/Board.numRows);
+//                }
+                else if (Board.board[1][zcolumn] == Board.WALL)
                 {
-                    for (int i=0; i>wallNum;i++)
-                    {
-                        g.setColor(Color.BLACK);
-                        g.fillRect(Window.getX(0)+numWalls.get(i).currentColumn*Window.getWidth2()/Board.numColumns,
-                        Window.getY(0)+numWalls.get(i).currentRow*Window.getHeight2()/Board.numRows,
-                        Window.getWidth2()/Board.numColumns,
-                        Window.getHeight2()/Board.numRows);
-                        System.out.println(numWalls.get(i).currentColumn);
-                    }
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows);
                 }
+                else if (Board.board[2][zcolumn] == Board.WALL)
+                {
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows);
+                }
+                else if (Board.board[3][zcolumn] == Board.WALL)
+                {
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows);
+                }
+                else if (Board.board[4][zcolumn] == Board.WALL)
+                {
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows);
+                }
+                else if (Board.board[5][zcolumn] == Board.WALL)
+                {
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows);
+                }
+                else if (Board.board[6][zcolumn] == Board.WALL)
+                {
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows);
+                }
+                else if (Board.board[7][zcolumn] == Board.WALL)
+                {
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows);
+                }
+                else if (Board.board[8][zcolumn] == Board.WALL)
+                {
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows);
+                }
+                else if (Board.board[9][zcolumn] == Board.WALL)
+                {
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows);
+                }
+                
+                
+//                else if (Board.board[zrow][zcolumn] == Board.WALL)
+//                {
+//                    for (int i=0; i>wallNum;i++)
+//                    {
+//                        g.setColor(Color.BLACK);
+//                        g.fillRect(Window.getX(0)+numWalls.get(i).currentColumn*Window.getWidth2()/Board.numColumns,
+//                        Window.getY(0)+numWalls.get(i).currentRow*Window.getHeight2()/Board.numRows,
+//                        Window.getWidth2()/Board.numColumns,
+//                        Window.getHeight2()/Board.numRows);
+//                        System.out.println(numWalls.get(i).currentColumn);
+//                    }
+//                }
                 else if (Board.board[zrow][zcolumn] == Board.SMOKE)
                 {
-                    
+                    g.setColor(Color.DARK_GRAY);
+                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows);
                 }
+//                else if (Board.board[zrow][zcolumn] == Board.SMOKE)
+//                {
+//                    for (int i=0; i>smokeNum;i++)
+//                    {
+//                        g.setColor(Color.DARK_GRAY);
+//                        g.fillRect(Window.getX(0)+numSmoke.get(i).currentColumn*Window.getWidth2()/Board.numColumns,
+//                        Window.getY(0)+numSmoke.get(i).currentRow*Window.getHeight2()/Board.numRows,
+//                        Window.getWidth2()/Board.numColumns,
+//                        Window.getHeight2()/Board.numRows);
+//                        System.out.println(numSmoke.get(i).currentColumn);
+//                    }
+//                }
                 else if (Board.board[zrow][zcolumn] == Board.FIRE)
                 {
-                    
+                    g.setColor(Color.ORANGE);
+                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows);
                 }
+//                else if (Board.board[zrow][zcolumn] == Board.FIRE)
+//                {
+//                    for (int i=0; i>fireNum;i++)
+//                    {
+//                        g.setColor(Color.ORANGE);
+//                        g.fillRect(Window.getX(0)+numFires.get(i).currentColumn*Window.getWidth2()/Board.numColumns,
+//                        Window.getY(0)+numFires.get(i).currentRow*Window.getHeight2()/Board.numRows,
+//                        Window.getWidth2()/Board.numColumns,
+//                        Window.getHeight2()/Board.numRows);
+//                        System.out.println(numFires.get(i).currentColumn);
+//                    }
+//                }
             }
         }
         g.setColor(PlayerRed.getColor());
@@ -498,6 +614,36 @@ public class FlashPoint extends JFrame implements Runnable {
             PlayerYellow.setActionPoints();
             PlayerRed.setisTurn(true);
        gameover = false;
+       // # of fires @ start
+       for (int i=0;i<5;i++)
+        {
+           boolean keeplooping = true;
+           while (keeplooping)
+           {
+           int row = (int)(Math.random()*Board.numRows);
+           int column = (int)(Math.random()*Board.numColumns);
+           if(Board.board[row][column] == Board.EMPTY)
+           {
+           Board.board[row][column] = Board.FIRE;
+           keeplooping = false;
+           }
+           }
+        }
+       // # of walls @ start
+       for (int i=0;i<10;i++)
+        {
+           boolean keeplooping = true;
+           while (keeplooping)
+           {
+           int row = (int)(Math.random()*Board.numRows);
+           int column = (int)(Math.random()*Board.numColumns);
+           if(Board.board[row][column] == Board.EMPTY)
+           {
+           Board.board[row][column] = Board.WALL;
+           keeplooping = false;
+           }
+           }
+        }
     }
 /////////////////////////////////////////////////////////////////////////
     public void animate() {
@@ -510,7 +656,8 @@ public class FlashPoint extends JFrame implements Runnable {
             }
             reset();
         }
-        
+//        FireImage = Toolkit.getDefaultToolkit().getImage("./");
+//        SmokeImage = Toolkit.getDefaultToolkit().getImage("./");
         if (PlayerRed.currentRow == PoiRow && PlayerRed.currentColumn == PoiColumn) {
             PoiOn = true;
 
@@ -524,8 +671,8 @@ public class FlashPoint extends JFrame implements Runnable {
                 }
             }
         }
-        if (gameover) {
-        } else if (timecount % (int) (frameRate) == (int) (frameRate) - 1) {
+        if (gameover);
+         else if (timecount % (int) (frameRate) == (int) (frameRate) - 1) {
             for (int zrow = 0; zrow < Board.numRows; zrow++) {
                 for (int zcolumn = 0; zcolumn < Board.numColumns; zcolumn++) {
 //                if (Board.board[zrow][zcolumn] == Board.BAD_BOX)
