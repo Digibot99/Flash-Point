@@ -390,79 +390,182 @@ public class FlashPoint extends JFrame implements Runnable {
 //                    Window.getWidth2()/Board.numColumns,
 //                    Window.getHeight2()/Board.numRows);
 //                }
-                else if (Board.board[1][zcolumn] == Board.WALL)
-                {
                     g.setColor(Color.BLACK);
-                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
-                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+                    g.fillRect(Window.getX(0)+1*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+1*Window.getHeight2()/Board.numRows,
                     Window.getWidth2()/Board.numColumns,
-                    Window.getHeight2()/Board.numRows);
-                }
-                else if (Board.board[2][zcolumn] == Board.WALL)
-                {
+                    Window.getHeight2()/Board.numRows-50);
+                    
                     g.setColor(Color.BLACK);
-                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
-                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+                    g.fillRect(Window.getX(0)+2*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+1*Window.getHeight2()/Board.numRows,
                     Window.getWidth2()/Board.numColumns,
-                    Window.getHeight2()/Board.numRows);
-                }
-                else if (Board.board[3][zcolumn] == Board.WALL)
-                {
+                    Window.getHeight2()/Board.numRows-50);
+                    
                     g.setColor(Color.BLACK);
-                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
-                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+                    g.fillRect(Window.getX(0)+3*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+1*Window.getHeight2()/Board.numRows,
                     Window.getWidth2()/Board.numColumns,
-                    Window.getHeight2()/Board.numRows);
-                }
-                else if (Board.board[4][zcolumn] == Board.WALL)
-                {
+                    Window.getHeight2()/Board.numRows-50);
+                    
                     g.setColor(Color.BLACK);
-                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
-                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+                    g.fillRect(Window.getX(0)+4*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+1*Window.getHeight2()/Board.numRows,
                     Window.getWidth2()/Board.numColumns,
-                    Window.getHeight2()/Board.numRows);
-                }
-                else if (Board.board[5][zcolumn] == Board.WALL)
-                {
+                    Window.getHeight2()/Board.numRows-50);
+                    
                     g.setColor(Color.BLACK);
-                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
-                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+                    g.fillRect(Window.getX(0)+5*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+1*Window.getHeight2()/Board.numRows,
                     Window.getWidth2()/Board.numColumns,
-                    Window.getHeight2()/Board.numRows);
-                }
-                else if (Board.board[6][zcolumn] == Board.WALL)
-                {
+                    Window.getHeight2()/Board.numRows-50);
+                    
                     g.setColor(Color.BLACK);
-                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
-                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+                    g.fillRect(Window.getX(0)+6*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+1*Window.getHeight2()/Board.numRows,
                     Window.getWidth2()/Board.numColumns,
-                    Window.getHeight2()/Board.numRows);
-                }
-                else if (Board.board[7][zcolumn] == Board.WALL)
-                {
+                    Window.getHeight2()/Board.numRows-50);
+                    
                     g.setColor(Color.BLACK);
-                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
-                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+                    g.fillRect(Window.getX(0)+7*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+1*Window.getHeight2()/Board.numRows,
                     Window.getWidth2()/Board.numColumns,
-                    Window.getHeight2()/Board.numRows);
-                }
-                else if (Board.board[8][zcolumn] == Board.WALL)
-                {
+                    Window.getHeight2()/Board.numRows-50);
+                    
                     g.setColor(Color.BLACK);
-                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
-                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+                    g.fillRect(Window.getX(0)+8*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+1*Window.getHeight2()/Board.numRows,
                     Window.getWidth2()/Board.numColumns,
-                    Window.getHeight2()/Board.numRows);
-                }
-                else if (Board.board[9][zcolumn] == Board.WALL)
-                {
+                    Window.getHeight2()/Board.numRows-50);
+                    
+//              Lower half of wall
+////////////////////////////////////////////////////////////////////////////////////
                     g.setColor(Color.BLACK);
-                    g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
-                    Window.getY(0)+zrow*Window.getHeight2()/Board.numRows,
+                    g.fillRect(Window.getX(0)+1*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+6*Window.getHeight2()/Board.numRows+50,
                     Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows-50);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+2*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+6*Window.getHeight2()/Board.numRows+50,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows-50);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+3*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+6*Window.getHeight2()/Board.numRows+50,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows-50);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+4*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+6*Window.getHeight2()/Board.numRows+50,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows-50);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+5*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+6*Window.getHeight2()/Board.numRows+50,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows-50);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+6*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+6*Window.getHeight2()/Board.numRows+50,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows-50);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+7*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+6*Window.getHeight2()/Board.numRows+50,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows-50);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+8*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+6*Window.getHeight2()/Board.numRows+50,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows-50);
+                    
+//                    Right of house
+//////////////////////////////////////////////////////////////////////////////////////
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+8*Window.getWidth2()/Board.numColumns+50,
+                    Window.getY(0)+1*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns-50,
                     Window.getHeight2()/Board.numRows);
-                }
-                
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+8*Window.getWidth2()/Board.numColumns+50,
+                    Window.getY(0)+2*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns-50,
+                    Window.getHeight2()/Board.numRows);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+8*Window.getWidth2()/Board.numColumns+50,
+                    Window.getY(0)+3*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns-50,
+                    Window.getHeight2()/Board.numRows);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+8*Window.getWidth2()/Board.numColumns+50,
+                    Window.getY(0)+4*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns-50,
+                    Window.getHeight2()/Board.numRows);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+8*Window.getWidth2()/Board.numColumns+50,
+                    Window.getY(0)+5*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns-50,
+                    Window.getHeight2()/Board.numRows);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+8*Window.getWidth2()/Board.numColumns+50,
+                    Window.getY(0)+6*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns-50,
+                    Window.getHeight2()/Board.numRows);
+                    
+                    
+//                    left side of house
+////////////////////////////////////////////////////////////////////////////////////
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+1*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+1*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns-50,
+                    Window.getHeight2()/Board.numRows);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+1*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+2*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns-50,
+                    Window.getHeight2()/Board.numRows);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+1*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+3*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns-50,
+                    Window.getHeight2()/Board.numRows);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+1*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+4*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns-50,
+                    Window.getHeight2()/Board.numRows);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+1*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+5*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns-50,
+                    Window.getHeight2()/Board.numRows);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+1*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+6*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns-50,
+                    Window.getHeight2()/Board.numRows);
+                    
+                    
                 
 //                else if (Board.board[zrow][zcolumn] == Board.WALL)
 //                {
@@ -476,7 +579,7 @@ public class FlashPoint extends JFrame implements Runnable {
 //                        System.out.println(numWalls.get(i).currentColumn);
 //                    }
 //                }
-                else if (Board.board[zrow][zcolumn] == Board.SMOKE)
+                if (Board.board[zrow][zcolumn] == Board.SMOKE)
                 {
                     g.setColor(Color.DARK_GRAY);
                     g.fillRect(Window.getX(0)+zcolumn*Window.getWidth2()/Board.numColumns,
