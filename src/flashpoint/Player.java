@@ -24,8 +24,19 @@ public class Player {
     }
     public int setActionPoints()
     {
-        actionPoints = (int)(Math.random() * 4 + 1);
+        actionPoints = 4;
         return(actionPoints);
+    }
+    public int addActionPoints()
+    {
+        int morePoints = 4;
+        actionPoints += morePoints;
+        
+        if (this.getActionPoints() > 8)
+        {
+            actionPoints = 8;
+        }
+        return (actionPoints);
     }
     public void playerLoseActionPoint()
     {
@@ -58,5 +69,10 @@ public class Player {
     public void setisTurn (boolean _temp)
     {
         isTurn = _temp;
+    }
+    public void skipTurn ()
+    {
+        this.setisTurn(false);
+        System.out.println("hi");
     }
 }

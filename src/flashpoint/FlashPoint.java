@@ -12,7 +12,7 @@ public class FlashPoint extends JFrame implements Runnable {
     boolean animateFirstTime = true;
     Image image;
     Graphics2D g;
-
+    
     int smokeNum = 5;
     int fireNum = 5;
     int wallNum = 10;
@@ -30,7 +30,7 @@ public class FlashPoint extends JFrame implements Runnable {
     ArrayList<Wall> numFires = new ArrayList<Wall>();
 
     Player PlayerRed = new Player(Color.red);
-    Player PlayerBlue = new Player(Color.blue);
+    Player PlayerBlue = new Player(Color.cyan);
     Player PlayerYellow = new Player(Color.yellow);
     Player PlayerGreen = new Player(Color.green);
     Wall wall = new Wall();
@@ -303,8 +303,34 @@ public class FlashPoint extends JFrame implements Runnable {
                             }
                         }
                     }
-                    repaint();
                 }
+                if (e.VK_ENTER == e.getKeyCode()) {
+                        if (PlayerRed.getActionPoints() < 8 && PlayerRed.getisTurn() == true)
+                        {
+                        PlayerRed.skipTurn();
+                        PlayerRed.addActionPoints();
+                        PlayerBlue.setisTurn(true);
+                        }
+                        else if (PlayerBlue.getActionPoints() < 8 && PlayerBlue.getisTurn() == true)
+                        {
+                        PlayerBlue.skipTurn();
+                        PlayerBlue.addActionPoints();
+                        PlayerGreen.setisTurn(true);
+                        }
+                        else if (PlayerGreen.getActionPoints() < 8 && PlayerGreen.getisTurn() == true)
+                        {
+                        PlayerGreen.skipTurn();
+                        PlayerGreen.addActionPoints();
+                        PlayerYellow.setisTurn(true);
+                        }
+                        else if (PlayerYellow.getActionPoints() < 8 && PlayerYellow.getisTurn() == true)
+                        {
+                        PlayerYellow.skipTurn();
+                        PlayerYellow.addActionPoints();
+                        PlayerRed.setisTurn(true);
+                        }
+                }
+                    repaint();
             }
         });
         init();
@@ -404,6 +430,9 @@ public class FlashPoint extends JFrame implements Runnable {
                             Window.getHeight2() / Board.numRows);
                     Board.board[i][1] = Board.WALL;
                 }
+                
+                
+                
                 if (Board.board[zrow][zcolumn] == Board.SMOKE) {
                     g.setColor(Color.DARK_GRAY);
                     g.fillRect(Window.getX(0) + zcolumn * Window.getWidth2() / Board.numColumns,
@@ -467,6 +496,27 @@ public class FlashPoint extends JFrame implements Runnable {
                 Window.getWidth2() / Board.numColumns,
                 Window.getHeight2() / Board.numRows);
 
+        if (PlayerRed.getisTurn())
+        {
+            g.setColor(PlayerRed.getColor());
+            g.drawString("Player Reds Turn  Number of turns left: " + PlayerRed.getActionPoints(), Window.getX(20), Window.getY(-10));
+        }
+        else if (PlayerBlue.getisTurn())
+        {
+            g.setColor(Color.CYAN);
+            g.drawString("Player Blues Turn  Number of turns left: " + PlayerBlue.getActionPoints(), Window.getX(20), Window.getY(-10));
+        }
+        else if (PlayerGreen.getisTurn())
+        {
+            g.setColor(PlayerGreen.getColor());
+            g.drawString("Player Greens Turn  Number of turns left: " + PlayerGreen.getActionPoints(), Window.getX(20), Window.getY(-10));
+        }
+        else if (PlayerYellow.getisTurn())
+        {
+            g.setColor(PlayerYellow.getColor());
+            g.drawString("Player Yellows Turn  Number of turns left: " + PlayerYellow.getActionPoints(), Window.getX(20), Window.getY(-10));
+        }
+        
         if (gameover == true) {
             g.setColor(Color.black);
             g.drawString("Game Over", 250, 250);
