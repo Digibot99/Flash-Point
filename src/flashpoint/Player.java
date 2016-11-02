@@ -51,7 +51,6 @@ public class Player {
     {
         currentColumn = _currentColumn;
     }
-    
     public boolean getisTurn ()
     {
         return(isTurn);

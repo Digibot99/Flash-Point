@@ -1,27 +1,27 @@
-
 package flashpoint;
 
 public class Movement {
+
     static int newColumn;
     static int newRow;
-    public static int MoveRight(int _currentColumn)
-    {
+
+    public static int MoveRight(int _currentColumn) {
         newColumn = _currentColumn + 1;
-        return(newColumn);
+        return (newColumn);
     }
-    public static int MoveLeft(int _currentColumn)
-    {
+
+    public static int MoveLeft(int _currentColumn) {
         newColumn = _currentColumn - 1;
-        return(newColumn);
+        return (newColumn);
     }
-    public static int MoveUp(int _currentRow)
-    {
+
+    public static int MoveUp(int _currentRow) {
         newRow = _currentRow - 1;
-        return(newRow);
+        return (newRow);
     }
-    public static int MoveDown(int _currentRow)
-    {
+
+    public static int MoveDown(int _currentRow) {
         newRow = _currentRow + 1;
-        return(newRow);
+        return (newRow);
     }
 }
