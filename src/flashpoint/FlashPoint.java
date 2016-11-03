@@ -23,8 +23,8 @@ public class FlashPoint extends JFrame implements Runnable {
     double frameRate = 10.0;
 
     ArrayList<Wall> numWalls = new ArrayList<Wall>();
-    ArrayList<Wall> numSmoke = new ArrayList<Wall>();
-    ArrayList<Wall> numFires = new ArrayList<Wall>();
+    ArrayList<Smoke> numSmoke = new ArrayList<Smoke>();
+    ArrayList<Fire> numFires = new ArrayList<Fire>();
     ArrayList<PointOfInterest> numPois = new ArrayList<PointOfInterest>();
 
     Player PlayerRed = new Player(Color.red);
@@ -54,6 +54,22 @@ public class FlashPoint extends JFrame implements Runnable {
         for (int i = 0; i < numPois.size(); i++)
         {
                     if (Board.board[cursorYLoc][cursorXLoc] == Board.board[numPois.get(i).getCurrentRow()][numPois.get(i).getCurrentColumn()])
+                    {
+                        System.out.println("hi");
+                    }
+        }
+        
+        for (int i = 0; i < numFires.size(); i++)
+        {
+                    if (Board.board[cursorYLoc][cursorXLoc] == Board.board[numFires.get(i).getCurrentRow()][numFires.get(i).getCurrentColumn()])
+                    {
+                        System.out.println("hi");
+                    }
+        }
+        
+        for (int i = 0; i < numSmoke.size(); i++)
+        {
+                    if (Board.board[cursorYLoc][cursorXLoc] == Board.board[numSmoke.get(i).getCurrentRow()][numSmoke.get(i).getCurrentColumn()])
                     {
                         System.out.println("hi");
                     }
@@ -89,6 +105,10 @@ public class FlashPoint extends JFrame implements Runnable {
                                 PlayerRed.setisTurn(false);
                                 PlayerRed.setActionPoints();
                                 PlayerBlue.setisTurn(true);
+                                for(int i = 0;i < 1;i++)
+                                {
+                                    numSmoke.add(i, new Smoke());
+                                }
                                 return;
                             }
                         }
@@ -103,6 +123,10 @@ public class FlashPoint extends JFrame implements Runnable {
                                 PlayerBlue.setisTurn(false);
                                 PlayerBlue.setActionPoints();
                                 PlayerGreen.setisTurn(true);
+                                for(int i = 0;i < 1;i++)
+                                {
+                                    numSmoke.add(i, new Smoke());
+                                }
                                 return;
                             }
                         }
@@ -117,6 +141,10 @@ public class FlashPoint extends JFrame implements Runnable {
                                 PlayerGreen.setisTurn(false);
                                 PlayerGreen.setActionPoints();
                                 PlayerYellow.setisTurn(true);
+                                for(int i = 0;i < 1;i++)
+                                {
+                                    numSmoke.add(i, new Smoke());
+                                }
                                 return;
                             }
                         }
@@ -131,6 +159,10 @@ public class FlashPoint extends JFrame implements Runnable {
                                 PlayerYellow.setisTurn(false);
                                 PlayerYellow.setActionPoints();
                                 PlayerRed.setisTurn(true);
+                                for(int i = 0;i < 1;i++)
+                                {
+                                    numSmoke.add(i, new Smoke());
+                                }
                                 return;
                             }
                         }
@@ -148,6 +180,10 @@ public class FlashPoint extends JFrame implements Runnable {
                                 PlayerRed.setisTurn(false);
                                 PlayerRed.setActionPoints();
                                 PlayerBlue.setisTurn(true);
+                                for(int i = 0;i < 1;i++)
+                                {
+                                    numSmoke.add(i, new Smoke());
+                                }
                                 return;
                             }
                         }
@@ -162,6 +198,10 @@ public class FlashPoint extends JFrame implements Runnable {
                                 PlayerBlue.setisTurn(false);
                                 PlayerBlue.setActionPoints();
                                 PlayerGreen.setisTurn(true);
+                                for(int i = 0;i < 1;i++)
+                                {
+                                    numSmoke.add(i, new Smoke());
+                                }
                                 return;
                             }
                         }
@@ -176,6 +216,10 @@ public class FlashPoint extends JFrame implements Runnable {
                                 PlayerGreen.setisTurn(false);
                                 PlayerGreen.setActionPoints();
                                 PlayerYellow.setisTurn(true);
+                                for(int i = 0;i < 1;i++)
+                                {
+                                    numSmoke.add(i, new Smoke());
+                                }
                                 return;
                             }
                         }
@@ -190,6 +234,10 @@ public class FlashPoint extends JFrame implements Runnable {
                                 PlayerYellow.setisTurn(false);
                                 PlayerYellow.setActionPoints();
                                 PlayerRed.setisTurn(true);
+                                for(int i = 0;i < 1;i++)
+                                {
+                                    numSmoke.add(i, new Smoke());
+                                }
                                 return;
                             }
                         }
@@ -207,6 +255,10 @@ public class FlashPoint extends JFrame implements Runnable {
                                 PlayerRed.setisTurn(false);
                                 PlayerRed.setActionPoints();
                                 PlayerBlue.setisTurn(true);
+                                for(int i = 0;i < 1;i++)
+                                {
+                                    numSmoke.add(i, new Smoke());
+                                }
                                 return;
                             }
                         }
@@ -221,6 +273,10 @@ public class FlashPoint extends JFrame implements Runnable {
                                 PlayerBlue.setisTurn(false);
                                 PlayerBlue.setActionPoints();
                                 PlayerGreen.setisTurn(true);
+                                for(int i = 0;i < 1;i++)
+                                {
+                                    numSmoke.add(i, new Smoke());
+                                }
                                 return;
                             }
                         }
@@ -235,6 +291,10 @@ public class FlashPoint extends JFrame implements Runnable {
                                 PlayerGreen.setisTurn(false);
                                 PlayerGreen.setActionPoints();
                                 PlayerYellow.setisTurn(true);
+                                for(int i = 0;i < 1;i++)
+                                {
+                                    numSmoke.add(i, new Smoke());
+                                }
                                 return;
                             }
                         }
@@ -249,6 +309,10 @@ public class FlashPoint extends JFrame implements Runnable {
                                 PlayerYellow.setisTurn(false);
                                 PlayerYellow.setActionPoints();
                                 PlayerRed.setisTurn(true);
+                                for(int i = 0;i < 1;i++)
+                                {
+                                    numSmoke.add(i, new Smoke());
+                                }
                                 return;
                             }
                         }
@@ -266,6 +330,10 @@ public class FlashPoint extends JFrame implements Runnable {
                                 PlayerRed.setisTurn(false);
                                 PlayerRed.setActionPoints();
                                 PlayerBlue.setisTurn(true);
+                                for(int i = 0;i < 1;i++)
+                                {
+                                    numSmoke.add(i, new Smoke());
+                                }
                                 return;
                             }
                         }
@@ -280,6 +348,10 @@ public class FlashPoint extends JFrame implements Runnable {
                                 PlayerBlue.setisTurn(false);
                                 PlayerBlue.setActionPoints();
                                 PlayerGreen.setisTurn(true);
+                                for(int i = 0;i < 1;i++)
+                                {
+                                    numSmoke.add(i, new Smoke());
+                                }
                                 return;
                             }
                         }
@@ -294,6 +366,10 @@ public class FlashPoint extends JFrame implements Runnable {
                                 PlayerGreen.setisTurn(false);
                                 PlayerGreen.setActionPoints();
                                 PlayerYellow.setisTurn(true);
+                                for(int i = 0;i < 1;i++)
+                                {
+                                    numSmoke.add(i, new Smoke());
+                                }
                                 return;
                             }
                         }
@@ -308,6 +384,10 @@ public class FlashPoint extends JFrame implements Runnable {
                                 PlayerYellow.setisTurn(false);
                                 PlayerYellow.setActionPoints();
                                 PlayerRed.setisTurn(true);
+                                for(int i = 0;i < 1;i++)
+                                {
+                                    numSmoke.add(i, new Smoke());
+                                }
                                 return;
                             }
                         }
@@ -399,6 +479,225 @@ public class FlashPoint extends JFrame implements Runnable {
                 if (Board.board[zrow][zcolumn] == Board.DOOR) {
 
                 }
+//              Point of intreasts
+////////////////////////////////////////////////////////////////////////////////////
+                for(int i = 0;i < numPois.size();i++)
+        {
+        g.setColor(numPois.get(i).getColor());
+        g.fillRect(Window.getX(0) + numPois.get(i).getCurrentColumn() * Window.getWidth2() / Board.numColumns,
+                Window.getY(0) + numPois.get(i).getCurrentRow() * Window.getHeight2() / Board.numRows,
+                Window.getWidth2() / Board.numColumns,
+                Window.getHeight2() / Board.numRows);
+        }
+//              Point of intreasts
+////////////////////////////////////////////////////////////////////////////////////
+                for(int i = 0;i < numFires.size();i++)
+        {
+        g.setColor(numFires.get(i).getColor());
+        g.fillRect(Window.getX(0) + numFires.get(i).getCurrentColumn() * Window.getWidth2() / Board.numColumns,
+                Window.getY(0) + numFires.get(i).getCurrentRow() * Window.getHeight2() / Board.numRows,
+                Window.getWidth2() / Board.numColumns,
+                Window.getHeight2() / Board.numRows);
+        }
+//              Point of intreasts
+////////////////////////////////////////////////////////////////////////////////////
+                for(int i = 0;i < numSmoke.size();i++)
+        {
+        g.setColor(numSmoke.get(i).getColor());
+        g.fillRect(Window.getX(0) + numSmoke.get(i).getCurrentColumn() * Window.getWidth2() / Board.numColumns,
+                Window.getY(0) + numSmoke.get(i).getCurrentRow() * Window.getHeight2() / Board.numRows,
+                Window.getWidth2() / Board.numColumns,
+                Window.getHeight2() / Board.numRows);
+        }
+//                  players
+////////////////////////////////////////////////////////////////////////////////////
+                    g.setColor(PlayerRed.getColor());
+                    g.fillRect(Window.getX(0)+PlayerRed.currentColumn*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+PlayerRed.currentRow*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows);
+        
+                    g.setColor(PlayerBlue.getColor());
+                    g.fillRect(Window.getX(0)+PlayerBlue.currentColumn*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+PlayerBlue.currentRow*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows);
+        
+                    g.setColor(PlayerGreen.getColor());
+                    g.fillRect(Window.getX(0)+PlayerGreen.currentColumn*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+PlayerGreen.currentRow*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows);
+        
+                    g.setColor(PlayerYellow.getColor());
+                    g.fillRect(Window.getX(0)+PlayerYellow.currentColumn*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+PlayerYellow.currentRow*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows);
+//                  inner doors
+////////////////////////////////////////////////////////////////////////////////////
+                    g.setColor(Color.yellow);
+                    g.fillRect(Window.getX(0)+8*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+2*Window.getHeight2()/Board.numRows+70,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows-70);
+                    
+                    g.setColor(Color.yellow);
+                    g.fillRect(Window.getX(0)+2*Window.getWidth2()/Board.numColumns+70,
+                    Window.getY(0)+3*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns-70,
+                    Window.getHeight2()/Board.numRows);
+                    
+                    g.setColor(Color.yellow);
+                    g.fillRect(Window.getX(0)+3*Window.getWidth2()/Board.numColumns+70,
+                    Window.getY(0)+1*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns-70,
+                    Window.getHeight2()/Board.numRows);
+                    
+                    g.setColor(Color.yellow);
+                    g.fillRect(Window.getX(0)+4*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+4*Window.getHeight2()/Board.numRows+70,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows-70);
+                    
+                    g.setColor(Color.yellow);
+                    g.fillRect(Window.getX(0)+5*Window.getWidth2()/Board.numColumns+70,
+                    Window.getY(0)+6*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns-70,
+                    Window.getHeight2()/Board.numRows);
+                    
+                    g.setColor(Color.yellow);
+                    g.fillRect(Window.getX(0)+7*Window.getWidth2()/Board.numColumns+70,
+                    Window.getY(0)+6*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns-70,
+                    Window.getHeight2()/Board.numRows);
+                    
+                    g.setColor(Color.yellow);
+                    g.fillRect(Window.getX(0)+6*Window.getWidth2()/Board.numColumns+70,
+                    Window.getY(0)+4*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns-70,
+                    Window.getHeight2()/Board.numRows);
+                    
+                    g.setColor(Color.yellow);
+                    g.fillRect(Window.getX(0)+5*Window.getWidth2()/Board.numColumns+70,
+                    Window.getY(0)+2*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns-70,
+                    Window.getHeight2()/Board.numRows);
+//                  inner walls
+////////////////////////////////////////////////////////////////////////////////////
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+2*Window.getWidth2()/Board.numColumns+70,
+                    Window.getY(0)+4*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns-70,
+                    Window.getHeight2()/Board.numRows);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+3*Window.getWidth2()/Board.numColumns+70,
+                    Window.getY(0)+2*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns-70,
+                    Window.getHeight2()/Board.numRows);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+3*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+2*Window.getHeight2()/Board.numRows+70,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows-70);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+1*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+4*Window.getHeight2()/Board.numRows+70,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows-70);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+2*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+4*Window.getHeight2()/Board.numRows+70,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows-70);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+3*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+4*Window.getHeight2()/Board.numRows+70,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows-70);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+5*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+4*Window.getHeight2()/Board.numRows+70,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows-70);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+6*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+4*Window.getHeight2()/Board.numRows+70,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows-70);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+4*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+2*Window.getHeight2()/Board.numRows+70,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows-70);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+5*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+2*Window.getHeight2()/Board.numRows+70,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows-70);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+6*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+2*Window.getHeight2()/Board.numRows+70,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows-70);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+7*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+4*Window.getHeight2()/Board.numRows+70,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows-70);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+8*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+4*Window.getHeight2()/Board.numRows+70,
+                    Window.getWidth2()/Board.numColumns,
+                   Window.getHeight2()/Board.numRows-70);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+5*Window.getWidth2()/Board.numColumns+70,
+                    Window.getY(0)+5*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns-70,
+                    Window.getHeight2()/Board.numRows);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+7*Window.getWidth2()/Board.numColumns+70,
+                    Window.getY(0)+5*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns-70,
+                    Window.getHeight2()/Board.numRows);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+6*Window.getWidth2()/Board.numColumns+70,
+                    Window.getY(0)+3*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns-70,
+                    Window.getHeight2()/Board.numRows);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+5*Window.getWidth2()/Board.numColumns+70,
+                    Window.getY(0)+1*Window.getHeight2()/Board.numRows,
+                    Window.getWidth2()/Board.numColumns-70,
+                    Window.getHeight2()/Board.numRows);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+7*Window.getWidth2()/Board.numColumns,
+                    Window.getY(0)+2*Window.getHeight2()/Board.numRows+70,
+                    Window.getWidth2()/Board.numColumns,
+                    Window.getHeight2()/Board.numRows-70);
+                    
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)+2*Window.getWidth2()/Board.numColumns+70,
+                    Window.getY(0)+2*Window.getHeight2()/Board.numRows+70,
+                    Window.getWidth2()/Board.numColumns-70,
+                    Window.getHeight2()/Board.numRows-70);
 //              Upper half of wall
 ////////////////////////////////////////////////////////////////////////////////////
                 for (int i = 1; i < Board.numColumns - 1; i++) {
@@ -406,7 +705,7 @@ public class FlashPoint extends JFrame implements Runnable {
                     g.fillRect(Window.getX(0) + i * Window.getWidth2() / Board.numColumns,
                             Window.getY(0) + 1 * Window.getHeight2() / Board.numRows,
                             Window.getWidth2() / Board.numColumns,
-                            Window.getHeight2() / Board.numRows - 50);
+                            Window.getHeight2() / Board.numRows - 70);
                     Board.board[1][i] = Board.WALL;
                 }
 //              Lower half of wall
@@ -414,18 +713,18 @@ public class FlashPoint extends JFrame implements Runnable {
                 for (int i = 1; i < Board.numColumns - 1; i++) {
                     g.setColor(Color.BLACK);
                     g.fillRect(Window.getX(0) + i * Window.getWidth2() / Board.numColumns,
-                            Window.getY(0) + (Board.numRows - 2) * Window.getHeight2() / Board.numRows + 50,
+                            Window.getY(0) + (Board.numRows - 2) * Window.getHeight2() / Board.numRows + 70,
                             Window.getWidth2() / Board.numColumns,
-                            Window.getHeight2() / Board.numRows - 50);
+                            Window.getHeight2() / Board.numRows - 70);
                     Board.board[Board.numRows - 2][i] = Board.WALL;
                 }
 //                    Right of house
 //////////////////////////////////////////////////////////////////////////////////////
                 for (int i = 1; i < Board.numRows - 1; i++) {
                     g.setColor(Color.BLACK);
-                    g.fillRect(Window.getX(0) + (Board.numColumns - 2) * Window.getWidth2() / Board.numColumns + 50,
+                    g.fillRect(Window.getX(0) + (Board.numColumns - 2) * Window.getWidth2() / Board.numColumns + 70,
                             Window.getY(0) + i * Window.getHeight2() / Board.numRows,
-                            Window.getWidth2() / Board.numColumns - 50,
+                            Window.getWidth2() / Board.numColumns - 70,
                             Window.getHeight2() / Board.numRows);
                     Board.board[i][Board.numColumns - 2] = Board.WALL;
                 }
@@ -435,7 +734,7 @@ public class FlashPoint extends JFrame implements Runnable {
                     g.setColor(Color.BLACK);
                     g.fillRect(Window.getX(0) + 1 * Window.getWidth2() / Board.numColumns,
                             Window.getY(0) + i * Window.getHeight2() / Board.numRows,
-                            Window.getWidth2() / Board.numColumns - 50,
+                            Window.getWidth2() / Board.numColumns - 70,
                             Window.getHeight2() / Board.numRows);
                     Board.board[i][1] = Board.WALL;
                 }
@@ -460,13 +759,7 @@ public class FlashPoint extends JFrame implements Runnable {
                 //                        System.out.println(numSmoke.get(i).currentColumn);
                 //                    }
                 //                }
-                else if (Board.board[zrow][zcolumn] == Board.FIRE) {
-                    g.setColor(Color.ORANGE);
-                    g.fillRect(Window.getX(0) + zcolumn * Window.getWidth2() / Board.numColumns,
-                            Window.getY(0) + zrow * Window.getHeight2() / Board.numRows,
-                            Window.getWidth2() / Board.numColumns,
-                            Window.getHeight2() / Board.numRows);
-                }
+                
 //                else if (Board.board[zrow][zcolumn] == Board.FIRE)
 //                {
 //                    for (int i=0; i>fireNum;i++)
@@ -480,38 +773,6 @@ public class FlashPoint extends JFrame implements Runnable {
 //                    }
 //                }
             }
-        }
-        g.setColor(PlayerRed.getColor());
-        g.fillRect(Window.getX(0) + PlayerRed.currentColumn * Window.getWidth2() / Board.numColumns,
-                Window.getY(0) + PlayerRed.currentRow * Window.getHeight2() / Board.numRows,
-                Window.getWidth2() / Board.numColumns,
-                Window.getHeight2() / Board.numRows);
-
-        g.setColor(PlayerBlue.getColor());
-        g.fillRect(Window.getX(0) + PlayerBlue.currentColumn * Window.getWidth2() / Board.numColumns,
-                Window.getY(0) + PlayerBlue.currentRow * Window.getHeight2() / Board.numRows,
-                Window.getWidth2() / Board.numColumns,
-                Window.getHeight2() / Board.numRows);
-
-        g.setColor(PlayerGreen.getColor());
-        g.fillRect(Window.getX(0) + PlayerGreen.currentColumn * Window.getWidth2() / Board.numColumns,
-                Window.getY(0) + PlayerGreen.currentRow * Window.getHeight2() / Board.numRows,
-                Window.getWidth2() / Board.numColumns,
-                Window.getHeight2() / Board.numRows);
-
-        g.setColor(PlayerYellow.getColor());
-        g.fillRect(Window.getX(0) + PlayerYellow.currentColumn * Window.getWidth2() / Board.numColumns,
-                Window.getY(0) + PlayerYellow.currentRow * Window.getHeight2() / Board.numRows,
-                Window.getWidth2() / Board.numColumns,
-                Window.getHeight2() / Board.numRows);
-        
-        for(int i = 0;i < numPois.size();i++)
-        {
-        g.setColor(numPois.get(i).getColor());
-        g.fillRect(Window.getX(0) + numPois.get(i).getCurrentColumn() * Window.getWidth2() / Board.numColumns,
-                Window.getY(0) + numPois.get(i).getCurrentRow() * Window.getHeight2() / Board.numRows,
-                Window.getWidth2() / Board.numColumns,
-                Window.getHeight2() / Board.numRows);
         }
         
         if (PlayerRed.getisTurn())
@@ -585,6 +846,14 @@ public class FlashPoint extends JFrame implements Runnable {
         {
             numPois.add(i, new PointOfInterest());
         }
+        for(int i = 0;i < 5;i++)
+        {
+            numFires.add(i, new Fire());
+        }
+        for(int i = 0;i < 1;i++)
+        {
+            numSmoke.add(i, new Smoke());
+        }
         PlayerRed.setActionPoints();
         PlayerBlue.setActionPoints();
         PlayerGreen.setActionPoints();
@@ -604,6 +873,18 @@ public class FlashPoint extends JFrame implements Runnable {
             }
         
             }
+        for (int i = 0; i < numPois.size(); i++)
+        {
+         numPois.remove(i);
+        }
+        for (int i = 0; i < numFires.size(); i++)
+        {
+         numFires.remove(i);
+        }
+        for (int i = 0; i < numSmoke.size(); i++)
+        {
+         numSmoke.remove(i);
+        }
     }
 /////////////////////////////////////////////////////////////////////////
 
