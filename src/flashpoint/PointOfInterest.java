@@ -12,7 +12,7 @@ public class PointOfInterest {
         currentColumn = (int)(Math.random()*Board.numColumns);
         currentRow = (int)(Math.random()*Board.numRows);
         color = Color.BLUE;
-        isFalseAlarm = setFalseAlarm();
+        isFalseAlarm = this.setFalseAlarm();
     }
     public Color getColor ()
     {
@@ -34,11 +34,12 @@ public class PointOfInterest {
         {
             return(true);
         }
-        if (temp == 1)
+        else if (temp == 1)
         {
             return(false);
         }
-        return(false);
+        else
+            return(false);
     }
     public boolean getFalseAlarm ()
     {

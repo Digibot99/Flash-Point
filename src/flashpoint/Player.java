@@ -11,6 +11,7 @@ public class Player {
     int currentRow;
     int currentColumn;
     private Color color;
+    private Board board[][];
     private boolean isTurn;
     Player(Color _color){
         actionPoints = 0;
@@ -54,6 +55,10 @@ public class Player {
     {
         return(currentColumn);
     }
+    public Board getCurrentBoardLocation()
+    {
+        return(board[this.currentRow][this.currentColumn]);
+    }
     public void setCurrentRow (int _currentRow)
     {
         currentRow = _currentRow;
@@ -73,6 +78,5 @@ public class Player {
     public void skipTurn ()
     {
         this.setisTurn(false);
-        System.out.println("hi");
     }
 }

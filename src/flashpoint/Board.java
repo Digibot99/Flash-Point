@@ -25,4 +25,28 @@ public class Board {
     final static int DOOR = 8;
     static int board[][];
     
+    public static int getCursorColumn(int _cursorXPos)
+    {
+        int i;
+        for (i = numColumns; i > 0; i--)
+        {
+        if (_cursorXPos > Window.WINDOW_WIDTH/numColumns*i)
+        {
+            break;
+        }
+        }
+        return(i);
+    }
+    public static int getCursorRow(int _cursorYPos)
+    {
+        int i;
+        for (i = numRows; i > 0; i--)
+        {
+        if (_cursorYPos > Window.WINDOW_HEIGHT/numRows*i)
+        {
+            break;
+        }
+        }
+        return(i);
+    }
 }
