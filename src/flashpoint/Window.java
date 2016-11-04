@@ -9,7 +9,7 @@ package flashpoint;
  *
  * @author 384000346
  */
-public class WindowMain {
+public class Window {
     static final int XBORDER = 20;
     static final int YBORDER = 20;
     static final int YTITLE = 30;

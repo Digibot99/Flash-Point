@@ -10,6 +10,8 @@ public class Player {
     private int actionPoints;
     int currentRow;
     int currentColumn;
+    int previousRow;
+    int previousColumn;
     private Color color;
     private Board board[][];
     private boolean isTurn;
@@ -54,6 +56,22 @@ public class Player {
     public int getCurrentColumn ()
     {
         return(currentColumn);
+    }
+    public int getPreviousRow ()
+    {
+        return(previousRow);
+    }
+    public int getPreviousColumn ()
+    {
+        return(previousColumn);
+    }
+    public void setPreviousRow (int _row)
+    {
+        previousRow = _row;
+    }
+    public void setPreviousColumn (int _column)
+    {
+        previousColumn = _column;
     }
     public Board getCurrentBoardLocation()
     {

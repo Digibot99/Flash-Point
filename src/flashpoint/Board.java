@@ -22,31 +22,17 @@ public class Board {
     final static int SMOKE = 5;
     final static int FIRE = 6;
     final static int WALL = 7;
-    final static int DOOR = 8;
+    final static int DOOR = 11;
     static int board[][];
     
-    public static int getCursorColumn(int _cursorXPos)
-    {
-        int i;
-        for (i = numColumns; i > 0; i--)
-        {
-        if (_cursorXPos > Window.WINDOW_WIDTH/numColumns*i)
-        {
-            break;
+    public static boolean getBoardLocation(int _Piece) {
+        for (int i = 0; i < numRows - 1; i++) {
+            for (int j = 0; j < numColumns; j++) {
+                if (board[i][j] == _Piece) {
+                    return (true);
+                }
+            }
         }
-        }
-        return(i);
-    }
-    public static int getCursorRow(int _cursorYPos)
-    {
-        int i;
-        for (i = numRows; i > 0; i--)
-        {
-        if (_cursorYPos > Window.WINDOW_HEIGHT/numRows*i)
-        {
-            break;
-        }
-        }
-        return(i);
+        return (false);
     }
 }

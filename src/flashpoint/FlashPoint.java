@@ -21,6 +21,7 @@ public class FlashPoint extends JFrame implements Runnable {
     int timecount;
     boolean gameover;
     double frameRate = 10.0;
+    int POInum = 3;
 
     ArrayList<Wall> numWalls = new ArrayList<Wall>();
     ArrayList<Smoke> numSmoke = new ArrayList<Smoke>();
@@ -47,33 +48,6 @@ public class FlashPoint extends JFrame implements Runnable {
             public void mousePressed(MouseEvent e) {
                 if (e.BUTTON1 == e.getButton()) {
                     //left button
-                    int cursorXLoc = e.getX() - Window.getX(0);
-                    int cursorYLoc = e.getY() - Window.getY(0);
-                    cursorXLoc = Board.getCursorColumn(cursorXLoc);
-                    cursorYLoc = Board.getCursorRow(cursorYLoc);
-        for (int i = 0; i < numPois.size(); i++)
-        {
-                    if (Board.board[cursorYLoc][cursorXLoc] == Board.board[numPois.get(i).getCurrentRow()][numPois.get(i).getCurrentColumn()])
-                    {
-                        System.out.println("hi");
-                    }
-        }
-        
-        for (int i = 0; i < numFires.size(); i++)
-        {
-                    if (Board.board[cursorYLoc][cursorXLoc] == Board.board[numFires.get(i).getCurrentRow()][numFires.get(i).getCurrentColumn()])
-                    {
-                        System.out.println("hi");
-                    }
-        }
-        
-        for (int i = 0; i < numSmoke.size(); i++)
-        {
-                    if (Board.board[cursorYLoc][cursorXLoc] == Board.board[numSmoke.get(i).getCurrentRow()][numSmoke.get(i).getCurrentColumn()])
-                    {
-                        System.out.println("hi");
-                    }
-        }
                 }
                 if (e.BUTTON3 == e.getButton()) {
                     //right button
@@ -96,7 +70,8 @@ public class FlashPoint extends JFrame implements Runnable {
             public void keyPressed(KeyEvent e) {
                 if (e.VK_RIGHT == e.getKeyCode()) {
                     if (PlayerRed.getActionPoints() != 0 && PlayerRed.getisTurn() == true) {
-                        if (PlayerRed.getCurrentColumn() != Board.numColumns - 1 && Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn() + 1] == Board.EMPTY) {
+                        if (PlayerRed.getCurrentColumn() != Board.numColumns - 1)
+                        {
                             Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn()] = Board.EMPTY;
                             PlayerRed.setCurrentColumn(Movement.MoveRight(PlayerRed.getCurrentRow(), PlayerRed.getCurrentColumn()));
                             Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn()] = Board.PLAYERRED;
@@ -114,7 +89,7 @@ public class FlashPoint extends JFrame implements Runnable {
                         }
                     }
                     if (PlayerBlue.getActionPoints() != 0 && PlayerBlue.getisTurn() == true) {
-                        if (PlayerBlue.getCurrentColumn() != Board.numColumns - 1 && Board.board[PlayerBlue.currentRow][PlayerBlue.getCurrentColumn() + 1] == Board.EMPTY) {
+                        if (PlayerBlue.getCurrentColumn() != Board.numColumns - 1) {
                             Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn()] = Board.EMPTY;
                             PlayerBlue.setCurrentColumn(Movement.MoveRight(PlayerBlue.getCurrentRow(), PlayerBlue.getCurrentColumn()));
                             Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn()] = Board.PLAYERBLUE;
@@ -132,7 +107,7 @@ public class FlashPoint extends JFrame implements Runnable {
                         }
                     }
                     if (PlayerGreen.getActionPoints() != 0 && PlayerGreen.getisTurn() == true) {
-                        if (PlayerGreen.getCurrentColumn() != Board.numColumns - 1 && Board.board[PlayerGreen.currentRow][PlayerGreen.getCurrentColumn() + 1] == Board.EMPTY) {
+                        if (PlayerGreen.getCurrentColumn() != Board.numColumns - 1) {
                             Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn()] = Board.EMPTY;
                             PlayerGreen.setCurrentColumn(Movement.MoveRight(PlayerGreen.getCurrentRow(), PlayerGreen.getCurrentColumn()));
                             Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn()] = Board.PLAYERGREEN;
@@ -150,7 +125,7 @@ public class FlashPoint extends JFrame implements Runnable {
                         }
                     }
                     if (PlayerYellow.getActionPoints() != 0 && PlayerYellow.getisTurn() == true) {
-                        if (PlayerYellow.getCurrentColumn() != Board.numColumns - 1 && Board.board[PlayerYellow.currentRow][PlayerYellow.getCurrentColumn() + 1] == Board.EMPTY) {
+                        if (PlayerYellow.getCurrentColumn() != Board.numColumns - 1) {
                             Board.board[PlayerYellow.getCurrentRow()][PlayerYellow.getCurrentColumn()] = Board.EMPTY;
                             PlayerYellow.setCurrentColumn(Movement.MoveRight(PlayerYellow.getCurrentRow(), PlayerYellow.getCurrentColumn()));
                             Board.board[PlayerYellow.getCurrentRow()][PlayerYellow.getCurrentColumn()] = Board.PLAYERYELLOW;
@@ -171,7 +146,7 @@ public class FlashPoint extends JFrame implements Runnable {
 
                 if (e.VK_LEFT == e.getKeyCode()) {
                     if (PlayerRed.getActionPoints() != 0 && PlayerRed.getisTurn() == true) {
-                        if (PlayerRed.getCurrentColumn() != 0 && Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn() - 1] == Board.EMPTY) {
+                        if (PlayerRed.getCurrentColumn() != 0) {
                             Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn()] = Board.EMPTY;
                             PlayerRed.setCurrentColumn(Movement.MoveLeft(PlayerRed.getCurrentRow(), PlayerRed.getCurrentColumn()));
                             Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn()] = Board.PLAYERRED;
@@ -189,7 +164,7 @@ public class FlashPoint extends JFrame implements Runnable {
                         }
                     }
                     if (PlayerBlue.getActionPoints() != 0 && PlayerBlue.getisTurn() == true) {
-                        if (PlayerBlue.getCurrentColumn() != 0 && Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn() - 1] == Board.EMPTY) {
+                        if (PlayerBlue.getCurrentColumn() != 0) {
                             Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn()] = Board.EMPTY;
                             PlayerBlue.setCurrentColumn(Movement.MoveLeft(PlayerBlue.getCurrentRow(), PlayerBlue.getCurrentColumn()));
                             Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn()] = Board.PLAYERBLUE;
@@ -207,7 +182,7 @@ public class FlashPoint extends JFrame implements Runnable {
                         }
                     }
                     if (PlayerGreen.getActionPoints() != 0 && PlayerGreen.getisTurn() == true) {
-                        if (PlayerGreen.getCurrentColumn() != 0 && Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn() - 1] == Board.EMPTY) {
+                        if (PlayerGreen.getCurrentColumn() != 0) {
                             Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn()] = Board.EMPTY;
                             PlayerGreen.setCurrentColumn(Movement.MoveLeft(PlayerGreen.getCurrentRow(), PlayerGreen.getCurrentColumn()));
                             Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn()] = Board.PLAYERGREEN;
@@ -225,7 +200,7 @@ public class FlashPoint extends JFrame implements Runnable {
                         }
                     }
                     if (PlayerYellow.getActionPoints() != 0 && PlayerYellow.getisTurn() == true) {
-                        if (PlayerYellow.getCurrentColumn() != 0 && Board.board[PlayerYellow.getCurrentRow()][PlayerYellow.getCurrentColumn() - 1] == Board.EMPTY) {
+                        if (PlayerYellow.getCurrentColumn() != 0) {
                             Board.board[PlayerYellow.getCurrentRow()][PlayerYellow.getCurrentColumn()] = Board.EMPTY;
                             PlayerYellow.setCurrentColumn(Movement.MoveLeft(PlayerYellow.getCurrentRow(), PlayerYellow.getCurrentColumn()));
                             Board.board[PlayerYellow.getCurrentRow()][PlayerYellow.getCurrentColumn()] = Board.PLAYERYELLOW;
@@ -246,7 +221,7 @@ public class FlashPoint extends JFrame implements Runnable {
 
                 if (e.VK_UP == e.getKeyCode()) {
                     if (PlayerRed.getActionPoints() != 0 && PlayerRed.getisTurn() == true) {
-                        if (PlayerRed.getCurrentRow() != 0 && Board.board[PlayerRed.getCurrentRow() - 1][PlayerRed.getCurrentColumn()] == Board.EMPTY) {
+                        if (PlayerRed.getCurrentRow() != 0) {
                             Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn()] = Board.EMPTY;
                             PlayerRed.setCurrentRow(Movement.MoveUp(PlayerRed.getCurrentRow(), PlayerRed.getCurrentColumn()));
                             Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn()] = Board.PLAYERRED;
@@ -264,7 +239,7 @@ public class FlashPoint extends JFrame implements Runnable {
                         }
                     }
                     if (PlayerBlue.getActionPoints() != 0 && PlayerBlue.getisTurn() == true) {
-                        if (PlayerBlue.getCurrentRow() != 0 && Board.board[PlayerBlue.getCurrentRow() - 1][PlayerBlue.getCurrentColumn()] == Board.EMPTY) {
+                        if (PlayerBlue.getCurrentRow() != 0) {
                             Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn()] = Board.EMPTY;
                             PlayerBlue.setCurrentRow(Movement.MoveUp(PlayerBlue.getCurrentRow(), PlayerBlue.getCurrentColumn()));
                             Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn()] = Board.PLAYERBLUE;
@@ -282,7 +257,7 @@ public class FlashPoint extends JFrame implements Runnable {
                         }
                     }
                     if (PlayerGreen.getActionPoints() != 0 && PlayerGreen.getisTurn() == true) {
-                        if (PlayerGreen.getCurrentRow() != 0 && Board.board[PlayerGreen.getCurrentRow() - 1][PlayerGreen.getCurrentColumn()] == Board.EMPTY) {
+                        if (PlayerGreen.getCurrentRow() != 0) {
                             Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn()] = Board.EMPTY;
                             PlayerGreen.setCurrentRow(Movement.MoveUp(PlayerGreen.getCurrentRow(), PlayerGreen.getCurrentColumn()));
                             Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn()] = Board.PLAYERGREEN;
@@ -300,10 +275,12 @@ public class FlashPoint extends JFrame implements Runnable {
                         }
                     }
                     if (PlayerYellow.getActionPoints() != 0 && PlayerYellow.getisTurn() == true) {
-                        if (PlayerYellow.getCurrentRow() != 0 && Board.board[PlayerYellow.getCurrentRow() - 1][PlayerYellow.getCurrentColumn()] == Board.EMPTY) {
-                            Board.board[PlayerYellow.getCurrentRow()][PlayerYellow.getCurrentColumn()] = Board.EMPTY;
+                        if (PlayerYellow.getCurrentRow() != 0) {
+                            PlayerYellow.setPreviousRow(PlayerYellow.getCurrentRow());
+                            PlayerYellow.setPreviousColumn(PlayerYellow.getCurrentColumn());
                             PlayerYellow.setCurrentRow(Movement.MoveUp(PlayerYellow.getCurrentRow(), PlayerYellow.getCurrentColumn()));
                             Board.board[PlayerYellow.getCurrentRow()][PlayerYellow.getCurrentColumn()] = Board.PLAYERYELLOW;
+                            Board.board[PlayerYellow.getPreviousRow()][PlayerYellow.getPreviousColumn()] = Board.EMPTY;
                             PlayerYellow.playerLoseActionPoint();
                             if (PlayerYellow.getActionPoints() == 0) {
                                 PlayerYellow.setisTurn(false);
@@ -321,7 +298,7 @@ public class FlashPoint extends JFrame implements Runnable {
 
                 if (e.VK_DOWN == e.getKeyCode()) {
                     if (PlayerRed.getActionPoints() != 0 && PlayerRed.getisTurn() == true) {
-                        if (PlayerRed.getCurrentRow() != Board.numRows - 1 && Board.board[PlayerRed.getCurrentRow() + 1][PlayerRed.getCurrentColumn()] == Board.EMPTY) {
+                        if (PlayerRed.getCurrentRow() != Board.numRows - 1) {
                             Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn()] = Board.EMPTY;
                             PlayerRed.setCurrentRow(Movement.MoveDown(PlayerRed.getCurrentRow(), PlayerRed.getCurrentColumn()));
                             Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn()] = Board.PLAYERRED;
@@ -339,7 +316,7 @@ public class FlashPoint extends JFrame implements Runnable {
                         }
                     }
                     if (PlayerBlue.getActionPoints() != 0 && PlayerBlue.getisTurn() == true) {
-                        if (PlayerBlue.getCurrentRow() != Board.numRows - 1 && Board.board[PlayerBlue.getCurrentRow() + 1][PlayerBlue.getCurrentColumn()] == Board.EMPTY) {
+                        if (PlayerBlue.getCurrentRow() != Board.numRows - 1) {
                             Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn()] = Board.EMPTY;
                             PlayerBlue.setCurrentRow(Movement.MoveDown(PlayerBlue.getCurrentRow(), PlayerBlue.getCurrentColumn()));
                             Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn()] = Board.PLAYERBLUE;
@@ -357,7 +334,7 @@ public class FlashPoint extends JFrame implements Runnable {
                         }
                     }
                     if (PlayerGreen.getActionPoints() != 0 && PlayerGreen.getisTurn() == true) {
-                        if (PlayerGreen.getCurrentRow() != Board.numRows - 1 && Board.board[PlayerGreen.getCurrentRow() + 1][PlayerGreen.getCurrentColumn()] == Board.EMPTY) {
+                        if (PlayerGreen.getCurrentRow() != Board.numRows - 1) {
                             Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn()] = Board.EMPTY;
                             PlayerGreen.setCurrentRow(Movement.MoveDown(PlayerGreen.getCurrentRow(), PlayerGreen.getCurrentColumn()));
                             Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn()] = Board.PLAYERGREEN;
@@ -375,7 +352,7 @@ public class FlashPoint extends JFrame implements Runnable {
                         }
                     }
                     if (PlayerYellow.getActionPoints() != 0 && PlayerYellow.getisTurn() == true) {
-                        if (PlayerYellow.getCurrentRow() != Board.numRows - 1 && Board.board[PlayerYellow.getCurrentRow() + 1][PlayerYellow.getCurrentColumn()] == Board.EMPTY) {
+                        if (PlayerYellow.getCurrentRow() != Board.numRows - 1) {
                             Board.board[PlayerYellow.getCurrentRow()][PlayerYellow.getCurrentColumn()] = Board.EMPTY;
                             PlayerYellow.setCurrentRow(Movement.MoveDown(PlayerYellow.getCurrentRow(), PlayerYellow.getCurrentColumn()));
                             Board.board[PlayerYellow.getCurrentRow()][PlayerYellow.getCurrentColumn()] = Board.PLAYERYELLOW;
@@ -541,6 +518,7 @@ public class FlashPoint extends JFrame implements Runnable {
                     Window.getY(0)+2*Window.getHeight2()/Board.numRows+70,
                     Window.getWidth2()/Board.numColumns,
                     Window.getHeight2()/Board.numRows-70);
+                    Board.board[2][8] = Board.DOOR;
                     
                     g.setColor(Color.yellow);
                     g.fillRect(Window.getX(0)+2*Window.getWidth2()/Board.numColumns+70,
@@ -711,7 +689,7 @@ public class FlashPoint extends JFrame implements Runnable {
 //              Lower half of wall
 ////////////////////////////////////////////////////////////////////////////////////
                 for (int i = 1; i < Board.numColumns - 1; i++) {
-                    g.setColor(Color.BLACK);
+                    g.setColor(Color.red);
                     g.fillRect(Window.getX(0) + i * Window.getWidth2() / Board.numColumns,
                             Window.getY(0) + (Board.numRows - 2) * Window.getHeight2() / Board.numRows + 70,
                             Window.getWidth2() / Board.numColumns,
@@ -721,7 +699,7 @@ public class FlashPoint extends JFrame implements Runnable {
 //                    Right of house
 //////////////////////////////////////////////////////////////////////////////////////
                 for (int i = 1; i < Board.numRows - 1; i++) {
-                    g.setColor(Color.BLACK);
+                    g.setColor(Color.pink);
                     g.fillRect(Window.getX(0) + (Board.numColumns - 2) * Window.getWidth2() / Board.numColumns + 70,
                             Window.getY(0) + i * Window.getHeight2() / Board.numRows,
                             Window.getWidth2() / Board.numColumns - 70,
@@ -731,7 +709,7 @@ public class FlashPoint extends JFrame implements Runnable {
 //                    left side of house
 ////////////////////////////////////////////////////////////////////////////////////
                 for (int i = 1; i < Board.numRows - 1; i++) {
-                    g.setColor(Color.BLACK);
+                    g.setColor(Color.blue);
                     g.fillRect(Window.getX(0) + 1 * Window.getWidth2() / Board.numColumns,
                             Window.getY(0) + i * Window.getHeight2() / Board.numRows,
                             Window.getWidth2() / Board.numColumns - 70,
@@ -747,31 +725,7 @@ public class FlashPoint extends JFrame implements Runnable {
                             Window.getY(0) + zrow * Window.getHeight2() / Board.numRows,
                             Window.getWidth2() / Board.numColumns,
                             Window.getHeight2() / Board.numRows);
-                } //                else if (Board.board[zrow][zcolumn] == Board.SMOKE)
-                //                {
-                //                    for (int i=0; i>smokeNum;i++)
-                //                    {
-                //                        g.setColor(Color.DARK_GRAY);
-                //                        g.fillRect(Window.getX(0)+numSmoke.get(i).currentColumn*Window.getWidth2()/Board.numColumns,
-                //                        Window.getY(0)+numSmoke.get(i).currentRow*Window.getHeight2()/Board.numRows,
-                //                        Window.getWidth2()/Board.numColumns,
-                //                        Window.getHeight2()/Board.numRows);
-                //                        System.out.println(numSmoke.get(i).currentColumn);
-                //                    }
-                //                }
-                
-//                else if (Board.board[zrow][zcolumn] == Board.FIRE)
-//                {
-//                    for (int i=0; i>fireNum;i++)
-//                    {
-//                        g.setColor(Color.ORANGE);
-//                        g.fillRect(Window.getX(0)+numFires.get(i).currentColumn*Window.getWidth2()/Board.numColumns,
-//                        Window.getY(0)+numFires.get(i).currentRow*Window.getHeight2()/Board.numRows,
-//                        Window.getWidth2()/Board.numColumns,
-//                        Window.getHeight2()/Board.numRows);
-//                        System.out.println(numFires.get(i).currentColumn);
-//                    }
-//                }
+                } 
             }
         }
         
@@ -842,7 +796,7 @@ public class FlashPoint extends JFrame implements Runnable {
                 }
             }
         }
-        for(int i = 0;i < 3;i++)
+        for(int i = 0;i < POInum;i++)
         {
             numPois.add(i, new PointOfInterest());
         }
@@ -860,19 +814,6 @@ public class FlashPoint extends JFrame implements Runnable {
         PlayerYellow.setActionPoints();
         PlayerRed.setisTurn(true);
         gameover = false;
-        // # of fires @ start
-        for (int i = 0; i < 5; i++) {
-            boolean keeplooping = true;
-            while (keeplooping) {
-                int row = (int) (Math.random() * Board.numRows);
-                int column = (int) (Math.random() * Board.numColumns);
-                if (Board.board[row][column] == Board.EMPTY) {
-                    Board.board[row][column] = Board.FIRE;
-                    keeplooping = false;
-                }
-            }
-        
-            }
         for (int i = 0; i < numPois.size(); i++)
         {
          numPois.remove(i);
@@ -904,23 +845,6 @@ public class FlashPoint extends JFrame implements Runnable {
         if (gameover); else if (timecount % (int) (frameRate) == (int) (frameRate) - 1) {
             for (int zrow = 0; zrow < Board.numRows; zrow++) {
                 for (int zcolumn = 0; zcolumn < Board.numColumns; zcolumn++) {
-//                if (Board.board[zrow][zcolumn] == Board.BAD_BOX)
-//                {
-//                    Board.board[zrow][zcolumn] = Board.EMPTY;
-//                }
-                }
-            }
-            for (int c = 0; c < fireNum; c++) {
-                int row = 0;
-                int column = 0;
-                boolean KeepLoop = true;
-                while (KeepLoop) {
-                    row = (int) (Math.random() * Board.numRows);
-                    column = (int) (Math.random() * Board.numColumns);
-                    if (Board.board[row][column] == Board.EMPTY) {
-//        Board.board[row][column] = Board.BAD_BOX;
-                        KeepLoop = false;
-                    }
                 }
             }
         }
