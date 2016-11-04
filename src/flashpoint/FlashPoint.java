@@ -689,7 +689,7 @@ public class FlashPoint extends JFrame implements Runnable {
 //              Lower half of wall
 ////////////////////////////////////////////////////////////////////////////////////
                 for (int i = 1; i < Board.numColumns - 1; i++) {
-                    g.setColor(Color.red);
+                    g.setColor(Color.BLACK);
                     g.fillRect(Window.getX(0) + i * Window.getWidth2() / Board.numColumns,
                             Window.getY(0) + (Board.numRows - 2) * Window.getHeight2() / Board.numRows + 70,
                             Window.getWidth2() / Board.numColumns,
@@ -699,7 +699,7 @@ public class FlashPoint extends JFrame implements Runnable {
 //                    Right of house
 //////////////////////////////////////////////////////////////////////////////////////
                 for (int i = 1; i < Board.numRows - 1; i++) {
-                    g.setColor(Color.pink);
+                    g.setColor(Color.BLACK);
                     g.fillRect(Window.getX(0) + (Board.numColumns - 2) * Window.getWidth2() / Board.numColumns + 70,
                             Window.getY(0) + i * Window.getHeight2() / Board.numRows,
                             Window.getWidth2() / Board.numColumns - 70,
@@ -709,7 +709,7 @@ public class FlashPoint extends JFrame implements Runnable {
 //                    left side of house
 ////////////////////////////////////////////////////////////////////////////////////
                 for (int i = 1; i < Board.numRows - 1; i++) {
-                    g.setColor(Color.blue);
+                    g.setColor(Color.BLACK);
                     g.fillRect(Window.getX(0) + 1 * Window.getWidth2() / Board.numColumns,
                             Window.getY(0) + i * Window.getHeight2() / Board.numRows,
                             Window.getWidth2() / Board.numColumns - 70,
