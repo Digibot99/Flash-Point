@@ -24,4 +24,8 @@ public class Smoke {
     {
         return(currentColumn);
     }
+    public void addSmoke () 
+    {
+        
+    }
 }

@@ -23,9 +23,9 @@ public class FlashPoint extends JFrame implements Runnable {
     double frameRate = 10.0;
     int POInum = 3;
 
-    ArrayList<Wall> numWalls = new ArrayList<Wall>();
-    ArrayList<Smoke> numSmoke = new ArrayList<Smoke>();
-    ArrayList<Fire> numFires = new ArrayList<Fire>();
+    ArrayList<Wall> numWall = new ArrayList<Wall>();
+    static ArrayList<Smoke> numSmoke = new ArrayList<Smoke>();
+    static ArrayList<Fire> numFire = new ArrayList<Fire>();
     ArrayList<PointOfInterest> numPois = new ArrayList<PointOfInterest>();
 
     Player PlayerRed = new Player(Color.red);
@@ -69,332 +69,39 @@ public class FlashPoint extends JFrame implements Runnable {
         addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
                 if (e.VK_RIGHT == e.getKeyCode()) {
-                    if (PlayerRed.getActionPoints() != 0 && PlayerRed.getisTurn() == true) {
-                        if (PlayerRed.getCurrentColumn() != Board.numColumns - 1)
-                        {
-                            Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn()] = Board.EMPTY;
-                            PlayerRed.setCurrentColumn(Movement.MoveRight(PlayerRed.getCurrentRow(), PlayerRed.getCurrentColumn()));
-                            Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn()] = Board.PLAYERRED;
-                            PlayerRed.playerLoseActionPoint();
-                            if (PlayerRed.getActionPoints() == 0) {
-                                PlayerRed.setisTurn(false);
-                                PlayerRed.setActionPoints();
-                                PlayerBlue.setisTurn(true);
-                                for(int i = 0;i < 1;i++)
-                                {
-                                    numSmoke.add(i, new Smoke());
-                                }
-                                return;
-                            }
-                        }
-                    }
-                    if (PlayerBlue.getActionPoints() != 0 && PlayerBlue.getisTurn() == true) {
-                        if (PlayerBlue.getCurrentColumn() != Board.numColumns - 1) {
-                            Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn()] = Board.EMPTY;
-                            PlayerBlue.setCurrentColumn(Movement.MoveRight(PlayerBlue.getCurrentRow(), PlayerBlue.getCurrentColumn()));
-                            Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn()] = Board.PLAYERBLUE;
-                            PlayerBlue.playerLoseActionPoint();
-                            if (PlayerBlue.getActionPoints() == 0) {
-                                PlayerBlue.setisTurn(false);
-                                PlayerBlue.setActionPoints();
-                                PlayerGreen.setisTurn(true);
-                                for(int i = 0;i < 1;i++)
-                                {
-                                    numSmoke.add(i, new Smoke());
-                                }
-                                return;
-                            }
-                        }
-                    }
-                    if (PlayerGreen.getActionPoints() != 0 && PlayerGreen.getisTurn() == true) {
-                        if (PlayerGreen.getCurrentColumn() != Board.numColumns - 1) {
-                            Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn()] = Board.EMPTY;
-                            PlayerGreen.setCurrentColumn(Movement.MoveRight(PlayerGreen.getCurrentRow(), PlayerGreen.getCurrentColumn()));
-                            Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn()] = Board.PLAYERGREEN;
-                            PlayerGreen.playerLoseActionPoint();
-                            if (PlayerGreen.getActionPoints() == 0) {
-                                PlayerGreen.setisTurn(false);
-                                PlayerGreen.setActionPoints();
-                                PlayerYellow.setisTurn(true);
-                                for(int i = 0;i < 1;i++)
-                                {
-                                    numSmoke.add(i, new Smoke());
-                                }
-                                return;
-                            }
-                        }
-                    }
-                    if (PlayerYellow.getActionPoints() != 0 && PlayerYellow.getisTurn() == true) {
-                        if (PlayerYellow.getCurrentColumn() != Board.numColumns - 1) {
-                            Board.board[PlayerYellow.getCurrentRow()][PlayerYellow.getCurrentColumn()] = Board.EMPTY;
-                            PlayerYellow.setCurrentColumn(Movement.MoveRight(PlayerYellow.getCurrentRow(), PlayerYellow.getCurrentColumn()));
-                            Board.board[PlayerYellow.getCurrentRow()][PlayerYellow.getCurrentColumn()] = Board.PLAYERYELLOW;
-                            PlayerYellow.playerLoseActionPoint();
-                            if (PlayerYellow.getActionPoints() == 0) {
-                                PlayerYellow.setisTurn(false);
-                                PlayerYellow.setActionPoints();
-                                PlayerRed.setisTurn(true);
-                                for(int i = 0;i < 1;i++)
-                                {
-                                    numSmoke.add(i, new Smoke());
-                                }
-                                return;
-                            }
-                        }
-                    }
+                        SetBoardandPlayer.PlayerMove(PlayerRed,PlayerBlue,SetBoardandPlayer.String.Right);
+                        SetBoardandPlayer.PlayerMove(PlayerBlue,PlayerGreen,SetBoardandPlayer.String.Right);
+                        SetBoardandPlayer.PlayerMove(PlayerGreen,PlayerYellow,SetBoardandPlayer.String.Right);
+                        SetBoardandPlayer.PlayerMove(PlayerYellow, PlayerRed,SetBoardandPlayer.String.Right);
                 }
 
                 if (e.VK_LEFT == e.getKeyCode()) {
-                    if (PlayerRed.getActionPoints() != 0 && PlayerRed.getisTurn() == true) {
-                        if (PlayerRed.getCurrentColumn() != 0) {
-                            Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn()] = Board.EMPTY;
-                            PlayerRed.setCurrentColumn(Movement.MoveLeft(PlayerRed.getCurrentRow(), PlayerRed.getCurrentColumn()));
-                            Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn()] = Board.PLAYERRED;
-                            PlayerRed.playerLoseActionPoint();
-                            if (PlayerRed.getActionPoints() == 0) {
-                                PlayerRed.setisTurn(false);
-                                PlayerRed.setActionPoints();
-                                PlayerBlue.setisTurn(true);
-                                for(int i = 0;i < 1;i++)
-                                {
-                                    numSmoke.add(i, new Smoke());
-                                }
-                                return;
-                            }
-                        }
-                    }
-                    if (PlayerBlue.getActionPoints() != 0 && PlayerBlue.getisTurn() == true) {
-                        if (PlayerBlue.getCurrentColumn() != 0) {
-                            Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn()] = Board.EMPTY;
-                            PlayerBlue.setCurrentColumn(Movement.MoveLeft(PlayerBlue.getCurrentRow(), PlayerBlue.getCurrentColumn()));
-                            Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn()] = Board.PLAYERBLUE;
-                            PlayerBlue.playerLoseActionPoint();
-                            if (PlayerBlue.getActionPoints() == 0) {
-                                PlayerBlue.setisTurn(false);
-                                PlayerBlue.setActionPoints();
-                                PlayerGreen.setisTurn(true);
-                                for(int i = 0;i < 1;i++)
-                                {
-                                    numSmoke.add(i, new Smoke());
-                                }
-                                return;
-                            }
-                        }
-                    }
-                    if (PlayerGreen.getActionPoints() != 0 && PlayerGreen.getisTurn() == true) {
-                        if (PlayerGreen.getCurrentColumn() != 0) {
-                            Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn()] = Board.EMPTY;
-                            PlayerGreen.setCurrentColumn(Movement.MoveLeft(PlayerGreen.getCurrentRow(), PlayerGreen.getCurrentColumn()));
-                            Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn()] = Board.PLAYERGREEN;
-                            PlayerGreen.playerLoseActionPoint();
-                            if (PlayerGreen.getActionPoints() == 0) {
-                                PlayerGreen.setisTurn(false);
-                                PlayerGreen.setActionPoints();
-                                PlayerYellow.setisTurn(true);
-                                for(int i = 0;i < 1;i++)
-                                {
-                                    numSmoke.add(i, new Smoke());
-                                }
-                                return;
-                            }
-                        }
-                    }
-                    if (PlayerYellow.getActionPoints() != 0 && PlayerYellow.getisTurn() == true) {
-                        if (PlayerYellow.getCurrentColumn() != 0) {
-                            Board.board[PlayerYellow.getCurrentRow()][PlayerYellow.getCurrentColumn()] = Board.EMPTY;
-                            PlayerYellow.setCurrentColumn(Movement.MoveLeft(PlayerYellow.getCurrentRow(), PlayerYellow.getCurrentColumn()));
-                            Board.board[PlayerYellow.getCurrentRow()][PlayerYellow.getCurrentColumn()] = Board.PLAYERYELLOW;
-                            PlayerYellow.playerLoseActionPoint();
-                            if (PlayerYellow.getActionPoints() == 0) {
-                                PlayerYellow.setisTurn(false);
-                                PlayerYellow.setActionPoints();
-                                PlayerRed.setisTurn(true);
-                                for(int i = 0;i < 1;i++)
-                                {
-                                    numSmoke.add(i, new Smoke());
-                                }
-                                return;
-                            }
-                        }
-                    }
+                        SetBoardandPlayer.PlayerMove(PlayerRed,PlayerBlue,SetBoardandPlayer.String.Left);
+                        SetBoardandPlayer.PlayerMove(PlayerBlue,PlayerGreen,SetBoardandPlayer.String.Left);
+                        SetBoardandPlayer.PlayerMove(PlayerGreen,PlayerYellow,SetBoardandPlayer.String.Left);
+                        SetBoardandPlayer.PlayerMove(PlayerYellow, PlayerRed,SetBoardandPlayer.String.Left);
                 }
 
                 if (e.VK_UP == e.getKeyCode()) {
-                    if (PlayerRed.getActionPoints() != 0 && PlayerRed.getisTurn() == true) {
-                        if (PlayerRed.getCurrentRow() != 0) {
-                            Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn()] = Board.EMPTY;
-                            PlayerRed.setCurrentRow(Movement.MoveUp(PlayerRed.getCurrentRow(), PlayerRed.getCurrentColumn()));
-                            Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn()] = Board.PLAYERRED;
-                            PlayerRed.playerLoseActionPoint();
-                            if (PlayerRed.getActionPoints() == 0) {
-                                PlayerRed.setisTurn(false);
-                                PlayerRed.setActionPoints();
-                                PlayerBlue.setisTurn(true);
-                                for(int i = 0;i < 1;i++)
-                                {
-                                    numSmoke.add(i, new Smoke());
-                                }
-                                return;
-                            }
-                        }
-                    }
-                    if (PlayerBlue.getActionPoints() != 0 && PlayerBlue.getisTurn() == true) {
-                        if (PlayerBlue.getCurrentRow() != 0) {
-                            Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn()] = Board.EMPTY;
-                            PlayerBlue.setCurrentRow(Movement.MoveUp(PlayerBlue.getCurrentRow(), PlayerBlue.getCurrentColumn()));
-                            Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn()] = Board.PLAYERBLUE;
-                            PlayerBlue.playerLoseActionPoint();
-                            if (PlayerBlue.getActionPoints() == 0) {
-                                PlayerBlue.setisTurn(false);
-                                PlayerBlue.setActionPoints();
-                                PlayerGreen.setisTurn(true);
-                                for(int i = 0;i < 1;i++)
-                                {
-                                    numSmoke.add(i, new Smoke());
-                                }
-                                return;
-                            }
-                        }
-                    }
-                    if (PlayerGreen.getActionPoints() != 0 && PlayerGreen.getisTurn() == true) {
-                        if (PlayerGreen.getCurrentRow() != 0) {
-                            Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn()] = Board.EMPTY;
-                            PlayerGreen.setCurrentRow(Movement.MoveUp(PlayerGreen.getCurrentRow(), PlayerGreen.getCurrentColumn()));
-                            Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn()] = Board.PLAYERGREEN;
-                            PlayerGreen.playerLoseActionPoint();
-                            if (PlayerGreen.getActionPoints() == 0) {
-                                PlayerGreen.setisTurn(false);
-                                PlayerGreen.setActionPoints();
-                                PlayerYellow.setisTurn(true);
-                                for(int i = 0;i < 1;i++)
-                                {
-                                    numSmoke.add(i, new Smoke());
-                                }
-                                return;
-                            }
-                        }
-                    }
-                    if (PlayerYellow.getActionPoints() != 0 && PlayerYellow.getisTurn() == true) {
-                        if (PlayerYellow.getCurrentRow() != 0) {
-                            PlayerYellow.setPreviousRow(PlayerYellow.getCurrentRow());
-                            PlayerYellow.setPreviousColumn(PlayerYellow.getCurrentColumn());
-                            PlayerYellow.setCurrentRow(Movement.MoveUp(PlayerYellow.getCurrentRow(), PlayerYellow.getCurrentColumn()));
-                            Board.board[PlayerYellow.getCurrentRow()][PlayerYellow.getCurrentColumn()] = Board.PLAYERYELLOW;
-                            Board.board[PlayerYellow.getPreviousRow()][PlayerYellow.getPreviousColumn()] = Board.EMPTY;
-                            PlayerYellow.playerLoseActionPoint();
-                            if (PlayerYellow.getActionPoints() == 0) {
-                                PlayerYellow.setisTurn(false);
-                                PlayerYellow.setActionPoints();
-                                PlayerRed.setisTurn(true);
-                                for(int i = 0;i < 1;i++)
-                                {
-                                    numSmoke.add(i, new Smoke());
-                                }
-                                return;
-                            }
-                        }
-                    }
+                    
+                        SetBoardandPlayer.PlayerMove(PlayerRed,PlayerBlue,SetBoardandPlayer.String.Up);
+                        SetBoardandPlayer.PlayerMove(PlayerBlue,PlayerGreen,SetBoardandPlayer.String.Up);
+                        SetBoardandPlayer.PlayerMove(PlayerGreen,PlayerYellow,SetBoardandPlayer.String.Up);
+                        SetBoardandPlayer.PlayerMove(PlayerYellow, PlayerRed,SetBoardandPlayer.String.Up);
                 }
 
                 if (e.VK_DOWN == e.getKeyCode()) {
-                    if (PlayerRed.getActionPoints() != 0 && PlayerRed.getisTurn() == true) {
-                        if (PlayerRed.getCurrentRow() != Board.numRows - 1) {
-                            Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn()] = Board.EMPTY;
-                            PlayerRed.setCurrentRow(Movement.MoveDown(PlayerRed.getCurrentRow(), PlayerRed.getCurrentColumn()));
-                            Board.board[PlayerRed.getCurrentRow()][PlayerRed.getCurrentColumn()] = Board.PLAYERRED;
-                            PlayerRed.playerLoseActionPoint();
-                            if (PlayerRed.getActionPoints() == 0) {
-                                PlayerRed.setisTurn(false);
-                                PlayerRed.setActionPoints();
-                                PlayerBlue.setisTurn(true);
-                                for(int i = 0;i < 1;i++)
-                                {
-                                    numSmoke.add(i, new Smoke());
-                                }
-                                return;
-                            }
-                        }
-                    }
-                    if (PlayerBlue.getActionPoints() != 0 && PlayerBlue.getisTurn() == true) {
-                        if (PlayerBlue.getCurrentRow() != Board.numRows - 1) {
-                            Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn()] = Board.EMPTY;
-                            PlayerBlue.setCurrentRow(Movement.MoveDown(PlayerBlue.getCurrentRow(), PlayerBlue.getCurrentColumn()));
-                            Board.board[PlayerBlue.getCurrentRow()][PlayerBlue.getCurrentColumn()] = Board.PLAYERBLUE;
-                            PlayerBlue.playerLoseActionPoint();
-                            if (PlayerBlue.getActionPoints() == 0) {
-                                PlayerBlue.setisTurn(false);
-                                PlayerBlue.setActionPoints();
-                                PlayerGreen.setisTurn(true);
-                                for(int i = 0;i < 1;i++)
-                                {
-                                    numSmoke.add(i, new Smoke());
-                                }
-                                return;
-                            }
-                        }
-                    }
-                    if (PlayerGreen.getActionPoints() != 0 && PlayerGreen.getisTurn() == true) {
-                        if (PlayerGreen.getCurrentRow() != Board.numRows - 1) {
-                            Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn()] = Board.EMPTY;
-                            PlayerGreen.setCurrentRow(Movement.MoveDown(PlayerGreen.getCurrentRow(), PlayerGreen.getCurrentColumn()));
-                            Board.board[PlayerGreen.getCurrentRow()][PlayerGreen.getCurrentColumn()] = Board.PLAYERGREEN;
-                            PlayerGreen.playerLoseActionPoint();
-                            if (PlayerGreen.getActionPoints() == 0) {
-                                PlayerGreen.setisTurn(false);
-                                PlayerGreen.setActionPoints();
-                                PlayerYellow.setisTurn(true);
-                                for(int i = 0;i < 1;i++)
-                                {
-                                    numSmoke.add(i, new Smoke());
-                                }
-                                return;
-                            }
-                        }
-                    }
-                    if (PlayerYellow.getActionPoints() != 0 && PlayerYellow.getisTurn() == true) {
-                        if (PlayerYellow.getCurrentRow() != Board.numRows - 1) {
-                            Board.board[PlayerYellow.getCurrentRow()][PlayerYellow.getCurrentColumn()] = Board.EMPTY;
-                            PlayerYellow.setCurrentRow(Movement.MoveDown(PlayerYellow.getCurrentRow(), PlayerYellow.getCurrentColumn()));
-                            Board.board[PlayerYellow.getCurrentRow()][PlayerYellow.getCurrentColumn()] = Board.PLAYERYELLOW;
-                            PlayerYellow.playerLoseActionPoint();
-                            if (PlayerYellow.getActionPoints() == 0) {
-                                PlayerYellow.setisTurn(false);
-                                PlayerYellow.setActionPoints();
-                                PlayerRed.setisTurn(true);
-                                for(int i = 0;i < 1;i++)
-                                {
-                                    numSmoke.add(i, new Smoke());
-                                }
-                                return;
-                            }
-                        }
-                    }
+                        SetBoardandPlayer.PlayerMove(PlayerRed,PlayerBlue,SetBoardandPlayer.String.Down);
+                        SetBoardandPlayer.PlayerMove(PlayerBlue,PlayerGreen,SetBoardandPlayer.String.Down);
+                        SetBoardandPlayer.PlayerMove(PlayerGreen,PlayerYellow,SetBoardandPlayer.String.Down);
+                        SetBoardandPlayer.PlayerMove(PlayerYellow, PlayerRed,SetBoardandPlayer.String.Down);
                 }
+                    
                 if (e.VK_ENTER == e.getKeyCode()) {
-                        if (PlayerRed.getActionPoints() < 8 && PlayerRed.getisTurn() == true)
-                        {
-                        PlayerRed.skipTurn();
-                        PlayerRed.addActionPoints();
-                        PlayerBlue.setisTurn(true);
-                        }
-                        else if (PlayerBlue.getActionPoints() < 8 && PlayerBlue.getisTurn() == true)
-                        {
-                        PlayerBlue.skipTurn();
-                        PlayerBlue.addActionPoints();
-                        PlayerGreen.setisTurn(true);
-                        }
-                        else if (PlayerGreen.getActionPoints() < 8 && PlayerGreen.getisTurn() == true)
-                        {
-                        PlayerGreen.skipTurn();
-                        PlayerGreen.addActionPoints();
-                        PlayerYellow.setisTurn(true);
-                        }
-                        else if (PlayerYellow.getActionPoints() < 8 && PlayerYellow.getisTurn() == true)
-                        {
-                        PlayerYellow.skipTurn();
-                        PlayerYellow.addActionPoints();
-                        PlayerRed.setisTurn(true);
-                        }
+                        SetBoardandPlayer.PlayerSkip(PlayerRed, PlayerBlue);
+                        SetBoardandPlayer.PlayerSkip(PlayerBlue, PlayerGreen);
+                        SetBoardandPlayer.PlayerSkip(PlayerGreen, PlayerYellow);
+                        SetBoardandPlayer.PlayerSkip(PlayerYellow, PlayerRed);
                 }
                     repaint();
             }
@@ -468,11 +175,11 @@ public class FlashPoint extends JFrame implements Runnable {
         }
 //              Point of intreasts
 ////////////////////////////////////////////////////////////////////////////////////
-                for(int i = 0;i < numFires.size();i++)
+                for(int i = 0;i < numFire.size();i++)
         {
-        g.setColor(numFires.get(i).getColor());
-        g.fillRect(Window.getX(0) + numFires.get(i).getCurrentColumn() * Window.getWidth2() / Board.numColumns,
-                Window.getY(0) + numFires.get(i).getCurrentRow() * Window.getHeight2() / Board.numRows,
+        g.setColor(numFire.get(i).getColor());
+        g.fillRect(Window.getX(0) + numFire.get(i).getCurrentColumn() * Window.getWidth2() / Board.numColumns,
+                Window.getY(0) + numFire.get(i).getCurrentRow() * Window.getHeight2() / Board.numRows,
                 Window.getWidth2() / Board.numColumns,
                 Window.getHeight2() / Board.numRows);
         }
@@ -689,7 +396,7 @@ public class FlashPoint extends JFrame implements Runnable {
 //              Lower half of wall
 ////////////////////////////////////////////////////////////////////////////////////
                 for (int i = 1; i < Board.numColumns - 1; i++) {
-                    g.setColor(Color.red);
+                    g.setColor(Color.BLACK);
                     g.fillRect(Window.getX(0) + i * Window.getWidth2() / Board.numColumns,
                             Window.getY(0) + (Board.numRows - 2) * Window.getHeight2() / Board.numRows + 70,
                             Window.getWidth2() / Board.numColumns,
@@ -699,7 +406,7 @@ public class FlashPoint extends JFrame implements Runnable {
 //                    Right of house
 //////////////////////////////////////////////////////////////////////////////////////
                 for (int i = 1; i < Board.numRows - 1; i++) {
-                    g.setColor(Color.pink);
+                    g.setColor(Color.BLACK);
                     g.fillRect(Window.getX(0) + (Board.numColumns - 2) * Window.getWidth2() / Board.numColumns + 70,
                             Window.getY(0) + i * Window.getHeight2() / Board.numRows,
                             Window.getWidth2() / Board.numColumns - 70,
@@ -709,7 +416,7 @@ public class FlashPoint extends JFrame implements Runnable {
 //                    left side of house
 ////////////////////////////////////////////////////////////////////////////////////
                 for (int i = 1; i < Board.numRows - 1; i++) {
-                    g.setColor(Color.blue);
+                    g.setColor(Color.BLACK);
                     g.fillRect(Window.getX(0) + 1 * Window.getWidth2() / Board.numColumns,
                             Window.getY(0) + i * Window.getHeight2() / Board.numRows,
                             Window.getWidth2() / Board.numColumns - 70,
@@ -802,7 +509,7 @@ public class FlashPoint extends JFrame implements Runnable {
         }
         for(int i = 0;i < 5;i++)
         {
-            numFires.add(i, new Fire());
+            numFire.add(i, new Fire());
         }
         for(int i = 0;i < 1;i++)
         {
@@ -814,18 +521,9 @@ public class FlashPoint extends JFrame implements Runnable {
         PlayerYellow.setActionPoints();
         PlayerRed.setisTurn(true);
         gameover = false;
-        for (int i = 0; i < numPois.size(); i++)
-        {
-         numPois.remove(i);
-        }
-        for (int i = 0; i < numFires.size(); i++)
-        {
-         numFires.remove(i);
-        }
-        for (int i = 0; i < numSmoke.size(); i++)
-        {
-         numSmoke.remove(i);
-        }
+        numPois.clear();
+        numFire.clear();
+        numSmoke.clear();
     }
 /////////////////////////////////////////////////////////////////////////
 
@@ -852,6 +550,31 @@ public class FlashPoint extends JFrame implements Runnable {
         if (gameover == false) {
             timecount++;
         }
+    }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static void addAndCheckSmoke ()
+    {
+        for(int i = 0;i < 1;i++)
+        {
+            numSmoke.add(i, new Smoke());
+
+            for (int j = 1;j < numSmoke.size();j++)
+            {
+                if (numSmoke.get(i).getCurrentColumn() == numSmoke.get(j).getCurrentColumn() && 
+                    numSmoke.get(i).getCurrentRow() == numSmoke.get(j).getCurrentRow())
+                {
+                    numSmoke.remove(i);
+                    addFire();
+                }
+            }
+        }
+    }
+    public static void addFire ()
+    {
+        for(int i = 0;i < 1;i++)
+        {
+                    numFire.add(i, new Fire());
+                }
     }
 ////////////////////////////////////////////////////////////////////////////
 

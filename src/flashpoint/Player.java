@@ -4,9 +4,9 @@ import java.awt.Graphics2D;
 import java.lang.Math;
 
 public class Player {
-//    public enum Players{
-//        Red,Blue,Green,Yellow
-//    }
+    public enum Players{
+        Red,Blue,Green,Yellow
+    }
     private int actionPoints;
     int currentRow;
     int currentColumn;

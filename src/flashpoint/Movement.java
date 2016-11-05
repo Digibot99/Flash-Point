@@ -56,7 +56,7 @@ public class Movement {
         if (Board.board[_currentRow + 1][_currentColumn] == Board.EMPTY && Board.board[_currentRow][_currentColumn] == Board.WALL)
             {
             System.out.println("g");
-            return (_currentColumn);
+            return (_currentRow);
             }
         else if (Board.board[_currentRow - 1][_currentColumn] == Board.WALL)
         {
@@ -79,7 +79,7 @@ public class Movement {
         if (Board.board[_currentRow + 1][_currentColumn] == Board.EMPTY && Board.board[_currentRow][_currentColumn] == Board.WALL)
             {
             System.out.println("g");
-            return (_currentColumn);
+            return (_currentRow);
             }
         if (Board.board[_currentRow + 1][_currentColumn] == Board.WALL)
         {
