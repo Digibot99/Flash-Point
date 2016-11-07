@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package flashpoint;
 
-/**
- *
- * @author 384000346
- */
 public class Window {
     static final int XBORDER = 20;
     static final int YBORDER = 20;

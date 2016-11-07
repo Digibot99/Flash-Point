@@ -1,12 +1,11 @@
 package flashpoint;
+
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.lang.Math;
 
 public class Player {
-    public enum Players{
-        Red,Blue,Green,Yellow
-    }
+
     private int actionPoints;
     int currentRow;
     int currentColumn;
@@ -15,86 +14,92 @@ public class Player {
     private Color color;
     private Board board[][];
     private boolean isTurn;
-    Player(Color _color){
+
+    Player(Color _color) {
         actionPoints = 0;
         color = _color;
-        currentColumn = (int)(Math.random()*Board.numColumns);
-        currentRow = (int)(Math.random()*Board.numRows);
+        while (currentColumn == 0 || currentColumn == Board.numColumns - 1)
+        {
+        currentColumn = (int) (Math.random() * Board.numColumns);
         }
-    public int getActionPoints()
-    {
-        return(actionPoints);
+        while (currentRow == 0 || currentRow == Board.numRows - 1)
+        {
+        currentRow = (int) (Math.random() * Board.numRows);
+        }
     }
-    public int setActionPoints()
-    {
+
+    public int getActionPoints() {
+        return (actionPoints);
+    }
+
+    public int setActionPoints() {
         actionPoints = 4;
-        return(actionPoints);
+        return (actionPoints);
     }
-    public int addActionPoints()
-    {
+
+    public int addActionPoints() {
         int morePoints = 4;
         actionPoints += morePoints;
-        
-        if (this.getActionPoints() > 8)
-        {
+
+        if (this.getActionPoints() > 8) {
             actionPoints = 8;
         }
         return (actionPoints);
     }
-    public void playerLoseActionPoint()
-    {
+
+    public void playerLoseActionPoint() {
         actionPoints -= 1;
     }
-    public Color getColor ()
-    {
-        return(color);
+
+    public Color getColor() {
+        return (color);
     }
-    public int getCurrentRow ()
-    {
-        return(currentRow);
+
+    public int getCurrentRow() {
+        return (currentRow);
     }
-    public int getCurrentColumn ()
-    {
-        return(currentColumn);
+
+    public int getCurrentColumn() {
+        return (currentColumn);
     }
-    public int getPreviousRow ()
-    {
-        return(previousRow);
+
+    public int getPreviousRow() {
+        return (previousRow);
     }
-    public int getPreviousColumn ()
-    {
-        return(previousColumn);
+
+    public int getPreviousColumn() {
+        return (previousColumn);
     }
-    public void setPreviousRow (int _row)
-    {
+
+    public void setPreviousRow(int _row) {
         previousRow = _row;
     }
-    public void setPreviousColumn (int _column)
-    {
+
+    public void setPreviousColumn(int _column) {
         previousColumn = _column;
     }
-    public Board getCurrentBoardLocation()
-    {
-        return(board[this.currentRow][this.currentColumn]);
+
+    public Board getCurrentBoardLocation() {
+        return (board[this.currentRow][this.currentColumn]);
     }
-    public void setCurrentRow (int _currentRow)
-    {
+
+    public void setCurrentRow(int _currentRow) {
         currentRow = _currentRow;
     }
-    public void setCurrentColumn (int _currentColumn)
-    {
+
+    public void setCurrentColumn(int _currentColumn) {
         currentColumn = _currentColumn;
     }
-    public boolean getisTurn ()
-    {
-        return(isTurn);
+
+    public boolean getisTurn() {
+        return (isTurn);
     }
-    public void setisTurn (boolean _temp)
-    {
+
+    public void setisTurn(boolean _temp) {
         isTurn = _temp;
     }
-    public void skipTurn ()
-    {
+
+    public void skipTurn() {
         this.setisTurn(false);
     }
 }
