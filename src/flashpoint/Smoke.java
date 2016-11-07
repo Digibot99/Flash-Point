@@ -13,10 +13,17 @@ public class Smoke {
     Smoke() {
 //        while (Board.board[currentRow][currentColumn] != Board.EMPTY || Board.board[currentRow][currentColumn] == Board.SMOKE) 
         {
+<<<<<<< HEAD
+            while (currentRow == 0 || currentRow >= Board.numRows - 1) {
+                currentRow = (int) (Math.random() * Board.numRows);
+            }
+            while (currentColumn == 0 || currentColumn >= Board.numColumns - 1) {
+=======
             while (currentRow == 0 || currentColumn >= Board.numRows - 2) {
                 currentRow = (int) (Math.random() * Board.numRows);
             }
             while (currentColumn == 0 || currentColumn >= Board.numColumns - 2) {
+>>>>>>> origin/master
                 currentColumn = (int) (Math.random() * Board.numColumns);
             }
         }

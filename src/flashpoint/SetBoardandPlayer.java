@@ -73,7 +73,11 @@ public class SetBoardandPlayer {
             if (player.getActionPoints() == 0) {
                 player.setisTurn(false);
                 player.setActionPoints();
+<<<<<<< HEAD
+                for (int i = 0; i < 1; i++)
+=======
                 for (int i = 0; i < 20; i++)
+>>>>>>> origin/master
                 {
                 FlashPoint.addAndCheckSmoke();
                 }nextPlayer.setisTurn(true);

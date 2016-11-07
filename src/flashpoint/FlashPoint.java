@@ -230,7 +230,12 @@ public class FlashPoint extends JFrame implements Runnable {
             gOld.drawImage(image, 0, 0, null);
             return;
         }
+<<<<<<< HEAD
+        //                     left side ,top ,right side ,bottom
+        g.drawImage(BoardImage,29,51,Window.xsize - 57,Window.ysize - 79,this);
+=======
         g.drawImage(BoardImage,0,0,Window.xsize,Window.ysize,this);
+>>>>>>> origin/master
         g.setColor(Color.gray);
 //horizontal lines
         for (int zi = 1; zi < Board.numRows; zi++) {
