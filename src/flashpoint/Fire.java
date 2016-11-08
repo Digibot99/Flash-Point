@@ -22,8 +22,6 @@ public class Fire {
                 currentColumn = (int) (Math.random() * Board.numColumns);
             }
         }
-        System.out.println(currentRow + " " + currentColumn);
-        color = Color.ORANGE;
     }
 
     public Color getColor() {

@@ -16,12 +16,15 @@ public class Smoke {
             while (currentRow == 0 || currentRow >= Board.numRows - 1) {
                 currentRow = (int) (Math.random() * Board.numRows);
             }
-            while (currentColumn == 0 || currentColumn >= Board.numColumns - 1) {
+            while (currentColumn == 0 || currentColumn >= Board.numColumns - 1) 
+            while (currentRow == 0 || currentRow >= Board.numRows - 1) {
+                currentRow = (int) (Math.random() * Board.numRows);
+            }
                 currentColumn = (int) (Math.random() * Board.numColumns);
             }
         }
 //        color = Color.DARK_GRAY;
-    }
+    
 
     public Color getColor() {
         return (color);
