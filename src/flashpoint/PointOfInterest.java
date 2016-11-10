@@ -12,9 +12,15 @@ public class PointOfInterest {
     private boolean isFalseAlarm;
 
     PointOfInterest() {
-        currentColumn = (int) (Math.random() * Board.numColumns);
-        currentRow = (int) (Math.random() * Board.numRows);
-        color = Color.BLUE;
+//        while (Board.board[currentRow][currentColumn] != Board.EMPTY || Board.board[currentRow][currentColumn] == Board.SMOKE) 
+        {
+            while (currentRow == 0 || currentRow >= Board.numRows - 1) {
+                currentRow = (int) (Math.random() * Board.numRows);
+            }
+            while (currentColumn == 0 || currentColumn >= Board.numColumns - 1) {
+                currentColumn = (int) (Math.random() * Board.numColumns);
+            }
+        }
         isFalseAlarm = this.setFalseAlarm();
     }
 

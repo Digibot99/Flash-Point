@@ -14,16 +14,19 @@ public class Smoke {
     Smoke(int _gifnum) {
 //        while (Board.board[currentRow][currentColumn] != Board.EMPTY || Board.board[currentRow][currentColumn] == Board.SMOKE) 
         {
-            while (currentRow == 0 || currentColumn >= Board.numRows - 2) {
+            while (currentRow == 0 || currentRow >= Board.numRows - 1) {
                 currentRow = (int) (Math.random() * Board.numRows);
             }
-            while (currentColumn == 0 || currentColumn >= Board.numColumns - 2) {
+            while (currentColumn == 0 || currentColumn >= Board.numColumns - 1) 
+            while (currentRow == 0 || currentRow >= Board.numRows - 1) {
+                currentRow = (int) (Math.random() * Board.numRows);
+            }
                 currentColumn = (int) (Math.random() * Board.numColumns);
             }
             GIFNum = _gifnum;
         }
 //        color = Color.DARK_GRAY;
-    }
+    
 
     public Color getColor() {
         return (color);
