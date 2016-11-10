@@ -15,7 +15,30 @@ public class FlashPoint extends JFrame implements Runnable {
     Graphics2D g;
     
     Image SmokeImage;
+    Image SmokeImage1;
+    Image SmokeImage2;
+    Image SmokeImage3;
+    Image SmokeImage4;
+    
+    
     Image FireImage;
+    Image FireImage1;
+    Image FireImage2;
+    Image FireImage3;
+    Image FireImage4;
+    Image FireImage5;
+    Image FireImage6;
+    Image FireImage7;
+    Image FireImage8;
+    Image FireImage9;
+    
+    
+    Image Player_Red;
+    Image Player_Blue;
+    Image Player_Yellow;
+    Image Player_Green;
+    
+    
     Image BoardImage;
 
     int smokeNum = 5;
@@ -42,10 +65,10 @@ public class FlashPoint extends JFrame implements Runnable {
 
     public static void main(String[] args) {
         frame1 = new FlashPoint();
-        frame1.setSize(Window.WINDOW_WIDTH, Window.WINDOW_HEIGHT);
+        frame1.setSize(Window.WINDOW_WIDTH*2, Window.WINDOW_HEIGHT*2);
         frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame1.setVisible(true);
-        frame1.setResizable(false);
+//        frame1.setResizable(false);
     }
 
     public FlashPoint() {
@@ -254,193 +277,189 @@ public class FlashPoint extends JFrame implements Runnable {
 //                  players
 ////////////////////////////////////////////////////////////////////////////////////
                 g.setColor(PlayerRed.getColor());
-                g.fillRect(Window.getX(0) + PlayerRed.currentColumn * Window.getWidth2() / Board.numColumns,
-                        Window.getY(0) + PlayerRed.currentRow * Window.getHeight2() / Board.numRows,
-                        Window.getWidth2() / Board.numColumns,
-                        Window.getHeight2() / Board.numRows);
+                    g.drawImage(Player_Red,Window.getX(0) + PlayerRed.getCurrentColumn() * Window.getWidth2() / Board.numColumns,
+                        Window.getY(0) + PlayerRed.getCurrentRow() * Window.getHeight2() / Board.numRows,
+                Window.getWidth2() / Board.numColumns,Window.getHeight2() / Board.numRows,this);
 
                 g.setColor(PlayerBlue.getColor());
-                g.fillRect(Window.getX(0) + PlayerBlue.currentColumn * Window.getWidth2() / Board.numColumns,
-                        Window.getY(0) + PlayerBlue.currentRow * Window.getHeight2() / Board.numRows,
-                        Window.getWidth2() / Board.numColumns,
-                        Window.getHeight2() / Board.numRows);
+                    g.drawImage(Player_Blue,Window.getX(0) + PlayerBlue.getCurrentColumn() * Window.getWidth2() / Board.numColumns,
+                        Window.getY(0) + PlayerBlue.getCurrentRow() * Window.getHeight2() / Board.numRows,
+                Window.getWidth2() / Board.numColumns,Window.getHeight2() / Board.numRows,this);
 
                 g.setColor(PlayerGreen.getColor());
-                g.fillRect(Window.getX(0) + PlayerGreen.currentColumn * Window.getWidth2() / Board.numColumns,
-                        Window.getY(0) + PlayerGreen.currentRow * Window.getHeight2() / Board.numRows,
-                        Window.getWidth2() / Board.numColumns,
-                        Window.getHeight2() / Board.numRows);
+                    g.drawImage(Player_Green,Window.getX(0) + PlayerGreen.getCurrentColumn() * Window.getWidth2() / Board.numColumns,
+                        Window.getY(0) + PlayerGreen.getCurrentRow() * Window.getHeight2() / Board.numRows,
+                Window.getWidth2() / Board.numColumns,Window.getHeight2() / Board.numRows,this);
 
                 g.setColor(PlayerYellow.getColor());
-                g.fillRect(Window.getX(0) + PlayerYellow.currentColumn * Window.getWidth2() / Board.numColumns,
-                        Window.getY(0) + PlayerYellow.currentRow * Window.getHeight2() / Board.numRows,
-                        Window.getWidth2() / Board.numColumns,
-                        Window.getHeight2() / Board.numRows);
+                    g.drawImage(Player_Yellow,Window.getX(0) + PlayerYellow.getCurrentColumn() * Window.getWidth2() / Board.numColumns,
+                        Window.getY(0) + PlayerYellow.getCurrentRow() * Window.getHeight2() / Board.numRows,
+                Window.getWidth2() / Board.numColumns,Window.getHeight2() / Board.numRows,this);
 //                  inner doors
 ////////////////////////////////////////////////////////////////////////////////////
                 g.setColor(Color.yellow);
                 g.fillRect(Window.getX(0) + 8 * Window.getWidth2() / Board.numColumns,
-                        Window.getY(0) + 2 * Window.getHeight2() / Board.numRows + 70,
+                        Window.getY(0) + 2 * Window.getHeight2() / Board.numRows +140,
                         Window.getWidth2() / Board.numColumns,
-                        Window.getHeight2() / Board.numRows - 70);
+                        Window.getHeight2() / Board.numRows - 140);
                 Board.board[2][8] = Board.DOOR;
 
                 g.setColor(Color.yellow);
-                g.fillRect(Window.getX(0) + 2 * Window.getWidth2() / Board.numColumns + 70,
+                g.fillRect(Window.getX(0) + 2 * Window.getWidth2() / Board.numColumns + 140,
                         Window.getY(0) + 3 * Window.getHeight2() / Board.numRows,
-                        Window.getWidth2() / Board.numColumns - 70,
+                        Window.getWidth2() / Board.numColumns - 140,
                         Window.getHeight2() / Board.numRows);
 
                 g.setColor(Color.yellow);
-                g.fillRect(Window.getX(0) + 3 * Window.getWidth2() / Board.numColumns + 70,
+                g.fillRect(Window.getX(0) + 3 * Window.getWidth2() / Board.numColumns + 140,
                         Window.getY(0) + 1 * Window.getHeight2() / Board.numRows,
-                        Window.getWidth2() / Board.numColumns - 70,
+                        Window.getWidth2() / Board.numColumns - 140,
                         Window.getHeight2() / Board.numRows);
 
                 g.setColor(Color.yellow);
                 g.fillRect(Window.getX(0) + 4 * Window.getWidth2() / Board.numColumns,
-                        Window.getY(0) + 4 * Window.getHeight2() / Board.numRows + 70,
+                        Window.getY(0) + 4 * Window.getHeight2() / Board.numRows + 140,
                         Window.getWidth2() / Board.numColumns,
-                        Window.getHeight2() / Board.numRows - 70);
+                        Window.getHeight2() / Board.numRows - 140);
 
                 g.setColor(Color.yellow);
-                g.fillRect(Window.getX(0) + 5 * Window.getWidth2() / Board.numColumns + 70,
+                g.fillRect(Window.getX(0) + 5 * Window.getWidth2() / Board.numColumns + 140,
                         Window.getY(0) + 6 * Window.getHeight2() / Board.numRows,
-                        Window.getWidth2() / Board.numColumns - 70,
+                        Window.getWidth2() / Board.numColumns - 140,
                         Window.getHeight2() / Board.numRows);
 
                 g.setColor(Color.yellow);
-                g.fillRect(Window.getX(0) + 7 * Window.getWidth2() / Board.numColumns + 70,
+                g.fillRect(Window.getX(0) + 7 * Window.getWidth2() / Board.numColumns + 140,
                         Window.getY(0) + 6 * Window.getHeight2() / Board.numRows,
-                        Window.getWidth2() / Board.numColumns - 70,
+                        Window.getWidth2() / Board.numColumns - 140,
                         Window.getHeight2() / Board.numRows);
 
                 g.setColor(Color.yellow);
-                g.fillRect(Window.getX(0) + 6 * Window.getWidth2() / Board.numColumns + 70,
+                g.fillRect(Window.getX(0) + 6 * Window.getWidth2() / Board.numColumns + 140,
                         Window.getY(0) + 4 * Window.getHeight2() / Board.numRows,
-                        Window.getWidth2() / Board.numColumns - 70,
+                        Window.getWidth2() / Board.numColumns - 140,
                         Window.getHeight2() / Board.numRows);
 
                 g.setColor(Color.yellow);
-                g.fillRect(Window.getX(0) + 5 * Window.getWidth2() / Board.numColumns + 70,
+                g.fillRect(Window.getX(0) + 5 * Window.getWidth2() / Board.numColumns + 140,
                         Window.getY(0) + 2 * Window.getHeight2() / Board.numRows,
-                        Window.getWidth2() / Board.numColumns - 70,
+                        Window.getWidth2() / Board.numColumns - 140,
                         Window.getHeight2() / Board.numRows);
 //                  inner walls
 ////////////////////////////////////////////////////////////////////////////////////
                 g.setColor(Color.BLACK);
-                g.fillRect(Window.getX(0) + 2 * Window.getWidth2() / Board.numColumns + 70,
+                g.fillRect(Window.getX(0) + 2 * Window.getWidth2() / Board.numColumns + 140,
                         Window.getY(0) + 4 * Window.getHeight2() / Board.numRows,
-                        Window.getWidth2() / Board.numColumns - 70,
+                        Window.getWidth2() / Board.numColumns - 140,
                         Window.getHeight2() / Board.numRows);
 
                 g.setColor(Color.BLACK);
-                g.fillRect(Window.getX(0) + 3 * Window.getWidth2() / Board.numColumns + 70,
+                g.fillRect(Window.getX(0) + 3 * Window.getWidth2() / Board.numColumns + 140,
                         Window.getY(0) + 2 * Window.getHeight2() / Board.numRows,
-                        Window.getWidth2() / Board.numColumns - 70,
+                        Window.getWidth2() / Board.numColumns - 140,
                         Window.getHeight2() / Board.numRows);
 
                 g.setColor(Color.BLACK);
                 g.fillRect(Window.getX(0) + 3 * Window.getWidth2() / Board.numColumns,
-                        Window.getY(0) + 2 * Window.getHeight2() / Board.numRows + 70,
+                        Window.getY(0) + 2 * Window.getHeight2() / Board.numRows + 140,
                         Window.getWidth2() / Board.numColumns,
-                        Window.getHeight2() / Board.numRows - 70);
+                        Window.getHeight2() / Board.numRows - 140);
 
                 g.setColor(Color.BLACK);
                 g.fillRect(Window.getX(0) + 1 * Window.getWidth2() / Board.numColumns,
-                        Window.getY(0) + 4 * Window.getHeight2() / Board.numRows + 70,
+                        Window.getY(0) + 4 * Window.getHeight2() / Board.numRows + 140,
                         Window.getWidth2() / Board.numColumns,
-                        Window.getHeight2() / Board.numRows - 70);
+                        Window.getHeight2() / Board.numRows - 140);
 
                 g.setColor(Color.BLACK);
                 g.fillRect(Window.getX(0) + 2 * Window.getWidth2() / Board.numColumns,
-                        Window.getY(0) + 4 * Window.getHeight2() / Board.numRows + 70,
+                        Window.getY(0) + 4 * Window.getHeight2() / Board.numRows + 140,
                         Window.getWidth2() / Board.numColumns,
-                        Window.getHeight2() / Board.numRows - 70);
+                        Window.getHeight2() / Board.numRows - 140);
 
                 g.setColor(Color.BLACK);
                 g.fillRect(Window.getX(0) + 3 * Window.getWidth2() / Board.numColumns,
-                        Window.getY(0) + 4 * Window.getHeight2() / Board.numRows + 70,
+                        Window.getY(0) + 4 * Window.getHeight2() / Board.numRows + 140,
                         Window.getWidth2() / Board.numColumns,
-                        Window.getHeight2() / Board.numRows - 70);
+                        Window.getHeight2() / Board.numRows - 140);
 
                 g.setColor(Color.BLACK);
                 g.fillRect(Window.getX(0) + 5 * Window.getWidth2() / Board.numColumns,
-                        Window.getY(0) + 4 * Window.getHeight2() / Board.numRows + 70,
+                        Window.getY(0) + 4 * Window.getHeight2() / Board.numRows + 140,
                         Window.getWidth2() / Board.numColumns,
-                        Window.getHeight2() / Board.numRows - 70);
+                        Window.getHeight2() / Board.numRows - 140);
 
                 g.setColor(Color.BLACK);
                 g.fillRect(Window.getX(0) + 6 * Window.getWidth2() / Board.numColumns,
-                        Window.getY(0) + 4 * Window.getHeight2() / Board.numRows + 70,
+                        Window.getY(0) + 4 * Window.getHeight2() / Board.numRows + 140,
                         Window.getWidth2() / Board.numColumns,
-                        Window.getHeight2() / Board.numRows - 70);
+                        Window.getHeight2() / Board.numRows - 140);
 
                 g.setColor(Color.BLACK);
                 g.fillRect(Window.getX(0) + 4 * Window.getWidth2() / Board.numColumns,
-                        Window.getY(0) + 2 * Window.getHeight2() / Board.numRows + 70,
+                        Window.getY(0) + 2 * Window.getHeight2() / Board.numRows + 140,
                         Window.getWidth2() / Board.numColumns,
-                        Window.getHeight2() / Board.numRows - 70);
+                        Window.getHeight2() / Board.numRows - 140);
 
                 g.setColor(Color.BLACK);
                 g.fillRect(Window.getX(0) + 5 * Window.getWidth2() / Board.numColumns,
-                        Window.getY(0) + 2 * Window.getHeight2() / Board.numRows + 70,
+                        Window.getY(0) + 2 * Window.getHeight2() / Board.numRows + 140,
                         Window.getWidth2() / Board.numColumns,
-                        Window.getHeight2() / Board.numRows - 70);
+                        Window.getHeight2() / Board.numRows - 140);
 
                 g.setColor(Color.BLACK);
                 g.fillRect(Window.getX(0) + 6 * Window.getWidth2() / Board.numColumns,
-                        Window.getY(0) + 2 * Window.getHeight2() / Board.numRows + 70,
+                        Window.getY(0) + 2 * Window.getHeight2() / Board.numRows + 140,
                         Window.getWidth2() / Board.numColumns,
-                        Window.getHeight2() / Board.numRows - 70);
+                        Window.getHeight2() / Board.numRows - 140);
 
                 g.setColor(Color.BLACK);
                 g.fillRect(Window.getX(0) + 7 * Window.getWidth2() / Board.numColumns,
-                        Window.getY(0) + 4 * Window.getHeight2() / Board.numRows + 70,
+                        Window.getY(0) + 4 * Window.getHeight2() / Board.numRows + 140,
                         Window.getWidth2() / Board.numColumns,
-                        Window.getHeight2() / Board.numRows - 70);
+                        Window.getHeight2() / Board.numRows - 140);
 
                 g.setColor(Color.BLACK);
                 g.fillRect(Window.getX(0) + 8 * Window.getWidth2() / Board.numColumns,
-                        Window.getY(0) + 4 * Window.getHeight2() / Board.numRows + 70,
+                        Window.getY(0) + 4 * Window.getHeight2() / Board.numRows + 140,
                         Window.getWidth2() / Board.numColumns,
-                        Window.getHeight2() / Board.numRows - 70);
+                        Window.getHeight2() / Board.numRows - 140);
 
                 g.setColor(Color.BLACK);
-                g.fillRect(Window.getX(0) + 5 * Window.getWidth2() / Board.numColumns + 70,
+                g.fillRect(Window.getX(0) + 5 * Window.getWidth2() / Board.numColumns + 140,
                         Window.getY(0) + 5 * Window.getHeight2() / Board.numRows,
-                        Window.getWidth2() / Board.numColumns - 70,
+                        Window.getWidth2() / Board.numColumns - 140,
                         Window.getHeight2() / Board.numRows);
 
                 g.setColor(Color.BLACK);
-                g.fillRect(Window.getX(0) + 7 * Window.getWidth2() / Board.numColumns + 70,
+                g.fillRect(Window.getX(0) + 7 * Window.getWidth2() / Board.numColumns + 140,
                         Window.getY(0) + 5 * Window.getHeight2() / Board.numRows,
-                        Window.getWidth2() / Board.numColumns - 70,
+                        Window.getWidth2() / Board.numColumns - 140,
                         Window.getHeight2() / Board.numRows);
 
                 g.setColor(Color.BLACK);
-                g.fillRect(Window.getX(0) + 6 * Window.getWidth2() / Board.numColumns + 70,
+                g.fillRect(Window.getX(0) + 6 * Window.getWidth2() / Board.numColumns + 140,
                         Window.getY(0) + 3 * Window.getHeight2() / Board.numRows,
-                        Window.getWidth2() / Board.numColumns - 70,
+                        Window.getWidth2() / Board.numColumns - 140,
                         Window.getHeight2() / Board.numRows);
 
                 g.setColor(Color.BLACK);
-                g.fillRect(Window.getX(0) + 5 * Window.getWidth2() / Board.numColumns + 70,
+                g.fillRect(Window.getX(0) + 5 * Window.getWidth2() / Board.numColumns + 140,
                         Window.getY(0) + 1 * Window.getHeight2() / Board.numRows,
-                        Window.getWidth2() / Board.numColumns - 70,
+                        Window.getWidth2() / Board.numColumns - 140,
                         Window.getHeight2() / Board.numRows);
 
                 g.setColor(Color.BLACK);
                 g.fillRect(Window.getX(0) + 7 * Window.getWidth2() / Board.numColumns,
-                        Window.getY(0) + 2 * Window.getHeight2() / Board.numRows + 70,
+                        Window.getY(0) + 2 * Window.getHeight2() / Board.numRows + 140,
                         Window.getWidth2() / Board.numColumns,
-                        Window.getHeight2() / Board.numRows - 70);
+                        Window.getHeight2() / Board.numRows - 140);
 
                 g.setColor(Color.BLACK);
-                g.fillRect(Window.getX(0) + 2 * Window.getWidth2() / Board.numColumns + 70,
-                        Window.getY(0) + 2 * Window.getHeight2() / Board.numRows + 70,
-                        Window.getWidth2() / Board.numColumns - 70,
-                        Window.getHeight2() / Board.numRows - 70);
+                g.fillRect(Window.getX(0) + 2 * Window.getWidth2() / Board.numColumns + 140,
+                        Window.getY(0) + 2 * Window.getHeight2() / Board.numRows + 140,
+                        Window.getWidth2() / Board.numColumns - 140,
+                        Window.getHeight2() / Board.numRows - 140);
 //              Upper half of wall
 ////////////////////////////////////////////////////////////////////////////////////
                 for (int i = 1; i < Board.numColumns - 1; i++) {
@@ -448,7 +467,7 @@ public class FlashPoint extends JFrame implements Runnable {
                     g.fillRect(Window.getX(0) + i * Window.getWidth2() / Board.numColumns,
                             Window.getY(0) + 1 * Window.getHeight2() / Board.numRows,
                             Window.getWidth2() / Board.numColumns,
-                            Window.getHeight2() / Board.numRows - 70);
+                            Window.getHeight2() / Board.numRows - 140);
                     Board.board[1][i] = Board.WALL;
                 }
 //              Lower half of wall
@@ -456,18 +475,18 @@ public class FlashPoint extends JFrame implements Runnable {
                 for (int i = 1; i < Board.numColumns - 1; i++) {
                     g.setColor(Color.BLACK);
                     g.fillRect(Window.getX(0) + i * Window.getWidth2() / Board.numColumns,
-                            Window.getY(0) + (Board.numRows - 2) * Window.getHeight2() / Board.numRows + 70,
+                            Window.getY(0) + (Board.numRows - 2) * Window.getHeight2() / Board.numRows + 140,
                             Window.getWidth2() / Board.numColumns,
-                            Window.getHeight2() / Board.numRows - 70);
+                            Window.getHeight2() / Board.numRows - 140);
                     Board.board[Board.numRows - 2][i] = Board.WALL;
                 }
 //                    Right of house
 //////////////////////////////////////////////////////////////////////////////////////
                 for (int i = 1; i < Board.numRows - 1; i++) {
                     g.setColor(Color.BLACK);
-                    g.fillRect(Window.getX(0) + (Board.numColumns - 2) * Window.getWidth2() / Board.numColumns + 70,
+                    g.fillRect(Window.getX(0) + (Board.numColumns - 2) * Window.getWidth2() / Board.numColumns + 140,
                             Window.getY(0) + i * Window.getHeight2() / Board.numRows,
-                            Window.getWidth2() / Board.numColumns - 70,
+                            Window.getWidth2() / Board.numColumns - 140,
                             Window.getHeight2() / Board.numRows);
                     Board.board[i][Board.numColumns - 2] = Board.WALL;
                 }
@@ -477,7 +496,7 @@ public class FlashPoint extends JFrame implements Runnable {
                     g.setColor(Color.BLACK);
                     g.fillRect(Window.getX(0) + 1 * Window.getWidth2() / Board.numColumns,
                             Window.getY(0) + i * Window.getHeight2() / Board.numRows,
-                            Window.getWidth2() / Board.numColumns - 70,
+                            Window.getWidth2() / Board.numColumns - 140,
                             Window.getHeight2() / Board.numRows);
                     Board.board[i][1] = Board.WALL;
                 }
@@ -493,16 +512,62 @@ public class FlashPoint extends JFrame implements Runnable {
 //              Point of fire
 ////////////////////////////////////////////////////////////////////////////////////
                 for (int i = 0; i < numFire.size(); i++) {
+                    if (numFire.get(i).getGIFNum() == 1){
                     g.drawImage(FireImage,Window.getX(0) + numFire.get(i).getCurrentColumn() * Window.getWidth2() / Board.numColumns,
                         Window.getY(0) + numFire.get(i).getCurrentRow() * Window.getHeight2() / Board.numRows,
-                Window.getWidth2() / Board.numColumns,Window.getHeight2() / Board.numRows,this);
+                Window.getWidth2() / Board.numColumns,Window.getHeight2() / Board.numRows,this);}
+                    if (numFire.get(i).getGIFNum() == 2){
+                    g.drawImage(FireImage2,Window.getX(0) + numFire.get(i).getCurrentColumn() * Window.getWidth2() / Board.numColumns,
+                        Window.getY(0) + numFire.get(i).getCurrentRow() * Window.getHeight2() / Board.numRows,
+                Window.getWidth2() / Board.numColumns,Window.getHeight2() / Board.numRows,this);}
+                    if (numFire.get(i).getGIFNum() == 3){
+                    g.drawImage(FireImage3,Window.getX(0) + numFire.get(i).getCurrentColumn() * Window.getWidth2() / Board.numColumns,
+                        Window.getY(0) + numFire.get(i).getCurrentRow() * Window.getHeight2() / Board.numRows,
+                Window.getWidth2() / Board.numColumns,Window.getHeight2() / Board.numRows,this);}
+                    if (numFire.get(i).getGIFNum() == 4){
+                    g.drawImage(FireImage4,Window.getX(0) + numFire.get(i).getCurrentColumn() * Window.getWidth2() / Board.numColumns,
+                        Window.getY(0) + numFire.get(i).getCurrentRow() * Window.getHeight2() / Board.numRows,
+                Window.getWidth2() / Board.numColumns,Window.getHeight2() / Board.numRows,this);}
+                    if (numFire.get(i).getGIFNum() == 5){
+                    g.drawImage(FireImage5,Window.getX(0) + numFire.get(i).getCurrentColumn() * Window.getWidth2() / Board.numColumns,
+                        Window.getY(0) + numFire.get(i).getCurrentRow() * Window.getHeight2() / Board.numRows,
+                Window.getWidth2() / Board.numColumns,Window.getHeight2() / Board.numRows,this);}
+                    if (numFire.get(i).getGIFNum() == 6){
+                    g.drawImage(FireImage6,Window.getX(0) + numFire.get(i).getCurrentColumn() * Window.getWidth2() / Board.numColumns,
+                        Window.getY(0) + numFire.get(i).getCurrentRow() * Window.getHeight2() / Board.numRows,
+                Window.getWidth2() / Board.numColumns,Window.getHeight2() / Board.numRows,this);}
+                    if (numFire.get(i).getGIFNum() == 7){
+                    g.drawImage(FireImage7,Window.getX(0) + numFire.get(i).getCurrentColumn() * Window.getWidth2() / Board.numColumns,
+                        Window.getY(0) + numFire.get(i).getCurrentRow() * Window.getHeight2() / Board.numRows,
+                Window.getWidth2() / Board.numColumns,Window.getHeight2() / Board.numRows,this);}
+                    if (numFire.get(i).getGIFNum() == 8){
+                    g.drawImage(FireImage8,Window.getX(0) + numFire.get(i).getCurrentColumn() * Window.getWidth2() / Board.numColumns,
+                        Window.getY(0) + numFire.get(i).getCurrentRow() * Window.getHeight2() / Board.numRows,
+                Window.getWidth2() / Board.numColumns,Window.getHeight2() / Board.numRows,this);}
+                    if (numFire.get(i).getGIFNum() == 9){
+                    g.drawImage(FireImage9,Window.getX(0) + numFire.get(i).getCurrentColumn() * Window.getWidth2() / Board.numColumns,
+                        Window.getY(0) + numFire.get(i).getCurrentRow() * Window.getHeight2() / Board.numRows,
+                Window.getWidth2() / Board.numColumns,Window.getHeight2() / Board.numRows,this);}
                 }
 //              Point of smoke
 ////////////////////////////////////////////////////////////////////////////////////
                 for (int i = 0; i < numSmoke.size(); i++) {
+                    if (numSmoke.get(i).getGIFNum() == 1){
                     g.drawImage(SmokeImage,Window.getX(0) + numSmoke.get(i).getCurrentColumn() * Window.getWidth2() / Board.numColumns,
                         Window.getY(0) + numSmoke.get(i).getCurrentRow() * Window.getHeight2() / Board.numRows,
-                Window.getWidth2() / Board.numColumns,Window.getHeight2() / Board.numRows,this);
+                Window.getWidth2() / Board.numColumns,Window.getHeight2() / Board.numRows,this);}
+                    if (numSmoke.get(i).getGIFNum() == 2){
+                    g.drawImage(SmokeImage2,Window.getX(0) + numSmoke.get(i).getCurrentColumn() * Window.getWidth2() / Board.numColumns,
+                        Window.getY(0) + numSmoke.get(i).getCurrentRow() * Window.getHeight2() / Board.numRows,
+                Window.getWidth2() / Board.numColumns,Window.getHeight2() / Board.numRows,this);}
+                    if (numSmoke.get(i).getGIFNum() == 3){
+                    g.drawImage(SmokeImage3,Window.getX(0) + numSmoke.get(i).getCurrentColumn() * Window.getWidth2() / Board.numColumns,
+                        Window.getY(0) + numSmoke.get(i).getCurrentRow() * Window.getHeight2() / Board.numRows,
+                Window.getWidth2() / Board.numColumns,Window.getHeight2() / Board.numRows,this);}
+                    if (numSmoke.get(i).getGIFNum() == 4){
+                        g.drawImage(SmokeImage4,Window.getX(0) + numSmoke.get(i).getCurrentColumn() * Window.getWidth2() / Board.numColumns,
+                        Window.getY(0) + numSmoke.get(i).getCurrentRow() * Window.getHeight2() / Board.numRows,
+                        Window.getWidth2() / Board.numColumns,Window.getHeight2() / Board.numRows,this);}
                 }
                 
 
@@ -560,7 +625,7 @@ public class FlashPoint extends JFrame implements Runnable {
             numPois.add(i, new PointOfInterest());
         }
         for (int i = 0; i < fireNumAtStart; i++) {
-            numFire.add(new Fire((int)(Math.random()*Board.numRows-1),(int)(Math.random()*Board.numColumns-1)));
+            numFire.add(new Fire((int)(Math.random()*Board.numRows-1),(int)(Math.random()*Board.numColumns-1), (int)(Math.random()*9+1)));
         }
         PlayerRed.setActionPoints();
         PlayerBlue.setActionPoints();
@@ -583,6 +648,27 @@ public class FlashPoint extends JFrame implements Runnable {
         }
         FireImage = Toolkit.getDefaultToolkit().getImage("./fire.GIF");
         SmokeImage = Toolkit.getDefaultToolkit().getImage("./smoke.GIF");
+        FireImage1 = Toolkit.getDefaultToolkit().getImage("./fire_1.GIF");
+        SmokeImage1 = Toolkit.getDefaultToolkit().getImage("./smoke_1.GIF");
+        FireImage2 = Toolkit.getDefaultToolkit().getImage("./fire_2.GIF");
+        SmokeImage2 = Toolkit.getDefaultToolkit().getImage("./smoke_2.GIF");
+        FireImage3 = Toolkit.getDefaultToolkit().getImage("./fire_3.GIF");
+        SmokeImage3 = Toolkit.getDefaultToolkit().getImage("./smoke_3.GIF");
+        FireImage4 = Toolkit.getDefaultToolkit().getImage("./fire_4.GIF");
+        SmokeImage4 = Toolkit.getDefaultToolkit().getImage("./smoke_4.GIF");
+        FireImage5 = Toolkit.getDefaultToolkit().getImage("./fire_5.GIF");
+        FireImage6 = Toolkit.getDefaultToolkit().getImage("./fire_6.GIF");
+        FireImage7 = Toolkit.getDefaultToolkit().getImage("./fire_7.GIF");
+        FireImage8 = Toolkit.getDefaultToolkit().getImage("./fire_8.GIF");
+        FireImage9 = Toolkit.getDefaultToolkit().getImage("./fire_9.GIF");
+        
+        
+        Player_Red = Toolkit.getDefaultToolkit().getImage("./Player_Red.png");
+        Player_Blue = Toolkit.getDefaultToolkit().getImage("./Player_Blue.png");
+        Player_Yellow = Toolkit.getDefaultToolkit().getImage("./Player_Yellow.png");
+        Player_Green = Toolkit.getDefaultToolkit().getImage("./Player_Green.png");
+        
+        
         BoardImage = Toolkit.getDefaultToolkit().getImage("./board.jpg");
 
         if (gameover); else if (timecount % (int) (frameRate) == (int) (frameRate) - 1) {
@@ -600,7 +686,7 @@ public class FlashPoint extends JFrame implements Runnable {
 
     public static void addAndCheckSmoke() {
         for (int i = 0; i < 1; i++) {
-            numSmoke.add(new Smoke());
+            numSmoke.add(new Smoke((int)(Math.random()* 4 + 1)));
 
             for (int j = 2; j < numSmoke.size(); j++) {
 //                System.out.println("j = " + j);
@@ -618,7 +704,7 @@ public class FlashPoint extends JFrame implements Runnable {
     public static void addFire(int _currentRow, int _currentColumn) {
         for (int i = 0; i < 1; i++) {
             System.out.println(_currentRow + " " + _currentColumn);
-            numFire.add(i, new Fire(_currentRow, _currentColumn));
+            numFire.add(i, new Fire(_currentRow, _currentColumn, (int)(Math.random()*9+1)));
             System.out.println(numFire.size());
             return;
         }

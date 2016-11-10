@@ -9,18 +9,22 @@ public class Fire {
     private int currentRow;
     private Color color;
     private int currentColumn;
+    private int GIFNum;
 
-    Fire(int _currentRow, int _currentColumn) {
+    Fire(int _currentRow, int _currentColumn, int _gifnum) {
         currentColumn = _currentColumn;
         currentRow = _currentRow;
         System.out.println(currentRow + " " + currentColumn);
-        color = Color.ORANGE;
+        GIFNum = _gifnum;
     }
 
     public Color getColor() {
         return (color);
     }
-
+    
+    public int getGIFNum() {
+        return (GIFNum);
+    }
     public int getCurrentRow() {
         return (currentRow);
     }
