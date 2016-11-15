@@ -21,6 +21,7 @@ public class PointOfInterest {
                 currentColumn = (int) (Math.random() * Board.numColumns);
             }
         }
+        color = Color.BLUE;
         isFalseAlarm = this.setFalseAlarm();
     }
 

@@ -9,15 +9,10 @@ public class Fire {
     private int currentRow;
     private Color color;
     private int currentColumn;
-    private int GIFNum;
 
-    Fire(int _currentRow, int _currentColumn, int _gifnum) {
+    Fire(int _currentRow, int _currentColumn) {
         currentColumn = _currentColumn;
         currentRow = _currentRow;
-<<<<<<< HEAD
-        System.out.println(currentRow + " " + currentColumn);
-        GIFNum = _gifnum;
-=======
 //        while (Board.board[currentRow][currentColumn] != Board.EMPTY || Board.board[currentRow][currentColumn] == Board.SMOKE) 
         {
             while (currentRow == 0 || currentRow >= Board.numRows - 1) {
@@ -27,16 +22,12 @@ public class Fire {
                 currentColumn = (int) (Math.random() * Board.numColumns);
             }
         }
->>>>>>> origin/master
     }
 
     public Color getColor() {
         return (color);
     }
-    
-    public int getGIFNum() {
-        return (GIFNum);
-    }
+
     public int getCurrentRow() {
         return (currentRow);
     }

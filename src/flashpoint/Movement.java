@@ -6,6 +6,9 @@ public class Movement {
     static int newRow;
 
     public static int MoveRight(int _currentRow, int _currentColumn) {
+        if (Board.board [_currentRow][_currentColumn + 1] == Board.INVIS_WALL)
+            return(newColumn = _currentColumn);
+            
         if (Board.board[_currentRow][_currentColumn] == Board.WALL) {
             System.out.println("g");
             return (_currentColumn);
