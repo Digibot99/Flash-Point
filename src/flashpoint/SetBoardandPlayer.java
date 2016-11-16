@@ -89,4 +89,48 @@ public class SetBoardandPlayer {
             nextPlayer.setisTurn(true);
         }
     }
+    public static int  PlayerInteract(Player player) {
+//        if (player.getCurrentColumn() >= 0 && player.getCurrentColumn() <= Board.numColumns)
+        {
+            if (Board.board[player.getCurrentRow()][player.getCurrentColumn() + 1] == Board.FIRE)
+            {
+                System.out.println(player.getCurrentRow() + " " + player.getCurrentColumn());
+                return(Board.board[player.getCurrentRow()][player.getCurrentColumn() + 1]);
+            }
+            else if (Board.board[player.getCurrentRow()][player.getCurrentColumn() - 1] == Board.FIRE)
+            {
+                System.out.println(player.getCurrentRow() + " " + player.getCurrentColumn());
+                return(Board.board[player.getCurrentRow()][player.getCurrentColumn() - 1]);   
+            }
+        }
+//        if (player.getCurrentRow() >= 0 && player.getCurrentRow() <= Board.numRows)
+        {
+            if (Board.board[player.getCurrentRow() - 1 ][player.getCurrentColumn()] == Board.FIRE)
+            {
+                System.out.println(player.getCurrentRow() + " " + player.getCurrentColumn());
+                return(Board.board[player.getCurrentRow() - 1][player.getCurrentColumn()]);   
+            }
+            else if (Board.board[player.getCurrentRow() + 1 ][player.getCurrentColumn()] == Board.FIRE)
+            {
+                System.out.println(player.getCurrentRow() + " " + player.getCurrentColumn());
+                return(Board.board[player.getCurrentRow() + 1][player.getCurrentColumn()]);   
+            }
+        }
+        
+//        if (Board.board[player.getCurrentRow()][player.getCurrentColumn() + 1 ] == Board.SMOKE ||
+//            Board.board[player.getCurrentRow()][player.getCurrentColumn() - 1 ] == Board.SMOKE ||
+//            Board.board[player.getCurrentRow() + 1 ][player.getCurrentColumn()] == Board.SMOKE ||
+//            Board.board[player.getCurrentRow() - 1 ][player.getCurrentColumn()] == Board.SMOKE)
+//        {
+//            return (true);
+//        }
+//        if (Board.board[player.getCurrentRow()][player.getCurrentColumn() + 1 ] == Board.POI ||
+//            Board.board[player.getCurrentRow()][player.getCurrentColumn() - 1 ] == Board.POI ||
+//            Board.board[player.getCurrentRow() + 1 ][player.getCurrentColumn()] == Board.POI ||
+//            Board.board[player.getCurrentRow() - 1 ][player.getCurrentColumn()] == Board.POI)
+//        {
+//            return (true);
+//        }
+            return (0);
+    }
 }

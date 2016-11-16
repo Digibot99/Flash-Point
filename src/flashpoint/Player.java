@@ -47,6 +47,11 @@ public class Player {
         return (actionPoints);
     }
 
+    public int loseAllActionPoints() {
+        actionPoints = 0;
+        return (actionPoints);
+    }
+     
     public void playerLoseActionPoint() {
         actionPoints -= 1;
     }

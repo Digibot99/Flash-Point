@@ -13,6 +13,7 @@ public class Board {
     final static int WALL = 7;
     final static int DOOR = 8;
     final static int INVIS_WALL = 9;
+    final static int POI = 10;
     static int board[][];
 
     public static int getBoardLocation(int _Piece) {
