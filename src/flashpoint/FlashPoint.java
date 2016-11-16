@@ -47,7 +47,7 @@ public class FlashPoint extends JFrame implements Runnable {
     Image BoardImage;
     private static final int PORT = 4000;
     
-    int wallSize = 140;
+    int wallSize = 70;
 
     int smokeNum = 5;
     int fireNumAtStart = 5;
@@ -60,6 +60,7 @@ public class FlashPoint extends JFrame implements Runnable {
     int POInum = 3;
 
     ArrayList<Wall> numWall = new ArrayList<Wall>();
+    ArrayList<Invis_wall> numInvis_wall = new ArrayList<Invis_wall>();
     static ArrayList<Smoke> numSmoke = new ArrayList<Smoke>();
     static ArrayList<Fire> numFire = new ArrayList<Fire>();
     ArrayList<PointOfInterest> numPois = new ArrayList<PointOfInterest>();
@@ -73,7 +74,7 @@ public class FlashPoint extends JFrame implements Runnable {
 
     public static void main(String[] args) throws Exception{
         frame1 = new FlashPoint();
-        frame1.setSize(Window.WINDOW_WIDTH*2, Window.WINDOW_HEIGHT*2);
+        frame1.setSize(Window.WINDOW_WIDTH, Window.WINDOW_HEIGHT);
         frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame1.setVisible(true);
 //        frame1.setResizable(false);
@@ -311,6 +312,7 @@ Socket socket = new Socket(InetAddress.getLocalHost(), 4000);
             gOld.drawImage(image, 0, 0, null);
             return;
         }
+        g.drawImage(BoardImage,29,51,Window.xsize - 57,Window.ysize - 79,this);
         g.setColor(Color.gray);
 //horizontal lines
         for (int zi = 1; zi < Board.numRows; zi++) {
@@ -626,6 +628,46 @@ Socket socket = new Socket(InetAddress.getLocalHost(), 4000);
                         Window.getY(0) + numSmoke.get(i).getCurrentRow() * Window.getHeight2() / Board.numRows,
                         Window.getWidth2() / Board.numColumns,Window.getHeight2() / Board.numRows,this);}
                 }
+                //              Upper half of invis-wall
+////////////////////////////////////////////////////////////////////////////////////
+                for (int i = 1; i < Board.numColumns - 1; i++) {
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0) + i * Window.getWidth2() / Board.numColumns,
+                            Window.getY(0)* Window.getHeight2() / Board.numRows,
+                            Window.getWidth2() / Board.numColumns,
+                            Window.getHeight2() / Board.numRows - wallSize);
+                    Board.board[0][i] = Board.INVIS_WALL;
+                }
+//              Lower half of invis-wall
+////////////////////////////////////////////////////////////////////////////////////
+                for (int i = 0; i < Board.numColumns - 1; i++) {
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0) + i * Window.getWidth2() / Board.numColumns,
+                            Window.getY(0) + (Board.numRows - 2) * Window.getHeight2() / Board.numRows + wallSize,
+                            Window.getWidth2() / Board.numColumns,
+                            Window.getHeight2() / Board.numRows - wallSize);
+                    Board.board[Board.numRows - 1][i] = Board.INVIS_WALL;
+                }
+//                    Right of house
+//////////////////////////////////////////////////////////////////////////////////////
+                for (int i = 0; i < Board.numRows - 1; i++) {
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0) + (Board.numColumns - 2) * Window.getWidth2() / Board.numColumns + wallSize,
+                            Window.getY(0) + i * Window.getHeight2() / Board.numRows,
+                            Window.getWidth2() / Board.numColumns - wallSize,
+                            Window.getHeight2() / Board.numRows);
+                    Board.board[i][Board.numColumns - 1] = Board.INVIS_WALL;
+                }
+//                    left side of house
+////////////////////////////////////////////////////////////////////////////////////
+                for (int i = 0; i < Board.numRows - 1; i++) {
+                    g.setColor(Color.BLACK);
+                    g.fillRect(Window.getX(0)* Window.getWidth2() / Board.numColumns,
+                            Window.getY(0) + i * Window.getHeight2() / Board.numRows,
+                            Window.getWidth2() / Board.numColumns - wallSize,
+                            Window.getHeight2() / Board.numRows);
+                    Board.board[i][0] = Board.INVIS_WALL;
+                }
                 
 
         if (PlayerRed.getisTurn()) {
@@ -647,6 +689,7 @@ Socket socket = new Socket(InetAddress.getLocalHost(), 4000);
             g.drawString("Game Over", 250, 250);
 
         }
+        
         gOld.drawImage(image, 0, 0, null);
     }
 ////////////////////////////////////////////////////////////////////////////
