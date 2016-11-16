@@ -628,46 +628,94 @@ Socket socket = new Socket(InetAddress.getLocalHost(), 4000);
                         Window.getY(0) + numSmoke.get(i).getCurrentRow() * Window.getHeight2() / Board.numRows,
                         Window.getWidth2() / Board.numColumns,Window.getHeight2() / Board.numRows,this);}
                 }
-                //              Upper half of invis-wall
 ////////////////////////////////////////////////////////////////////////////////////
-                for (int i = 1; i < Board.numColumns - 1; i++) {
-                    g.setColor(Color.BLACK);
-                    g.fillRect(Window.getX(0) + i * Window.getWidth2() / Board.numColumns,
-                            Window.getY(0)* Window.getHeight2() / Board.numRows,
-                            Window.getWidth2() / Board.numColumns,
-                            Window.getHeight2() / Board.numRows - wallSize);
-                    Board.board[0][i] = Board.INVIS_WALL;
-                }
+//              Player Red
+//              Upper half of invis-wall
+////////////////////////////////////////////////////////////////////////////////////
+            for (int i = 0; i < Board.numColumns - 1; i++)
+                if (Board.board [PlayerRed.currentRow][PlayerRed.currentColumn + 1] == Board.board [0][i])
+                    Board.board [0][i] = Board.INVIS_WALL;
 //              Lower half of invis-wall
 ////////////////////////////////////////////////////////////////////////////////////
-                for (int i = 0; i < Board.numColumns - 1; i++) {
-                    g.setColor(Color.BLACK);
-                    g.fillRect(Window.getX(0) + i * Window.getWidth2() / Board.numColumns,
-                            Window.getY(0) + (Board.numRows - 2) * Window.getHeight2() / Board.numRows + wallSize,
-                            Window.getWidth2() / Board.numColumns,
-                            Window.getHeight2() / Board.numRows - wallSize);
-                    Board.board[Board.numRows - 1][i] = Board.INVIS_WALL;
-                }
+            for (int i = 0; i < Board.numColumns - 1; i++)
+                if (Board.board [PlayerRed.currentRow][PlayerRed.currentColumn - 1] == Board.board [0][i])
+                    Board.board [0][i] = Board.INVIS_WALL;   
 //                    Right of house
 //////////////////////////////////////////////////////////////////////////////////////
-                for (int i = 0; i < Board.numRows - 1; i++) {
-                    g.setColor(Color.BLACK);
-                    g.fillRect(Window.getX(0) + (Board.numColumns - 2) * Window.getWidth2() / Board.numColumns + wallSize,
-                            Window.getY(0) + i * Window.getHeight2() / Board.numRows,
-                            Window.getWidth2() / Board.numColumns - wallSize,
-                            Window.getHeight2() / Board.numRows);
-                    Board.board[i][Board.numColumns - 1] = Board.INVIS_WALL;
-                }
+            for (int i = 0; i < Board.numColumns - 1; i++)
+                if (Board.board [PlayerRed.currentRow + 1][PlayerRed.currentColumn] == Board.board [0][i])
+                    Board.board [0][i] = Board.INVIS_WALL;    
 //                    left side of house
 ////////////////////////////////////////////////////////////////////////////////////
-                for (int i = 0; i < Board.numRows - 1; i++) {
-                    g.setColor(Color.BLACK);
-                    g.fillRect(Window.getX(0)* Window.getWidth2() / Board.numColumns,
-                            Window.getY(0) + i * Window.getHeight2() / Board.numRows,
-                            Window.getWidth2() / Board.numColumns - wallSize,
-                            Window.getHeight2() / Board.numRows);
-                    Board.board[i][0] = Board.INVIS_WALL;
-                }
+            for (int i = 0; i < Board.numColumns - 1; i++)
+                if (Board.board [PlayerRed.currentRow - 1][PlayerRed.currentColumn] == Board.board [0][i])
+                    Board.board [0][i] = Board.INVIS_WALL;    
+////////////////////////////////////////////////////////////////////////////////////
+//              Player Green
+//              Upper half of invis-wall
+////////////////////////////////////////////////////////////////////////////////////
+            for (int i = 0; i < Board.numColumns - 1; i++)
+                if (Board.board [PlayerGreen.currentRow][PlayerGreen.currentColumn + 1] == Board.board [0][i])
+                    Board.board [0][i] = Board.INVIS_WALL;
+//              Lower half of invis-wall
+////////////////////////////////////////////////////////////////////////////////////
+            for (int i = 0; i < Board.numColumns - 1; i++)
+                if (Board.board [PlayerGreen.currentRow][PlayerGreen.currentColumn - 1] == Board.board [0][i])
+                    Board.board [0][i] = Board.INVIS_WALL;   
+//                    Right of house
+//////////////////////////////////////////////////////////////////////////////////////
+            for (int i = 0; i < Board.numColumns - 1; i++)
+                if (Board.board [PlayerGreen.currentRow + 1][PlayerGreen.currentColumn] == Board.board [0][i])
+                    Board.board [0][i] = Board.INVIS_WALL;    
+//                    left side of house
+////////////////////////////////////////////////////////////////////////////////////
+            for (int i = 0; i < Board.numColumns - 1; i++)
+                if (Board.board [PlayerGreen.currentRow - 1][PlayerGreen.currentColumn] == Board.board [0][i])
+                    Board.board [0][i] = Board.INVIS_WALL;    
+////////////////////////////////////////////////////////////////////////////////////
+//              Player Blue
+//              Upper half of invis-wall
+////////////////////////////////////////////////////////////////////////////////////
+            for (int i = 0; i < Board.numColumns - 1; i++)
+                if (Board.board [PlayerBlue.currentRow][PlayerBlue.currentColumn + 1] == Board.board [0][i])
+                    Board.board [0][i] = Board.INVIS_WALL;
+//              Lower half of invis-wall
+////////////////////////////////////////////////////////////////////////////////////
+            for (int i = 0; i < Board.numColumns - 1; i++)
+                if (Board.board [PlayerBlue.currentRow][PlayerBlue.currentColumn - 1] == Board.board [0][i])
+                    Board.board [][] = Board.INVIS_WALL;   
+//                    Right of house
+//////////////////////////////////////////////////////////////////////////////////////
+            for (int i = 0; i < Board.numColumns - 1; i++)
+                if (Board.board [PlayerBlue.currentRow + 1][PlayerBlue.currentColumn] == Board.board [0][i])
+                    Board.board [i][0] = Board.INVIS_WALL;    
+//                    left side of house
+////////////////////////////////////////////////////////////////////////////////////
+            for (int i = 0; i < Board.numColumns - 1; i++)
+                if (Board.board [PlayerBlue.currentRow - 1][PlayerBlue.currentColumn] == Board.board [0][i])
+                    Board.board [][] = Board.INVIS_WALL;    
+////////////////////////////////////////////////////////////////////////////////////
+//              Player Yellow
+//              Upper half of invis-wall
+////////////////////////////////////////////////////////////////////////////////////
+            for (int i = 0; i < Board.numColumns - 1; i++)
+                if (Board.board [PlayerYellow.currentRow][PlayerYellow.currentColumn + 1] == Board.board [0][i])
+                    Board.board [0][i] = Board.INVIS_WALL;
+//              Lower half of invis-wall
+////////////////////////////////////////////////////////////////////////////////////
+            for (int i = 0; i < Board.numColumns - 1; i++)
+                if (Board.board [PlayerYellow.currentRow][PlayerYellow.currentColumn - 1] == Board.board [0][i])
+                    Board.board [0][i] = Board.INVIS_WALL;   
+//                    Right of house
+//////////////////////////////////////////////////////////////////////////////////////
+            for (int i = 0; i < Board.numColumns - 1; i++)
+                if (Board.board [PlayerYellow.currentRow + 1][PlayerYellow.currentColumn] == Board.board [0][i])
+                    Board.board [0][i] = Board.INVIS_WALL;    
+//                    left side of house
+////////////////////////////////////////////////////////////////////////////////////
+            for (int i = 0; i < Board.numColumns - 1; i++)
+                if (Board.board [PlayerYellow.currentRow - 1][PlayerYellow.currentColumn] == Board.board [0][i])
+                    Board.board [0][i] = Board.INVIS_WALL;    
                 
 
         if (PlayerRed.getisTurn()) {

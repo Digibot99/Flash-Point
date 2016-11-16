@@ -7,11 +7,11 @@ public class Movement {
 
     public static int MoveRight(int _currentRow, int _currentColumn) {
         if (Board.board[_currentRow][_currentColumn + 1] == Board.INVIS_WALL)
-            return (_currentColumn - 1);
-        if (Board.board[_currentRow][_currentColumn] == Board.WALL) {
-            System.out.println("g");
-            return (_currentColumn);
-        } else if (Board.board[_currentRow][_currentColumn + 1] == Board.WALL) {
+            return (_currentRow);
+//        if (Board.board[_currentRow][_currentColumn] == Board.WALL) {
+//            System.out.println("g");
+//            return (_currentColumn);
+        else if (Board.board[_currentRow][_currentColumn + 1] == Board.WALL) {
             System.out.println("l");
             newColumn = _currentColumn + 1;
             return (newColumn);
@@ -27,11 +27,11 @@ public class Movement {
 
     public static int MoveLeft(int _currentRow, int _currentColumn) {
         if (Board.board[_currentRow][_currentColumn - 1] == Board.INVIS_WALL)
-            return (_currentColumn + 1);
-        if (Board.board[_currentRow][_currentColumn] == Board.WALL) {
-            System.out.println("g");
-            return (_currentColumn);
-        } else if (Board.board[_currentRow][_currentColumn - 1] == Board.WALL) {
+            return (_currentRow);
+//        if (Board.board[_currentRow][_currentColumn] == Board.WALL) {
+//            System.out.println("g");
+//            return (_currentColumn);
+        else if (Board.board[_currentRow][_currentColumn - 1] == Board.WALL) {
             System.out.println("l");
             newColumn = _currentColumn - 1;
             return (newColumn);
@@ -46,11 +46,11 @@ public class Movement {
 
     public static int MoveUp(int _currentRow, int _currentColumn) {
         if (Board.board[_currentRow + 1][_currentColumn] == Board.INVIS_WALL)
-            return (_currentRow - 1);
-        if (Board.board[_currentRow][_currentColumn] == Board.WALL) {
-            System.out.println("g");
             return (_currentRow);
-        } else if (Board.board[_currentRow - 1][_currentColumn] == Board.WALL) {
+//        if (Board.board[_currentRow][_currentColumn] == Board.WALL) {
+//            System.out.println("g");
+//            return (_currentRow);
+         else if (Board.board[_currentRow - 1][_currentColumn] == Board.WALL) {
             System.out.println("l");
             newRow = _currentRow - 1;
             return (newRow);
@@ -65,12 +65,12 @@ public class Movement {
 
     public static int MoveDown(int _currentRow, int _currentColumn) {
         if (Board.board[_currentRow - 1][_currentColumn] == Board.INVIS_WALL)
-            return (_currentRow + 1);
-        if (Board.board[_currentRow][_currentColumn] == Board.WALL) {
-            System.out.println("g");
             return (_currentRow);
-        }
-        if (Board.board[_currentRow + 1][_currentColumn] == Board.WALL) {
+//        if (Board.board[_currentRow][_currentColumn] == Board.WALL) {
+//            System.out.println("g");
+//            return (_currentRow);
+//        }
+        else if (Board.board[_currentRow + 1][_currentColumn] == Board.WALL) {
             System.out.println("l");
 
             newRow = _currentRow + 1;
