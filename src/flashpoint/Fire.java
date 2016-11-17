@@ -30,68 +30,6 @@ public class Fire {
     public Color getColor() {
         return (color);
     }
-
-    
-    public boolean isNextToPlayer(Player player) {
-        if (player.getColor() == Color.red) {
-            if (Board.board[this.getCurrentRow()][this.getCurrentColumn() + 1] == Board.PLAYERRED) {
-                return (true);
-            }
-            if (Board.board[this.getCurrentRow()][this.getCurrentColumn() - 1] == Board.PLAYERRED) {
-                return (true);
-            }
-            if (Board.board[this.getCurrentRow() + 1][this.getCurrentColumn()] == Board.PLAYERRED) {
-                return (true);
-            }
-            if (Board.board[this.getCurrentRow() - 1][this.getCurrentColumn()] == Board.PLAYERRED) {
-                return (true);
-            }
-        }
-        else if (player.getColor() == Color.blue) {
-            if (Board.board[this.getCurrentRow()][this.getCurrentColumn() + 1] == Board.PLAYERBLUE) {
-                return (true);
-            }
-            if (Board.board[this.getCurrentRow()][this.getCurrentColumn() - 1] == Board.PLAYERBLUE) {
-                return (true);
-            }
-            if (Board.board[this.getCurrentRow() + 1][this.getCurrentColumn()] == Board.PLAYERBLUE) {
-                return (true);
-            }
-            if (Board.board[this.getCurrentRow() - 1][this.getCurrentColumn()] == Board.PLAYERBLUE) {
-                return (true);
-            }
-        }
-        else if (player.getColor() == Color.green) {
-            if (Board.board[this.getCurrentRow()][this.getCurrentColumn() + 1] == Board.PLAYERGREEN) {
-                return (true);
-            }
-            if (Board.board[this.getCurrentRow()][this.getCurrentColumn() - 1] == Board.PLAYERGREEN) {
-                return (true);
-            }
-            if (Board.board[this.getCurrentRow() + 1][this.getCurrentColumn()] == Board.PLAYERGREEN) {
-                return (true);
-            }
-            if (Board.board[this.getCurrentRow() - 1][this.getCurrentColumn()] == Board.PLAYERGREEN) {
-                return (true);
-            }
-        }
-        else if (player.getColor() == Color.yellow) {
-            if (Board.board[this.getCurrentRow()][this.getCurrentColumn() + 1] == Board.PLAYERYELLOW) {
-                return (true);
-            }
-            if (Board.board[this.getCurrentRow()][this.getCurrentColumn() - 1] == Board.PLAYERYELLOW) {
-                return (true);
-            }
-            if (Board.board[this.getCurrentRow() + 1][this.getCurrentColumn()] == Board.PLAYERYELLOW) {
-                return (true);
-            }
-            if (Board.board[this.getCurrentRow() - 1][this.getCurrentColumn()] == Board.PLAYERYELLOW) {
-                return (true);
-            }
-        }
-        return (false);
-    }
-    
     public int getGIFNum() {
         return (GIFNum);
     }
@@ -101,5 +39,26 @@ public class Fire {
 
     public int getCurrentColumn() {
         return (currentColumn);
+    }
+
+    
+   public boolean isNexttoPlayer(Player player) {
+        if (Board.board[this.getCurrentRow() + 1][this.getCurrentColumn()] == Board.board[player.getCurrentRow()][player.getCurrentColumn()])
+        {
+        return (true);
+        }
+        else if (Board.board[this.getCurrentRow() - 1][this.getCurrentColumn()] == Board.board[player.getCurrentRow()][player.getCurrentColumn()])
+        {
+        return (true);
+        }
+        else if (Board.board[this.getCurrentRow()][this.getCurrentColumn() + 1] == Board.board[player.getCurrentRow()][player.getCurrentColumn()])
+        {
+        return (true);
+        }
+        else if (Board.board[this.getCurrentRow()][this.getCurrentColumn() - 1] == Board.board[player.getCurrentRow()][player.getCurrentColumn()])
+        {
+        return (true);
+        }
+        return (false);
     }
 }

@@ -60,7 +60,6 @@ public class FlashPoint extends JFrame implements Runnable {
     int POInum = 3;
 
     ArrayList<Wall> numWall = new ArrayList<Wall>();
-    ArrayList<Invis_wall> numInvis_wall = new ArrayList<Invis_wall>();
     static ArrayList<Smoke> numSmoke = new ArrayList<Smoke>();
     static ArrayList<Fire> numFire = new ArrayList<Fire>();
     ArrayList<PointOfInterest> numPois = new ArrayList<PointOfInterest>();
@@ -72,20 +71,24 @@ public class FlashPoint extends JFrame implements Runnable {
 
     static FlashPoint frame1;
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args){
+        try {
+               
         frame1 = new FlashPoint();
+            } catch (Exception e) {
+                
+            }
         frame1.setSize(Window.WINDOW_WIDTH, Window.WINDOW_HEIGHT);
         frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame1.setVisible(true);
-//        frame1.setResizable(false);
-        Server server = new Server();
-Socket socket = new Socket(InetAddress.getLocalHost(), 4000);
-        in = new BufferedReader(new InputStreamReader(
-            socket.getInputStream()));
-        out = new PrintWriter(socket.getOutputStream(), true);
+        frame1.setResizable(false);
     }
 
-    public FlashPoint() {
+    public FlashPoint(){
+//        Socket socket = new Socket(InetAddress.getLocalHost(), 4000);
+//        in = new BufferedReader(new InputStreamReader(
+//            socket.getInputStream()));
+//        out = new PrintWriter(socket.getOutputStream(), true);
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 if (e.BUTTON1 == e.getButton()) {
@@ -232,38 +235,84 @@ Socket socket = new Socket(InetAddress.getLocalHost(), 4000);
                         
                     if (PlayerRed.getisTurn())
                     {
-                        if (Board.board[numFire1.getCurrentRow()][numFire1.getCurrentColumn()] == SetBoardandPlayer.PlayerInteract(PlayerRed) && numFire1.isNextToPlayer(PlayerRed))
+                        if (numFire1.isNexttoPlayer(PlayerRed))
                         {
-                            Board.board[numFire1.getCurrentRow()][numFire1.getCurrentRow()] = Board.EMPTY;
-                System.out.println(numFire1.getCurrentRow() + " " + numFire1.getCurrentColumn());
+                            System.out.println("hi");
+                            Board.board[numFire1.getCurrentRow()][numFire1.getCurrentColumn()] = Board.EMPTY;
                             numFire.remove(numFire1);
                         }
                         return;
                     }
                     if (PlayerBlue.getisTurn())
                     {
-                        if (Board.board[numFire1.getCurrentRow()][numFire1.getCurrentColumn()] == SetBoardandPlayer.PlayerInteract(PlayerBlue) && numFire1.isNextToPlayer(PlayerBlue))
+                        if (numFire1.isNexttoPlayer(PlayerBlue))
                         {
-                            Board.board[numFire1.getCurrentRow()][numFire1.getCurrentRow()] = Board.EMPTY;
+                            Board.board[numFire1.getCurrentRow()][numFire1.getCurrentColumn()] = Board.EMPTY;
                             numFire.remove(numFire1);
                         }
                         return;
                     }
                     if (PlayerGreen.getisTurn())
                     {
-                        if (Board.board[numFire1.getCurrentRow()][numFire1.getCurrentColumn()] == SetBoardandPlayer.PlayerInteract(PlayerGreen) && numFire1.isNextToPlayer(PlayerGreen))
+                        if (numFire1.isNexttoPlayer(PlayerGreen))
                         {
-                            Board.board[numFire1.getCurrentRow()][numFire1.getCurrentRow()] = Board.EMPTY;
+                            Board.board[numFire1.getCurrentRow()][numFire1.getCurrentColumn()] = Board.EMPTY;
                             numFire.remove(numFire1);
                         }
                         return;
                     }
                     if (PlayerYellow.getisTurn())
                     {
-                        if (Board.board[numFire1.getCurrentRow()][numFire1.getCurrentColumn()] == SetBoardandPlayer.PlayerInteract(PlayerYellow) && numFire1.isNextToPlayer(PlayerYellow))
+                        if (numFire1.isNexttoPlayer(PlayerYellow))
                         {
-                            Board.board[numFire1.getCurrentRow()][numFire1.getCurrentRow()] = Board.EMPTY;
+                            Board.board[numFire1.getCurrentRow()][numFire1.getCurrentColumn()] = Board.EMPTY;
                             numFire.remove(numFire1);
+                        }
+                        return;
+                    }
+                    }
+                    
+                    
+                    for (PointOfInterest numPoi1 : numPois) 
+                    {
+                        
+                    if (PlayerRed.getisTurn())
+                    {
+                        if (numPoi1.isNexttoPlayer(PlayerRed))
+                        {
+                            System.out.println("hi");
+                            Board.board[numPoi1.getCurrentRow()][numPoi1.getCurrentColumn()] = Board.EMPTY;
+                            numPois.remove(numPoi1);
+                        }
+                        return;
+                    }
+                    if (PlayerBlue.getisTurn())
+                    {
+                        if (numPoi1.isNexttoPlayer(PlayerBlue))
+                        {
+                            System.out.println("hi");
+                            Board.board[numPoi1.getCurrentRow()][numPoi1.getCurrentColumn()] = Board.EMPTY;
+                            numPois.remove(numPoi1);
+                        }
+                        return;
+                    }
+                    if (PlayerGreen.getisTurn())
+                    {
+                        if (numPoi1.isNexttoPlayer(PlayerGreen))
+                        {
+                            System.out.println("hi");
+                            Board.board[numPoi1.getCurrentRow()][numPoi1.getCurrentColumn()] = Board.EMPTY;
+                            numPois.remove(numPoi1);
+                        }
+                        return;
+                    }
+                    if (PlayerYellow.getisTurn())
+                    {
+                        if (numPoi1.isNexttoPlayer(PlayerYellow))
+                        {
+                            System.out.println("hi");
+                            Board.board[numPoi1.getCurrentRow()][numPoi1.getCurrentColumn()] = Board.EMPTY;
+                            numPois.remove(numPoi1);
                         }
                         return;
                     }
@@ -312,7 +361,6 @@ Socket socket = new Socket(InetAddress.getLocalHost(), 4000);
             gOld.drawImage(image, 0, 0, null);
             return;
         }
-        g.drawImage(BoardImage,29,51,Window.xsize - 57,Window.ysize - 79,this);
         g.setColor(Color.gray);
 //horizontal lines
         for (int zi = 1; zi < Board.numRows; zi++) {
@@ -628,94 +676,6 @@ Socket socket = new Socket(InetAddress.getLocalHost(), 4000);
                         Window.getY(0) + numSmoke.get(i).getCurrentRow() * Window.getHeight2() / Board.numRows,
                         Window.getWidth2() / Board.numColumns,Window.getHeight2() / Board.numRows,this);}
                 }
-////////////////////////////////////////////////////////////////////////////////////
-//              Player Red
-//              Upper half of invis-wall
-////////////////////////////////////////////////////////////////////////////////////
-            for (int i = 0; i < Board.numColumns - 1; i++)
-                if (Board.board [PlayerRed.currentRow][PlayerRed.currentColumn + 1] == Board.board [0][i])
-                    Board.board [0][i] = Board.INVIS_WALL;
-//              Lower half of invis-wall
-////////////////////////////////////////////////////////////////////////////////////
-            for (int i = 0; i < Board.numColumns - 1; i++)
-                if (Board.board [PlayerRed.currentRow][PlayerRed.currentColumn - 1] == Board.board [0][i])
-                    Board.board [0][i] = Board.INVIS_WALL;   
-//                    Right of house
-//////////////////////////////////////////////////////////////////////////////////////
-            for (int i = 0; i < Board.numColumns - 1; i++)
-                if (Board.board [PlayerRed.currentRow + 1][PlayerRed.currentColumn] == Board.board [0][i])
-                    Board.board [0][i] = Board.INVIS_WALL;    
-//                    left side of house
-////////////////////////////////////////////////////////////////////////////////////
-            for (int i = 0; i < Board.numColumns - 1; i++)
-                if (Board.board [PlayerRed.currentRow - 1][PlayerRed.currentColumn] == Board.board [0][i])
-                    Board.board [0][i] = Board.INVIS_WALL;    
-////////////////////////////////////////////////////////////////////////////////////
-//              Player Green
-//              Upper half of invis-wall
-////////////////////////////////////////////////////////////////////////////////////
-            for (int i = 0; i < Board.numColumns - 1; i++)
-                if (Board.board [PlayerGreen.currentRow][PlayerGreen.currentColumn + 1] == Board.board [0][i])
-                    Board.board [0][i] = Board.INVIS_WALL;
-//              Lower half of invis-wall
-////////////////////////////////////////////////////////////////////////////////////
-            for (int i = 0; i < Board.numColumns - 1; i++)
-                if (Board.board [PlayerGreen.currentRow][PlayerGreen.currentColumn - 1] == Board.board [0][i])
-                    Board.board [0][i] = Board.INVIS_WALL;   
-//                    Right of house
-//////////////////////////////////////////////////////////////////////////////////////
-            for (int i = 0; i < Board.numColumns - 1; i++)
-                if (Board.board [PlayerGreen.currentRow + 1][PlayerGreen.currentColumn] == Board.board [0][i])
-                    Board.board [0][i] = Board.INVIS_WALL;    
-//                    left side of house
-////////////////////////////////////////////////////////////////////////////////////
-            for (int i = 0; i < Board.numColumns - 1; i++)
-                if (Board.board [PlayerGreen.currentRow - 1][PlayerGreen.currentColumn] == Board.board [0][i])
-                    Board.board [0][i] = Board.INVIS_WALL;    
-////////////////////////////////////////////////////////////////////////////////////
-//              Player Blue
-//              Upper half of invis-wall
-////////////////////////////////////////////////////////////////////////////////////
-            for (int i = 0; i < Board.numColumns - 1; i++)
-                if (Board.board [PlayerBlue.currentRow][PlayerBlue.currentColumn + 1] == Board.board [0][i])
-                    Board.board [0][i] = Board.INVIS_WALL;
-//              Lower half of invis-wall
-////////////////////////////////////////////////////////////////////////////////////
-            for (int i = 0; i < Board.numColumns - 1; i++)
-                if (Board.board [PlayerBlue.currentRow][PlayerBlue.currentColumn - 1] == Board.board [0][i])
-                    Board.board [][] = Board.INVIS_WALL;   
-//                    Right of house
-//////////////////////////////////////////////////////////////////////////////////////
-            for (int i = 0; i < Board.numColumns - 1; i++)
-                if (Board.board [PlayerBlue.currentRow + 1][PlayerBlue.currentColumn] == Board.board [0][i])
-                    Board.board [i][0] = Board.INVIS_WALL;    
-//                    left side of house
-////////////////////////////////////////////////////////////////////////////////////
-            for (int i = 0; i < Board.numColumns - 1; i++)
-                if (Board.board [PlayerBlue.currentRow - 1][PlayerBlue.currentColumn] == Board.board [0][i])
-                    Board.board [][] = Board.INVIS_WALL;    
-////////////////////////////////////////////////////////////////////////////////////
-//              Player Yellow
-//              Upper half of invis-wall
-////////////////////////////////////////////////////////////////////////////////////
-            for (int i = 0; i < Board.numColumns - 1; i++)
-                if (Board.board [PlayerYellow.currentRow][PlayerYellow.currentColumn + 1] == Board.board [0][i])
-                    Board.board [0][i] = Board.INVIS_WALL;
-//              Lower half of invis-wall
-////////////////////////////////////////////////////////////////////////////////////
-            for (int i = 0; i < Board.numColumns - 1; i++)
-                if (Board.board [PlayerYellow.currentRow][PlayerYellow.currentColumn - 1] == Board.board [0][i])
-                    Board.board [0][i] = Board.INVIS_WALL;   
-//                    Right of house
-//////////////////////////////////////////////////////////////////////////////////////
-            for (int i = 0; i < Board.numColumns - 1; i++)
-                if (Board.board [PlayerYellow.currentRow + 1][PlayerYellow.currentColumn] == Board.board [0][i])
-                    Board.board [0][i] = Board.INVIS_WALL;    
-//                    left side of house
-////////////////////////////////////////////////////////////////////////////////////
-            for (int i = 0; i < Board.numColumns - 1; i++)
-                if (Board.board [PlayerYellow.currentRow - 1][PlayerYellow.currentColumn] == Board.board [0][i])
-                    Board.board [0][i] = Board.INVIS_WALL;    
                 
 
         if (PlayerRed.getisTurn()) {
@@ -731,13 +691,14 @@ Socket socket = new Socket(InetAddress.getLocalHost(), 4000);
             g.setColor(PlayerYellow.getColor());
             g.drawString("Player Yellows Turn  Number of turns left: " + PlayerYellow.getActionPoints(), Window.getX(20), Window.getY(-10));
         }
-
+        
+//        out.println("hi");
+        
         if (gameover == true) {
             g.setColor(Color.black);
             g.drawString("Game Over", 250, 250);
 
         }
-        
         gOld.drawImage(image, 0, 0, null);
     }
 ////////////////////////////////////////////////////////////////////////////
@@ -775,7 +736,6 @@ Socket socket = new Socket(InetAddress.getLocalHost(), 4000);
         for (int i = 0; i < fireNumAtStart; i++) {
             numFire.add(new Fire((int)(Math.random()*Board.numRows-2) + 1,(int)(Math.random()*Board.numColumns-2) + 1, (int)(Math.random()*9+1)));
         }
-        numFire.get(fireNumAtStart - 1).equals(null);
         PlayerRed.setActionPoints();
         PlayerBlue.setActionPoints();
         PlayerGreen.setActionPoints();

@@ -13,7 +13,7 @@ public class Server {
 
     private static final int PORT = 4000;
     
-    public Server() throws Exception
+    public static void main(String[] args) throws Exception
     {
         System.out.println("The chat server is running.");
         ServerSocket listener = new ServerSocket(PORT);
@@ -36,7 +36,15 @@ public class Server {
         }
         
         public void run() {
-            
+            try {
+               System.out.println(socket.getInputStream()); 
+            } catch (Exception e) {
+                try {
+                    socket.close();
+                } catch (Exception i) {
+                }
+            }
+
         }
         
     public static int getPort()

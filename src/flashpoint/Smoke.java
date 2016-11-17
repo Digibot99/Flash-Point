@@ -59,4 +59,23 @@ public class Smoke {
     public int getCurrentColumn() {
         return (currentColumn);
     }
+    public boolean isNexttoPlayer(Player player) {
+        if (Board.board[this.getCurrentRow() + 1][this.getCurrentColumn()] == Board.board[player.getCurrentRow()][player.getCurrentColumn()])
+        {
+        return (true);
+        }
+        else if (Board.board[this.getCurrentRow() - 1][this.getCurrentColumn()] == Board.board[player.getCurrentRow()][player.getCurrentColumn()])
+        {
+        return (true);
+        }
+        else if (Board.board[this.getCurrentRow()][this.getCurrentColumn() + 1] == Board.board[player.getCurrentRow()][player.getCurrentColumn()])
+        {
+        return (true);
+        }
+        else if (Board.board[this.getCurrentRow()][this.getCurrentColumn() - 1] == Board.board[player.getCurrentRow()][player.getCurrentColumn()])
+        {
+        return (true);
+        }
+        return (false);
+    }
 }
